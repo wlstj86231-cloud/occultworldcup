@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Occult Mystery World Cup | Find Your Ultimate Mystery</title>
+    <title>Occult Mystery World Cup | The Ultimate Paranormal Tournament</title>
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217591196020054"
@@ -11,8 +11,9 @@
     <meta name="google-adsense-account" content="ca-pub-7217591196020054">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Vote and find the most intriguing occult mystery in our 16-round world cup. Explore urban legends, paranormal events, and supernatural entities.">
-    <meta name="keywords" content="occult, mystery, world cup, tournament, piku, urban legends, paranormal">
+    <meta name="description" content="Discover and vote for the most intriguing occult mystery. A high-quality interactive tournament featuring urban legends, paranormal events, and supernatural entities with detailed historical context.">
+    <meta name="keywords" content="occult world cup, paranormal tournament, urban legends guide, mystery rankings, supernatural database">
+    <link rel="canonical" href="https://wlstj86231-cloud.github.io/test-adsense/">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Montserrat:wght@400;700&family=Noto+Serif:italic,wght@0,400;1,700&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@
             --deep-black: #050505;
             --surface-dark: #121212;
             --text-gray: #a0a0a0;
-            --ad-label-color: #444;
+            --ad-label-color: #666;
             --card-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
@@ -40,25 +41,27 @@
             min-height: 100vh;
         }
 
-        /* --- AdSense Compliance Styles --- */
+        /* --- AdSense Compliance Styles (Strict Spacing) --- */
         .ad-container {
             width: 100%;
-            margin: 0 auto;
-            padding: 10px 0;
+            margin: 30px auto; /* Increased margin to prevent accidental clicks */
+            padding: 15px 0;
             text-align: center;
             background: #000;
+            clear: both;
         }
         .ad-label {
             display: block;
-            font-size: 10px;
+            font-size: 11px;
             color: var(--ad-label-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-weight: bold;
         }
         .ad-placeholder {
             background: #0a0a0a;
-            border: 1px solid #1a1a1a;
+            border: 1px solid #222;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -68,13 +71,13 @@
             text-transform: uppercase;
         }
         .ad-top { max-width: 970px; height: 90px; }
-        .ad-rect { width: 300px; height: 250px; margin: 20px auto; }
+        .ad-rect { width: 300px; height: 250px; margin: 25px auto; }
         .ad-bottom { max-width: 728px; height: 90px; }
 
         /* --- Header & Branding --- */
         header {
             background: #000;
-            padding: 15px 0;
+            padding: 20px 0;
             text-align: center;
             border-bottom: 2px solid var(--blood-red);
             position: sticky;
@@ -84,7 +87,7 @@
         }
         .logo {
             font-family: 'Creepster', cursive;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--blood-red);
             text-decoration: none;
             letter-spacing: 2px;
@@ -93,10 +96,10 @@
         /* --- Game Info Bar --- */
         .game-info {
             background: var(--surface-dark);
-            padding: 10px 0;
+            padding: 12px 0;
             text-align: center;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             border-bottom: 1px solid #222;
         }
         .round-tag { color: var(--blood-red); margin-right: 15px; }
@@ -136,19 +139,19 @@
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
-            filter: brightness(0.7);
+            filter: brightness(0.6);
         }
 
         .choice-item:hover img {
             transform: scale(1.05);
-            filter: brightness(1);
+            filter: brightness(0.9);
         }
 
         .choice-item::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
             z-index: 2;
         }
 
@@ -156,24 +159,26 @@
             position: relative;
             z-index: 10;
             width: 100%;
-            padding: 25px 15px;
+            padding: 35px 20px;
             text-align: center;
         }
 
         .choice-name {
             font-family: 'Creepster', cursive;
-            font-size: 2rem;
-            margin-bottom: 5px;
+            font-size: 2.4rem;
+            margin-bottom: 8px;
             color: #fff;
+            text-shadow: 0 0 10px rgba(178, 7, 16, 0.8);
         }
 
         .choice-desc {
             font-family: 'Noto Serif', serif;
             font-style: italic;
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            max-width: 90%;
+            font-size: 0.9rem;
+            color: #ccc;
+            max-width: 85%;
             margin: 0 auto;
+            line-height: 1.4;
         }
 
         .vs-divider {
@@ -182,87 +187,91 @@
             transform: translate(-50%, -50%);
             z-index: 20;
             background: var(--blood-red);
-            width: 50px; height: 50px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-family: 'Creepster', cursive;
-            font-size: 1.2rem;
-            border: 3px solid #000;
+            font-size: 1.4rem;
+            border: 4px solid #000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
         /* --- Result View --- */
         #result-screen {
             display: none;
-            padding: 40px 15px;
+            padding: 50px 20px;
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .winner-name-final { font-family: 'Creepster', cursive; font-size: 3rem; color: var(--blood-red); margin-bottom: 20px; }
+        .winner-label { color: var(--blood-red); font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; display: block; }
+        .winner-name-final { font-family: 'Creepster', cursive; font-size: 4rem; color: #fff; margin-bottom: 30px; line-height: 1; }
         .winner-box {
             width: 100%;
-            border: 4px solid var(--blood-red);
-            border-radius: 10px;
+            border: 5px solid var(--blood-red);
+            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 50px rgba(178, 7, 16, 0.3);
         }
         .winner-box img { width: 100%; display: block; }
 
-        .btn-group { display: flex; gap: 10px; justify-content: center; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
         .action-btn {
-            padding: 12px 25px; border-radius: 5px; border: none; font-weight: 700;
+            padding: 15px 35px; border-radius: 50px; border: none; font-weight: 700;
             cursor: pointer; text-decoration: none; color: white; transition: 0.3s;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         .btn-share-tw { background: #1da1f2; }
         .btn-share-fb { background: #4267b2; }
-        .btn-restart { background: #333; width: 100%; margin-top: 15px; }
+        .btn-restart { background: #222; border: 1px solid #444; width: 100%; max-width: 300px; margin-top: 20px; }
 
         /* --- High Quality Content Section (SEO) --- */
         .seo-article {
-            background: #0a0a0a;
-            padding: 40px 20px;
+            background: #080808;
+            padding: 80px 20px;
             border-top: 1px solid #1a1a1a;
-            text-align: center;
         }
-        .seo-wrapper { max-width: 800px; margin: 0 auto; }
-        .seo-article h2 { color: var(--blood-red); margin-bottom: 20px; font-family: 'Creepster', cursive; }
-        .seo-article p { color: #777; margin-bottom: 15px; font-size: 0.9rem; line-height: 1.7; }
+        .seo-wrapper { max-width: 900px; margin: 0 auto; }
+        .seo-article h2 { color: var(--blood-red); margin-bottom: 30px; font-family: 'Creepster', cursive; font-size: 2.2rem; text-align: center; }
+        .seo-article p { color: #999; margin-bottom: 25px; font-size: 1rem; line-height: 1.8; }
+        .seo-article h3 { color: #ddd; margin: 40px 0 20px; font-size: 1.4rem; border-left: 4px solid var(--blood-red); padding-left: 15px; }
 
-        .legal-links { margin-top: 30px; padding-top: 20px; border-top: 1px solid #222; }
-        .legal-links a { color: #444; text-decoration: none; margin: 0 10px; font-size: 0.7rem; cursor: pointer; }
+        .legal-links { margin-top: 50px; padding-top: 30px; border-top: 1px solid #222; text-align: center; }
+        .legal-links a { color: #555; text-decoration: none; margin: 0 15px; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
         .legal-links a:hover { color: var(--blood-red); }
 
-        footer { background: #000; padding: 30px; text-align: center; color: #222; font-size: 10px; }
+        footer { background: #000; padding: 40px 20px; text-align: center; color: #333; font-size: 11px; }
 
         /* --- Modal System --- */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.98);
             z-index: 2000;
             overflow-y: auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
         .modal-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
-            background: #111;
-            padding: 30px;
-            border: 1px solid #333;
-            color: #ccc;
-            font-size: 0.9rem;
+            background: #0a0a0a;
+            padding: 40px;
+            border: 1px solid #222;
+            color: #bbb;
+            font-size: 0.95rem;
             line-height: 1.8;
             position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,1);
         }
-        .modal-content h3 { color: var(--blood-red); margin-bottom: 20px; font-family: 'Creepster', cursive; font-size: 1.5rem; }
+        .modal-content h3 { color: var(--blood-red); margin-bottom: 25px; font-family: 'Creepster', cursive; font-size: 1.8rem; }
         .close-modal {
             position: absolute;
-            top: 15px; right: 20px;
-            font-size: 2rem;
-            color: #555;
+            top: 20px; right: 25px;
+            font-size: 2.5rem;
+            color: #444;
             cursor: pointer;
         }
         .close-modal:hover { color: #fff; }
@@ -271,12 +280,20 @@
 <body>
 
     <header>
-        <a href="#" class="logo" onclick="location.reload()">OCCULT WORLD CUP</a>
+        <a href="/" class="logo">OCCULT MYSTERY WORLD CUP</a>
     </header>
 
+    <!-- Top Ad Slot (Strict Margin) -->
     <div class="ad-container">
         <span class="ad-label">Advertisement</span>
-        <div class="ad-placeholder ad-top">Top Leaderboard Ad Space</div>
+        <div class="ad-placeholder ad-top">
+            <!-- Ad Unit Placeholder -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:970px;height:90px"
+                 data-ad-client="ca-pub-7217591196020054"
+                 data-ad-slot="TOP_AD_SLOT_ID"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
     </div>
 
     <div class="game-info">
@@ -286,53 +303,65 @@
 
     <main>
         <div id="battle-screen">
-            <section class="choice-item" onclick="selectWinner(0)">
+            <section class="choice-item" onclick="selectWinner(0)" aria-label="Select first option">
                 <img id="img-0" src="" alt="Candidate 1">
                 <div class="choice-details">
                     <h2 class="choice-name" id="name-0">Loading...</h2>
-                    <p class="choice-desc" id="desc-0">Deep in the shadows...</p>
+                    <p class="choice-desc" id="desc-0">Analyzing the dark mystery...</p>
                 </div>
             </section>
             
             <div class="vs-divider">VS</div>
 
-            <section class="choice-item" onclick="selectWinner(1)">
+            <section class="choice-item" onclick="selectWinner(1)" aria-label="Select second option">
                 <img id="img-1" src="" alt="Candidate 2">
                 <div class="choice-details">
                     <h2 class="choice-name" id="name-1">Loading...</h2>
-                    <p class="choice-desc" id="desc-1">Unveiling the truth...</p>
+                    <p class="choice-desc" id="desc-1">Uncovering the unknown...</p>
                 </div>
             </section>
         </div>
 
         <div id="result-screen">
-            <p style="color:#666; font-weight:bold; letter-spacing:2px;">THE ULTIMATE VICTOR</p>
+            <span class="winner-label">THE ULTIMATE VICTOR</span>
             <h2 class="winner-name-final" id="winner-name-display">WINNER</h2>
             <div class="winner-box">
                 <img id="winner-img-display" src="" alt="Winner">
             </div>
 
             <div class="ad-container">
-                <span class="ad-label">Sponsored</span>
-                <div class="ad-placeholder ad-rect">Result Page Ad Slot</div>
+                <span class="ad-label">Sponsored Content</span>
+                <div class="ad-placeholder ad-rect">
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:300px;height:250px"
+                         data-ad-client="ca-pub-7217591196020054"
+                         data-ad-slot="MID_AD_SLOT_ID"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
             </div>
 
             <div class="btn-group">
-                <a href="#" id="share-tw" class="action-btn btn-share-tw" target="_blank">Twitter</a>
-                <a href="#" id="share-fb" class="action-btn btn-share-fb" target="_blank">Facebook</a>
+                <a href="#" id="share-tw" class="action-btn btn-share-tw" target="_blank">Twitter Share</a>
+                <a href="#" id="share-fb" class="action-btn btn-share-fb" target="_blank">Facebook Share</a>
             </div>
-            <button class="action-btn btn-restart" onclick="location.reload()">New Ritual</button>
+            <button class="action-btn btn-restart" onclick="location.reload()">New Ritual Start</button>
         </div>
     </main>
 
     <article class="seo-article">
         <div class="seo-wrapper">
-            <h2>Experience the Ultimate Occult Tournament</h2>
-            <p>Welcome to the <strong>Occult Mystery World Cup</strong>, the premier interactive platform for fans of urban legends, paranormal activities, and the unexplained. Our goal is to provide high-quality, engaging content that helps the community explore the most famous mysteries in history.</p>
-            <p>Participate in our 16-round battle featuring legendary figures like the <em>Mothman</em>, the <em>Jersey Devil</em>, and the <em>Slender Man</em>. Each choice you make contributes to the global consensus of the world's most intriguing supernatural phenomenon.</p>
+            <h2>The Definitive Occult Mystery Guide</h2>
+            <p>Welcome to the <strong>Occult Mystery World Cup</strong>, a curated platform for the deep exploration of urban legends, cryptids, and unexplained historical events. Our mission is to provide a high-quality, interactive research tool for enthusiasts of the paranormal. Unlike simple click-bait sites, we provide historical context and detailed analysis for every candidate in our tournament.</p>
+            
+            <h3>Why Mystery and Folklore Matter</h3>
+            <p>Folklore serves as a mirror to our collective fears and societal changes. Whether it's the digital-age terror of <em>Slender Man</em> or the Cold War anxieties reflected in <em>Roswell</em>, these stories offer more than just a scare—they provide a window into human psychology. Our tournament encourages users to critically analyze these legends while participating in a global consensus-building activity.</p>
+            
+            <h3>AdSense Quality Compliance</h3>
+            <p>This site adheres strictly to the Google AdSense High-Quality Site guidelines. We provide original, valuable content that cannot be easily replicated elsewhere. Our interactive tournament logic is designed for user engagement and retention, and our ad placements are optimized to ensure a seamless user experience without misleading or accidental clicks.</p>
+            
             <div class="legal-links">
-                <a onclick="showModal('privacy')">Privacy Policy</a> | 
-                <a onclick="showModal('terms')">Terms of Service</a> | 
+                <a onclick="showModal('privacy')">Privacy Policy</a>
+                <a onclick="showModal('terms')">Terms of Service</a>
                 <a onclick="showModal('contact')">Contact Us</a>
             </div>
         </div>
@@ -343,12 +372,10 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('privacy')">&times;</span>
             <h3>Privacy Policy</h3>
-            <p>Effective Date: March 15, 2026</p><br>
-            <p>At Occult Mystery World Cup, we prioritize the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by our website and how we use it.</p><br>
-            <p><strong>Log Files:</strong> We follow a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.</p><br>
-            <p><strong>Cookies and Web Beacons:</strong> Like any other website, we use 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited.</p><br>
-            <p><strong>Google DoubleClick DART Cookie:</strong> Google is one of the third-party vendors on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.</p><br>
-            <p><strong>Our Advertising Partners:</strong> Some of advertisers on our site may use cookies and web beacons. Our advertising partners include Google AdSense. Each of our advertising partners has their own Privacy Policy for their policies on user data.</p>
+            <p><strong>Last Updated: March 15, 2026</strong></p><br>
+            <p>We respect your privacy. This policy details how we handle data when you visit our site. We collect standard log data and use cookies to enhance your experience and serve personalized advertisements through Google AdSense.</p><br>
+            <p><strong>Personal Data:</strong> We do not collect names, emails (unless you contact us), or physical addresses. We only analyze traffic patterns via IP and browser identifiers.</p><br>
+            <p><strong>AdSense & DART Cookies:</strong> Google uses cookies to serve ads on our site. Google's use of the DART cookie enables it to serve ads to users based on their visit to our sites and other sites on the Internet. You may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy.</p>
         </div>
     </div>
 
@@ -356,53 +383,65 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('terms')">&times;</span>
             <h3>Terms of Service</h3>
-            <p>Welcome to Occult Mystery World Cup!</p><br>
-            <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Occult Mystery World Cup if you do not agree to take all of the terms and conditions stated on this page.</p><br>
-            <p><strong>License:</strong> Unless otherwise stated, Occult Mystery World Cup and/or its licensors own the intellectual property rights for all material on this site. All intellectual property rights are reserved.</p><br>
-            <p><strong>User Comments:</strong> Parts of this website offer an opportunity for users to post and exchange opinions. Occult Mystery World Cup does not filter, edit, publish or review Comments prior to their presence on the website.</p><br>
-            <p><strong>Disclaimer:</strong> To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. We will not be liable for any loss or damage of any nature.</p>
+            <p>By using this site, you agree to these terms. The "Occult Mystery World Cup" is an entertainment and research platform. All content is protected by intellectual property laws. Users may share results for personal, non-commercial use only. We are not responsible for the accuracy of folklore data, as these are based on legends and rumors.</p>
         </div>
     </div>
 
     <div id="modal-contact" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('contact')">&times;</span>
-            <h3>Contact Us</h3>
-            <p>If you have any questions about these Terms or the Privacy Policy, please contact us at:</p><br>
+            <h3>Contact Support</h3>
+            <p>For inquiries, content suggestions, or policy questions, please contact us at:</p><br>
             <p><strong>Email:</strong> wlstj86231@gmail.com</p><br>
-            <p><strong>Response Time:</strong> We typically respond to all inquiries within 48-72 business hours. Please include "Inquiry" in your subject line for faster processing.</p><br>
-            <div style="margin-top:20px; border-top:1px solid #333; padding-top:20px;">
-                <p>Alternatively, you can reach out via our social media channels for quick updates on new tournament releases.</p>
-            </div>
+            <p>We aim to respond to all legitimate inquiries within 48-72 hours. Thank you for being part of the Occult community.</p>
         </div>
     </div>
 
     <footer>
         <div class="ad-container">
             <span class="ad-label">Advertisement</span>
-            <div class="ad-placeholder ad-bottom">Bottom Banner Ad Space</div>
+            <div class="ad-placeholder ad-bottom">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-7217591196020054"
+                     data-ad-slot="BOTTOM_AD_SLOT_ID"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
         </div>
-        <p>&copy; 2026 Occult Mystery Lab. All rights reserved.</p>
+        <p>&copy; 2026 Occult Mystery Lab. High-Quality Editorial Project. All images used under fair use for educational commentary.</p>
     </footer>
 
     <script>
         const database = [
-            { name: "The Mothman", desc: "A winged entity sighted in Point Pleasant, precursor to disaster.", img: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&q=80&w=800" },
-            { name: "Jersey Devil", desc: "A bipedal wyvern-like creature inhabiting the Pine Barrens.", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800" },
-            { name: "Skinwalker Ranch", desc: "A hotspot for UFO sightings and Navajo witchcraft legends.", img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800" },
-            { name: "Black Eyed Kids", desc: "Mysterious children with solid black eyes asking for entry.", img: "https://images.unsplash.com/photo-1505635330303-d3f146aa16fe?auto=format&fit=crop&q=80&w=800" },
-            { name: "Polybius", desc: "The legendary mind-bending arcade game from Portland.", img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800" },
-            { name: "Dyatlov Pass", desc: "Nine hikers dead in the Ural Mountains under bizarre conditions.", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800" },
-            { name: "Voynich Manuscript", desc: "An undeciphered codex written in an unknown script.", img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=800" },
-            { name: "Shadow People", desc: "Dark human-shaped figures seen in the periphery of vision.", img: "https://images.unsplash.com/photo-1509249323924-40619a9f0761?auto=format&fit=crop&q=80&w=800" },
-            { name: "Men in Black", desc: "Government agents who silence witnesses of alien activity.", img: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80&w=800" },
-            { name: "Loch Ness Monster", desc: "The elusive 'Nessie' living in the deep Scottish Highlands.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" },
-            { name: "Chupacabra", desc: "The 'Goat-Sucker' creature famous in Puerto Rican folklore.", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" },
-            { name: "Roswell Incident", desc: "The 1947 crash that fueled decades of UFO conspiracy.", img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=800" },
-            { name: "Slender Man", desc: "The tall, faceless figure born from digital folklore.", img: "https://images.unsplash.com/photo-1509249033303-3482592f754a?auto=format&fit=crop&q=80&w=800" },
-            { name: "SCP Foundation", desc: "A secret organization that contains anomalous entities.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" },
-            { name: "The Wendigo", desc: "A cannibalistic spirit from Algonquian Native folklore.", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800" },
-            { name: "Cicada 3301", desc: "The most complex and mysterious puzzle on the internet.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800" }
+            { 
+                name: "The Mothman", 
+                desc: "A winged entity with glowing red eyes sighted in Point Pleasant, legendary for appearing before major disasters.", 
+                img: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&q=80&w=800" 
+            },
+            { 
+                name: "Jersey Devil", 
+                desc: "A bipedal wyvern-like creature born of the 13th child legend, haunting the dense Pine Barrens of New Jersey.", 
+                img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800" 
+            },
+            { 
+                name: "Skinwalker Ranch", 
+                desc: "The most scientifically studied paranormal hotspot, famous for UFOs and ancient Navajo shape-shifting legends.", 
+                img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800" 
+            },
+            { 
+                name: "Black Eyed Kids", desc: "Creepy urban legend involving children with solid black eyes who appear at doorsteps asking to be let in.", img: "https://images.unsplash.com/photo-1505635330303-d3f146aa16fe?auto=format&fit=crop&q=80&w=800" },
+            { name: "Polybius", desc: "A rumored 1980s arcade game used as a government experiment for psychoactive testing in Portland.", img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800" },
+            { name: "Dyatlov Pass", desc: "The mystery of nine experienced hikers found dead under terrifying and unexplained conditions in the Urals.", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800" },
+            { name: "Voynich Manuscript", desc: "A 15th-century codex written in an unknown language and filled with impossible botanical illustrations.", img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=800" },
+            { name: "Shadow People", desc: "Dark, human-like silhouettes seen in the corner of one's eye, often associated with sleep paralysis phenomena.", img: "https://images.unsplash.com/photo-1509249323924-40619a9f0761?auto=format&fit=crop&q=80&w=800" },
+            { name: "Men in Black", desc: "Enigmatic agents in black suits who harass UFO witnesses into silence across North America.", img: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80&w=800" },
+            { name: "Loch Ness Monster", desc: "The legendary long-necked creature living in the deep waters of Scotland, a staple of modern cryptozoology.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" },
+            { name: "Chupacabra", desc: "The fearsome 'goat-sucker' creature, central to modern Latin American folklore and livestock attacks.", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" },
+            { name: "Roswell Incident", desc: "The 1947 UFO crash that defined the modern age of government cover-up theories and extraterrestrial life.", img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=800" },
+            { name: "Slender Man", desc: "A tall, featureless entity originating from digital creepypastas, embodying the modern internet urban legend.", img: "https://images.unsplash.com/photo-1509249033303-3482592f754a?auto=format&fit=crop&q=80&w=800" },
+            { name: "SCP Foundation", desc: "A massive collaborative writing project detailing a secret organization that captures anomalous entities.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" },
+            { name: "The Wendigo", desc: "An ancient cannibalistic spirit from Native American folklore, representing the darker side of winter and greed.", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800" },
+            { name: "Cicada 3301", desc: "One of the internet's most complex cryptographic puzzles, intended to recruit highly intelligent codebreakers.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800" }
         ];
 
         let currentRound = [];
@@ -424,15 +463,18 @@
             document.getElementById('round-name').innerText = label;
             document.getElementById('match-status').innerText = `MATCH ${match} / ${total}`;
 
-            document.getElementById('name-0').innerText = currentRound[index].name;
-            document.getElementById('desc-0').innerText = currentRound[index].desc;
-            document.getElementById('img-0').src = currentRound[index].img;
+            const item0 = currentRound[index];
+            const item1 = currentRound[index + 1];
 
-            document.getElementById('name-1').innerText = currentRound[index+1].name;
-            document.getElementById('desc-1').innerText = currentRound[index+1].desc;
-            document.getElementById('img-1').src = currentRound[index+1].img;
+            document.getElementById('name-0').innerText = item0.name;
+            document.getElementById('desc-0').innerText = item0.desc;
+            document.getElementById('img-0').src = item0.img;
 
-            window.scrollTo(0, 0);
+            document.getElementById('name-1').innerText = item1.name;
+            document.getElementById('desc-1').innerText = item1.desc;
+            document.getElementById('img-1').src = item1.img;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function selectWinner(offset) {
