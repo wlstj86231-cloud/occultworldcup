@@ -484,3 +484,28 @@ article p {
     article p { font-size: 1.1rem; }
     .quote { font-size: 1.2rem; padding: 25px; }
 }
+
+/* Author Bio Section added for E-E-A-T */
+.author-bio {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+@media (max-width: 600px) {
+    .author-bio { flex-direction: column; text-align: center; }
+}
+.author-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--blood-red, #990000);
+}
+.author-info h4 { margin: 0 0 10px 0; color: #fff; }
+.author-info p { margin: 0; font-size: 0.9rem; color: #ccc; }

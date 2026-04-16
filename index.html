@@ -34,6 +34,11 @@
         <a href="/">Tournament</a>
         <a href="#encyclopedia-section">Encyclopedia</a>
         <a href="/mysteries/index.html">All Mysteries</a>
+        <a href="/blog/index.html">Blog / News</a>
+        <div class="dropdown">
+           <a href="/cryptids.html">Cryptids</a>
+           <a href="/ufos.html">UFOs</a>
+        </div>
     </nav>
 
     <div class="ad-container">
@@ -92,20 +97,22 @@
                 </div>
             </div>
         </section>
+    <section id="about-snippet" style="background: rgba(0,0,0,0.5); padding: 40px; margin-top: 60px; text-align: center; border-top: 1px solid #333;">
+        <h2>About Occult World Cup</h2>
+        <p style="max-width: 600px; margin: 20px auto; color: #ccc;">The Occult Research Team tracks the world's most mysterious cryptozoological and paranormal events. Compare, read, and vote on the greatest mysteries.</p>
+        <a href="/about.html" style="color: var(--blood-red); font-weight: bold; text-decoration: none;">Read More About Us</a>
+    </section>
     </main>
 
     <footer>
         <div class="footer-links">
-            <a onclick="showModal('privacy')">Privacy Policy</a>
-            <a onclick="showModal('terms')">Terms of Service</a>
-            <a onclick="showModal('contact')">Contact Support</a>
+            <a href="/about.html">About Us</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/contact.html">Contact Support</a>
         </div>
         <p>&copy; 2026 Occult Mystery Lab. High-Quality Paranormal Content Portal.</p>
     </footer>
-
-    <!-- Modals -->
-    <div id="modal-privacy" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacy')">&times;</span><h3>Privacy Policy</h3><p>Detailed privacy policy content...</p></div></div>
-    <!-- Other modals similarly -->
 
     <script>
         const database = [
@@ -124,7 +131,23 @@
             { id: "slender-man", name: "Slender Man", desc: "A featureless digital entity embodying modern folklore and collective internet fears.", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1200" },
             { id: "scp-foundation", name: "SCP Foundation", desc: "A collaborative writing project detailing secret containment of anomalous entities.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" },
             { id: "wendigo", name: "The Wendigo", desc: "A malevolent cannibalistic spirit from Native American folklore in the Great Lakes.", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1200" },
-            { id: "cicada-3301", name: "Cicada 3301", desc: "One of the most complex cryptographic mysteries intended to find intelligent puzzles solvers.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200" }
+            { id: "cicada-3301", name: "Cicada 3301", desc: "One of the most complex cryptographic mysteries intended to find intelligent puzzles solvers.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200" },
+            { id: "bigfoot", name: "Bigfoot", desc: "The legendary ape-like cryptid said to inhabit the profound forests of North America.", img: "https://images.unsplash.com/photo-1511215174158-37c28dfc5c76?auto=format&fit=crop&q=80&w=1200" },
+            { id: "bermuda-triangle", name: "Bermuda Triangle", desc: "A section of the North Atlantic Ocean where ships and aircraft are said to disappear under mysterious circumstances.", img: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&q=80&w=1200" },
+            { id: "yeti", name: "The Yeti", desc: "An ape-like entity taller than an average human, said to inhabit the Himalayan region of Nepal, Bhutan, and Tibet.", img: "https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?auto=format&fit=crop&q=80&w=1200" },
+            { id: "area-51", name: "Area 51", desc: "The highly classified United States Air Force facility central to UFO folklore.", img: "https://images.unsplash.com/photo-1506466010722-395aa2bef877?auto=format&fit=crop&q=80&w=1200" },
+            { id: "mary-celeste", name: "Mary Celeste", desc: "An American merchant brigantine discovered adrift and deserted in the Atlantic Ocean in 1872.", img: "https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?auto=format&fit=crop&q=80&w=1200" },
+            { id: "roanoke", name: "Roanoke Colony", desc: "The famous lost colony whose inhabitants vanished during the Anglo-Spanish War.", img: "https://images.unsplash.com/photo-1463320726281-696a482b8f80?auto=format&fit=crop&q=80&w=1200" },
+            { id: "taos-hum", name: "The Taos Hum", desc: "A low-frequency background noise heard by some individuals in Taos, New Mexico.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" },
+            { id: "flatwoods-monster", name: "Flatwoods Monster", desc: "An extraterrestrial entity reported to have been sighted in the town of Flatwoods in 1952.", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200" },
+            { id: "tulpas", name: "Tulpas", desc: "A concept in mysticism of a being or object which is created through spiritual or mental powers.", img: "https://images.unsplash.com/photo-1515002246390-7bf7e8f32b08?auto=format&fit=crop&q=80&w=1200" },
+            { id: "bell-witch", name: "Bell Witch", desc: "A legendary poltergeist who terrorized the Bell family of Tennessee in 1817.", img: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&q=80&w=1200" },
+            { id: "winchester-house", name: "Winchester Mansion", desc: "A mansion in California that was continuously built over 38 years to confuse vengeful spirits.", img: "https://images.unsplash.com/photo-1519077336916-24ee2622f085?auto=format&fit=crop&q=80&w=1200" },
+            { id: "spring-heeled-jack", name: "Spring-heeled Jack", desc: "An entity in English folklore known for his startling leaps.", img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1200" },
+            { id: "gremlins", name: "Gremlins", desc: "Mischievous creatures blamed for mechanical failures on aircraft during WWII.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200" },
+            { id: "nazca-lines", name: "Nazca Lines", desc: "Huge geoglyphs created by the Nazca culture in southern Peru, visible only from the sky.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200" },
+            { id: "atlantis", name: "Atlantis", desc: "Plato's legendary island nation that sank into the ocean in a single day and night of misfortune.", img: "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=1200" },
+            { id: "jackalope", name: "The Jackalope", desc: "A mythical animal of North American folklore described as a jackrabbit with antelope horns.", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=1200" }
         ];
 
         let currentRound = [];
@@ -156,7 +179,7 @@
         function render() {
             const total = currentRound.length / 2;
             const match = (index / 2) + 1;
-            let label = currentRound.length === 16 ? "ROUND OF 16" : currentRound.length === 8 ? "QUARTER FINALS" : currentRound.length === 4 ? "SEMI FINALS" : "THE FINAL RITUAL";
+            let label = currentRound.length === 32 ? "ROUND OF 32" : currentRound.length === 16 ? "ROUND OF 16" : currentRound.length === 8 ? "QUARTER FINALS" : currentRound.length === 4 ? "SEMI FINALS" : "THE FINAL RITUAL";
             document.getElementById('round-name').innerText = label;
             document.getElementById('match-status').innerText = `MATCH ${match} / ${total}`;
             document.getElementById('name-0').innerText = currentRound[index].name;
