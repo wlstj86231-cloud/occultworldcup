@@ -1,0 +1,8 @@
+exclude:
+  - .idx/
+  - .vscode/
+  - .wrangler/
+  - GEMINI.md
+  - build_sitemap.js
+  - generators.js
+  - firebase-debug.log
