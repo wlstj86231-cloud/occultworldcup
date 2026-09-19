@@ -4,7 +4,7 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const base = "https://occultworldcup.com";
 const originalDate = "2026-08-10";
-const updateDate = "2026-09-19";
+const updateDate = "2026-09-20";
 const guides = [
   {
     slug: "potato-purpose-size-selection",
@@ -149,6 +149,46 @@ const guides = [
     sources: [
       ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
     ],
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "kimjang-pack-unit-kg",
+    title: "김장 출하 포장 단위: 배추 망·무 상자·양파 망을 kg으로 맞추세요",
+    description: "김장 배추 10kg 그물망, 김장무 20kg 상자, 저장양파 15kg 망 가격을 실중량 kg당으로 바꿔 서울가락 품목 표와 비교하는 방법입니다.",
+    lead: "김장 출하 글은 망·상자 가격을 시세처럼 적기 쉽습니다. 포장 단위 이름을 그대로 두지 말고 내용 중량으로 나눈 뒤, 배추·무·양파를 서로 다른 품목 표와 맞춥니다.",
+    sections: [
+      ["1. 배추 10kg 그물망을 실중량으로 나누기", ["표시 10kg가 배추만의 무게인지 확인합니다.", "망 가격을 내용 kg으로 나눈 값이 비교용 kg당입니다.", "포기 수와 결구 크기가 다르면 같은 망으로 묶지 않습니다."]],
+      ["2. 김장무 20kg 상자와 심는 시기를 나누기", ["20kg 상자는 출하 단위이고 심는 시기 안내는 파종 판단입니다.", "상자 표시가 무 실중량인지 총중량인지 확인합니다.", "열무·알타리와 김장무를 한 시세로 읽지 않습니다."]],
+      ["3. 양파 15kg 망과 대파 단을 각각 맞추기", ["저장양파와 햇양파는 품종·건조 상태가 다르면 같은 행이 아닙니다.", "대파 단 무게를 확인하기 전에 쪽파 시세와 섞지 않습니다.", "세 품목을 한 평균 가격으로 곱하지 않습니다."]],
+      ["4. 직거래 판매가는 선별·포장·배송을 따로 적기", ["가락 kg당은 도매 거래 결과입니다.", "택배 김장 세트 가격에는 묶음·완충·배송이 포함될 수 있습니다.", "같은 단위로 맞춘 뒤에만 어느 쪽이 유리한지 비교합니다."]],
+    ],
+    comparison: {
+      caption: "김장 포장 단위를 kg당으로 맞추는 표",
+      headers: ["포장 이름", "먼저 확인할 것", "비교값"],
+      rows: [
+        ["배추 10kg 그물망", "배추 실중량·포기 구성", "망 가격 ÷ 내용 kg"],
+        ["김장무 20kg 상자", "무 실중량·작형", "상자 가격 ÷ 내용 kg"],
+        ["양파 15kg 망", "저장 여부·품종", "망 가격 ÷ 내용 kg"],
+        ["대파 단·망", "단 무게·쪽파 여부", "단·망 가격 ÷ 내용 kg"],
+      ],
+    },
+    faqs: [
+      ["김장배추 망 가격이 가락 시세보다 비싸면 손해인가요?", "포함된 비용이 다릅니다. kg당으로 맞춘 뒤 선별·포장·배송을 반영한 예상 순수령액으로 비교하세요."],
+      ["김장무 심는 시기 페이지의 숫자로 상자 가격을 매겨도 되나요?", "심는 시기는 파종 판단입니다. 오늘 상자 시세는 서울가락 무 kg당 표와 실중량으로 확인하세요."],
+    ],
+    links: [
+      ["서울가락 배추 10kg 그물망 kg당", "garak-cabbage-price-lookup"],
+      ["서울가락 김장무 20kg 상자 kg당", "garak-radish-price-lookup"],
+      ["서울가락 양파 15kg 망 kg당", "garak-onion-price-lookup"],
+      ["서울가락 대파 kg·망 단위", "garak-daepa-price-lookup"],
+    ],
+    internalLinks: [
+      ["가락 경락가와 직거래 가격을 kg당으로 맞추기", "/guides/garak-auction-direct-price-comparison.html"],
+    ],
+    sources: [
+      ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
+    ],
+    publishedAt: updateDate,
     modifiedAt: updateDate,
   },
 ];
