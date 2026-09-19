@@ -118,7 +118,7 @@ const guides = [
   },
   {
     slug: "garak-auction-direct-price-comparison",
-    title: "가락시장 오늘 시세와 직거래 가격: 최고가 말고 kg당으로 맞추세요",
+    title: "오늘 경락가와 직거래 가격: 최고가 말고 kg당으로 맞추세요",
     description: "서울가락 오늘 경락가는 거래량 가중 kg당과 최저~최고 범위로 읽고, 직거래 판매가와는 선별·포장·배송 조건을 나눠 비교하는 방법입니다.",
     lead: "가락시장 경락가는 도매시장 거래 결과이고 산지 직거래가는 선별·포장·배송이 포함될 수 있습니다. 오늘 숫자만 복사하지 말고, 가중평균과 최고가를 구분한 뒤 같은 품종·등급·포장으로 맞춥니다.",
     sections: [
@@ -128,7 +128,7 @@ const guides = [
       ["4. 하루 값보다 같은 조건의 흐름을 기록하세요", ["날짜가 바뀔 때마다 품종·등급·규격과 물량이 같은지 먼저 확인합니다.", "최고가·최저가 한 건보다 같은 조건의 중심 범위와 며칠간 변화를 봅니다.", "가공 표는 참고값이며, 출하·계약 전에는 공식 가격정보도 확인합니다."]],
     ],
     comparison: {
-      caption: "가락시장 경락가와 직거래 가격 비교표",
+      caption: "경락가와 직거래 가격 비교표",
       headers: ["맞출 항목", "가락시장 경락가", "산지 직거래 가격"],
       rows: [
         ["상품 조건", "품목·품종·등급·규격·산지", "같은 품목·품종·상태·선별 기준"],
@@ -289,7 +289,7 @@ const foot = `<footer><strong>농사월드컵</strong><p>인기보다 목적과 
 await fs.mkdir(path.join(root, "guides"), { recursive: true });
 const cards = guides.map((guide) => `<article><p>선택 기준</p><h2><a href="/guides/${guide.slug}.html">${esc(guide.title)}</a></h2><span>${esc(guide.description)}</span><a href="/guides/${guide.slug}.html">기준 자세히 보기 <i data-lucide="arrow-right"></i></a></article>`).join("");
 const hubSchema = JSON.stringify({ "@context": "https://schema.org", "@type": "CollectionPage", name: "농산물·농기계 선택 가이드", url: `${base}/guides.html`, hasPart: guides.map((guide) => ({ "@type": "Article", name: guide.title, url: `${base}/guides/${guide.slug}.html` })) }).replace(/</g, "\\u003c");
-const hub = `${head("농산물·농기계 선택 가이드", "감자·사과·자두·쌀, 중고 트랙터와 탁송 견적, 가락시장 시세를 목적, 규격, 상태와 거래 조건으로 비교하는 선택 가이드입니다.", `${base}/guides.html`, "website")}<script type="application/ld+json">${hubSchema}</script><main class="guide-main"><nav class="guide-breadcrumb"><a href="/">홈</a><span>›</span><span>선택 가이드</span></nav><section class="guide-hero"><p>조건부터 맞추는 비교 기준</p><h1>농산물·농기계<br><em>선택 가이드</em></h1><span>인기순이나 광고 문구보다 용도·규격·상태·인도 조건으로 비교하세요.</span></section><section class="guide-grid">${cards}</section></main>${foot}`;
+const hub = `${head("농산물·농기계 선택 가이드", "감자·사과·자두·쌀, 중고 트랙터와 탁송 견적, 경락가와 직거래 가격을 목적, 규격, 상태와 거래 조건으로 비교하는 선택 가이드입니다.", `${base}/guides.html`, "website")}<script type="application/ld+json">${hubSchema}</script><main class="guide-main"><nav class="guide-breadcrumb"><a href="/">홈</a><span>›</span><span>선택 가이드</span></nav><section class="guide-hero"><p>조건부터 맞추는 비교 기준</p><h1>농산물·농기계<br><em>선택 가이드</em></h1><span>인기순이나 광고 문구보다 용도·규격·상태·인도 조건으로 비교하세요.</span></section><section class="guide-grid">${cards}</section></main>${foot}`;
 await fs.writeFile(path.join(root, "guides.html"), hub, "utf8");
 
 for (const guide of guides) {
