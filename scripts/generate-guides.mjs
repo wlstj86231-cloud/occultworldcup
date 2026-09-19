@@ -34,7 +34,8 @@ const guides = [
     ],
     links: [
       ["홍로 사과 구매 기준", "hongro-apple-buying-guide"],
-      ["못난이 사과 확인 항목", "ugly-apple-buying-guide"],
+      ["서울가락 홍로 10kg kg당", "garak-apple-price-lookup"],
+      ["서울가락 추희자두 5kg kg당", "garak-plum-price-lookup"],
       ["자두 5kg 가격·구성 비교", "plum-5kg-price-guide"],
     ],
   },
@@ -183,6 +184,94 @@ const guides = [
       ["서울가락 대파 kg·망 단위", "garak-daepa-price-lookup"],
     ],
     internalLinks: [
+      ["가락 경락가와 직거래 가격을 kg당으로 맞추기", "/guides/garak-auction-direct-price-comparison.html"],
+    ],
+    sources: [
+      ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "autumn-fruit-box-kg",
+    title: "제철 과일 상자: 샤인마스캇 4kg·신고 7.5kg·홍로 10kg을 kg으로 맞추세요",
+    description: "샤인마스캇 4kg, 신고배 7.5kg, 홍로 10kg, 복숭아 4kg, 추희자두 5kg 상자 가격을 실중량 kg당으로 바꿔 서울가락 품목 표와 비교하는 방법입니다.",
+    lead: "제철 과일 글은 상자 가격을 시세처럼 적기 쉽습니다. 4kg·7.5kg·10kg·5kg 이름을 그대로 두지 말고 내용 중량으로 나눈 뒤, 품종명이 같은 행만 고릅니다.",
+    sections: [
+      ["1. 샤인마스캇 4kg와 2kg를 나누기", ["표시 4kg가 포도 실중량인지 확인합니다.", "캠벨·마스캇베리에이 행을 샤인마스캇 시세로 쓰지 않습니다.", "알 빠짐 송이를 뺀 뒤에 kg당을 다시 계산합니다."]],
+      ["2. 신고배 7.5kg와 15kg, 선물 개수를 나누기", ["7.5kg 상자와 15kg 상자·파렛트는 같은 행이 아닐 수 있습니다.", "몇 과 세트 가격은 개당이고 가락 표는 kg당입니다.", "화산과 신고를 한 평균으로 묶지 않습니다."]],
+      ["3. 홍로 10kg·복숭아 4kg·추희 5kg를 각각 맞추기", ["햇사과 문구와 품종명 홍로를 나눕니다.", "복숭아 숙도 표현은 경락가 표에 없습니다.", "후무사·김천 산지 안내의 숫자를 추희 5kg 시세로 쓰지 않습니다."]],
+      ["4. 직거래 택배가는 선별·완충·배송을 따로 적기", ["가락 kg당은 도매 거래 결과입니다.", "난좌·아이스팩·택배가 포함되면 같은 숫자가 될 수 없습니다.", "같은 품종·실중량으로 맞춘 뒤에만 비교합니다."]],
+    ],
+    comparison: {
+      caption: "제철 과일 상자를 kg당으로 맞추는 표",
+      headers: ["포장 이름", "먼저 확인할 것", "비교값"],
+      rows: [
+        ["샤인마스캇 4kg", "품종명·실중량·송이 상태", "상자 가격 ÷ 내용 kg"],
+        ["신고배 7.5kg", "신고/화산·상자/파렛트", "상자 가격 ÷ 내용 kg"],
+        ["홍로 10kg", "품종명·개수 구성", "상자 가격 ÷ 내용 kg"],
+        ["복숭아 4kg", "품종명·숙도", "상자 가격 ÷ 내용 kg"],
+        ["추희자두 5kg", "추희/후무사·무름", "상자 가격 ÷ 내용 kg"],
+      ],
+    },
+    faqs: [
+      ["샤인마스캇 4kg가 가락 시세보다 비싸면 손해인가요?", "포함된 비용이 다릅니다. kg당으로 맞춘 뒤 선별·포장·배송을 반영한 예상 순수령액으로 비교하세요."],
+      ["신고배 선물 세트 개수 가격을 kg당 표와 바로 비교해도 되나요?", "개수를 kg으로 바꾸기 전에 과실 크기 구성이 같은지 확인하세요. 개당과 kg당을 한 숫자로 두지 않습니다."],
+    ],
+    links: [
+      ["서울가락 샤인마스캇 4kg kg당", "garak-grape-price-lookup"],
+      ["서울가락 신고배 7.5kg kg당", "garak-pear-price-lookup"],
+      ["서울가락 홍로 10kg kg당", "garak-apple-price-lookup"],
+      ["서울가락 복숭아 4kg kg당", "garak-peach-price-lookup"],
+      ["서울가락 추희자두 5kg kg당", "garak-plum-price-lookup"],
+    ],
+    internalLinks: [
+      ["사과·자두 품종·숙도·포장 선택하기", "/guides/apple-plum-season-pack-size.html"],
+      ["가락 경락가와 직거래 가격을 kg당으로 맞추기", "/guides/garak-auction-direct-price-comparison.html"],
+    ],
+    sources: [
+      ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "autumn-produce-box-kg",
+    title: "가을 과채 상자: 네트계 8kg·토마토 5kg·하우스감귤 3kg을 kg으로 맞추세요",
+    description: "네트계 멜론 8kg, 토마토 5kg, 하우스감귤 3kg, 수박 통, 대추방울 3kg, 생대추 2kg, 송본 단감 10kg 상자 가격을 실중량 kg당으로 바꿔 서울가락 품목 표와 비교하는 방법입니다.",
+    lead: "과채 글은 상자·통 가격을 시세처럼 적기 쉽습니다. 8kg·5kg·3kg·통 이름을 그대로 두지 말고 내용 중량으로 나눈 뒤, 품목명·작형이 같은 행만 고릅니다.",
+    sections: [
+      ["1. 네트계 8kg와 수박 통을 나누기", ["표시 8kg가 멜론 실중량인지 확인합니다.", "참외 행과 8kg 파렛트를 네트계 시세로 쓰지 않습니다.", "수박 한 통은 무게를 재기 전에 kg당과 같다고 보지 않고 꼭지절단 행과 나눕니다."]],
+      ["2. 토마토 5kg와 대추방울 3kg를 나누기", ["일반·완숙·찰토마토와 방울토마토는 품목이 다릅니다.", "대추방울 3kg를 완숙 5kg 행과 바로 비교하지 않습니다.", "열과를 뺀 판매 가능 중량으로 다시 나눕니다."]],
+      ["3. 하우스감귤 3kg·생대추 2kg·송본 10kg를 각각 맞추기", ["3kg·5kg·6kg와 몇 개입 선물을 한 단가로 묶지 않습니다.", "생대추와 건대추, 송본과 떫은감·곶감 원료를 나눕니다.", "쥬키니 10kg와 애호박, 빨강 파프리카와 피망도 작형·색 행이 다릅니다."]],
+      ["4. 직거래 택배가는 선별·완충·배송을 따로 적기", ["가락 kg당은 도매 거래 결과입니다.", "아이스팩·파손 위험이 포함되면 같은 숫자가 될 수 없습니다.", "같은 품목·실중량으로 맞춘 뒤에만 비교합니다."]],
+    ],
+    comparison: {
+      caption: "가을 과채 상자를 kg당으로 맞추는 표",
+      headers: ["포장 이름", "먼저 확인할 것", "비교값"],
+      rows: [
+        ["네트계 멜론 8kg", "품종·상자/파렛트·참외 여부", "상자 가격 ÷ 내용 kg"],
+        ["수박 통·12kg 상자", "통 무게·꼭지절단", "통 또는 상자 가격 ÷ 내용 kg"],
+        ["토마토 5kg", "일반/완숙/찰·방울 구분", "상자 가격 ÷ 내용 kg"],
+        ["하우스감귤 3kg", "작형·개수 구성", "상자 가격 ÷ 내용 kg"],
+        ["송본 단감 10kg", "송본/태추·떫은감", "상자 가격 ÷ 내용 kg"],
+      ],
+    },
+    faqs: [
+      ["네트계 8kg가 가락 시세보다 비싸면 손해인가요?", "포함된 비용이 다릅니다. kg당으로 맞춘 뒤 선별·포장·배송을 반영한 예상 순수령액으로 비교하세요."],
+      ["수박 한 통 가격을 kg당 표와 바로 비교해도 되나요?", "통 무게를 잰 뒤에만 비교하세요. 꼭지절단·소형 수박과 일반 통을 한 숫자로 두지 않습니다."],
+    ],
+    links: [
+      ["서울가락 네트계 멜론 8kg kg당", "garak-melon-price-lookup"],
+      ["서울가락 토마토 5kg kg당", "garak-tomato-price-lookup"],
+      ["서울가락 하우스감귤 3kg kg당", "garak-citrus-price-lookup"],
+      ["서울가락 수박 통·상자 kg당", "garak-watermelon-price-lookup"],
+      ["서울가락 대추방울 3kg kg당", "garak-cherry-tomato-price-lookup"],
+      ["서울가락 생대추 2kg kg당", "garak-jujube-price-lookup"],
+      ["서울가락 송본 단감 10kg kg당", "garak-persimmon-price-lookup"],
+    ],
+    internalLinks: [
+      ["제철 과일 상자를 kg으로 맞추기", "/guides/autumn-fruit-box-kg.html"],
       ["가락 경락가와 직거래 가격을 kg당으로 맞추기", "/guides/garak-auction-direct-price-comparison.html"],
     ],
     sources: [
