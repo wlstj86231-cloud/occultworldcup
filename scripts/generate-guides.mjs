@@ -18,7 +18,6 @@ const guides = [
     ],
     links: [
       ["햇감자 10kg 가격 비교 원리", "new-potato-10kg-price-guide"],
-      ["못난이 감자 구매 점검표", "ugly-potato-buying-guide"],
       ["강원도 햇감자 산지 확인법", "gangwon-new-potato-buying-guide"],
     ],
   },
@@ -34,8 +33,6 @@ const guides = [
     ],
     links: [
       ["홍로 사과 구매 기준", "hongro-apple-buying-guide"],
-      ["서울가락 홍로 10kg kg당", "garak-apple-price-lookup"],
-      ["서울가락 추희자두 5kg kg당", "garak-plum-price-lookup"],
       ["자두 5kg 가격·구성 비교", "plum-5kg-price-guide"],
     ],
   },
@@ -144,8 +141,8 @@ const guides = [
     ],
     links: [
       ["서울가락 오늘 경락가 kg당 가중평균 표", "garak-market-price-lookup"],
+      ["내 공제액으로 경매 수취금액 계산", "agricultural-auction-net-calculator"],
       ["농산물 상자 가격 kg당 비교 계산기", "produce-price-calculator"],
-      ["농산물 직거래 가격·포장 기준", "produce-direct-sale-pricing-packaging"],
     ],
     sources: [
       ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
