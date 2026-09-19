@@ -277,6 +277,226 @@ const guides = [
     publishedAt: updateDate,
     modifiedAt: updateDate,
   },
+  {
+    slug: "listing-field-selection",
+    title: "판매글에 품종·중량·수확일 칸을 고르기",
+    description: "농산물 직거래 판매글을 올리기 전에 품종명, 실중량 kg, 수확일 칸을 고르는 방법입니다.",
+    lead: "판매글은 긴 소개보다 세 칸이 먼저입니다. 통칭·망 이름·사진 촬영일만 있으면 같은 글을 비교할 수 없으니, 품종·실중량·수확일을 고른 뒤 그 칸을 채우세요.",
+    campaign: "c2c_howto_202609",
+    nextLead: "세 칸을 골랐다면 같은 칸으로 판매글을 올리세요.",
+    sections: [
+      ["1. 품종 칸에 통칭만 둘지 고르기", ["배추·사과처럼 품목만 있으면 비교가 안 됩니다.", "실제로 낸 품종명을 칸에 둘지 고릅니다.", "모르면 추측 품종을 넣지 말고 미확인을 고릅니다."]],
+      ["2. 중량 칸에 망 이름을 둘지 고르기", ["10kg 망은 포장 이름입니다.", "비교하려면 포장재를 뺀 실중량 kg를 고릅니다.", "여러 규격이면 글도 나눠 고릅니다."]],
+      ["3. 날짜 칸에 촬영일을 둘지 고르기", ["오늘 찍은 사진이 오늘 수확은 아닙니다.", "수확일과 촬영일을 같은 칸에 넣지 않습니다.", "아직 따기 전이면 출하 가능일을 수확일 칸에 넣지 않습니다."]],
+    ],
+    comparison: {
+      caption: "판매글 세 칸 고르기",
+      headers: ["칸", "고를 것", "고르지 말 것"],
+      rows: [
+        ["품종", "실제 품종명", "품목 통칭만"],
+        ["중량", "실중량 kg", "망·상자 이름만"],
+        ["날짜", "수확일", "사진 촬영일만"],
+      ],
+    },
+    faqs: [
+      ["상자 이름만 적어도 되나요?", "상자 이름은 보조입니다. 비교하려면 실중량 kg를 고르세요."],
+      ["품종을 모르면 어떻게 하나요?", "추측해서 채우지 말고 미확인을 고른 뒤 그 칸을 비운 채 올리지 마세요."],
+    ],
+    links: [
+      ["품종·중량·수확일 칸을 채워 판매글 올리기", "produce-listing-three-fields"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "machinery-listing-fields",
+    title: "기계 글에 명판·시간·작업기 칸을 고르기",
+    description: "중고 트랙터 판매글을 올리기 전에 명판 형식명, 시간계 숫자, 포함 작업기 칸을 고르는 방법입니다.",
+    lead: "기계 글은 제조사 통칭보다 명판, 시간계, 같이 넘기는 작업기가 먼저입니다. 세 칸을 고르지 않으면 생활가전 칸의 한 줄 글과 같아집니다.",
+    campaign: "c2c_howto_202609",
+    nextLead: "세 칸을 골랐다면 같은 칸으로 기계 글을 올리세요.",
+    sections: [
+      ["1. 모델 칸에 통칭을 둘지 고르기", ["대동·LS 한 줄은 형식명이 아닙니다.", "본체 명판 글자를 모델 칸에 둘지 고릅니다.", "공개 사진의 전체 제조번호는 일부를 가릴지 고릅니다."]],
+      ["2. 시간 칸에 추정 문구를 둘지 고르기", ["적게 썼다는 말은 숫자가 아닙니다.", "시동 전 시간계를 칸에 둘지 고릅니다.", "안 보이면 미확인을 고릅니다."]],
+      ["3. 작업기 칸을 본기와 나눌지 고르기", ["로더·로터리 포함 여부를 빼면 가격을 비교할 수 없습니다.", "본체와 작업기를 다른 칸에 둘지 고릅니다.", "포함되지 않는 작업기는 장점으로 고르지 않습니다."]],
+    ],
+    comparison: {
+      caption: "기계 글 세 칸 고르기",
+      headers: ["칸", "고를 것", "고르지 말 것"],
+      rows: [
+        ["명판", "형식명 글자", "제조사 통칭만"],
+        ["시간", "시간계 숫자", "적게 썼음 문구"],
+        ["작업기", "포함 품목", "본기 가격에 숨기기"],
+      ],
+    },
+    faqs: [
+      ["마력만 적어도 되나요?", "마력대만으로는 같은 기계가 아닙니다. 명판 형식명을 고르세요."],
+      ["작업기를 나중에 적어도 되나요?", "포함 여부가 없으면 비교 목록에 넣지 마세요."],
+    ],
+    links: [
+      ["명판·시간·작업기 칸을 채워 기계 글 올리기", "used-machinery-listing-nameplate"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "nearby-produce-filter",
+    title: "내 근처 농산물, 산지·수확일 조건 고르기",
+    description: "우리 동네 농산물 글을 찾기 전에 산지·거래 장소와 수확일 조건을 고르는 방법입니다.",
+    lead: "근처 농산물은 직매장 안내가 아니라 지역이 적힌 판매글입니다. 산지와 만나 장소, 수확일 없는 글을 걸러낼지 먼저 고르세요.",
+    campaign: "c2c_howto_202609",
+    nextLead: "조건을 골랐다면 같은 조건의 근처 농산물 글을 찾으세요.",
+    sections: [
+      ["1. 농산물 칸에서 찾을지 고르기", ["전체 목록은 기계 글과 섞입니다.", "농산물 칸을 먼저 고릅니다.", "시세 표로 나가지 않습니다."]],
+      ["2. 산지와 만나 장소를 나눌지 고르기", ["우리 동네와 택배 출고지는 다른 조건입니다.", "방문이면 거래 장소를, 택배면 출고지를 고릅니다.", "지역이 없는 글은 근처가 아닙니다."]],
+      ["3. 수확일·실중량 없는 글을 뺄지 고르기", ["사진만 있는 글은 같은 품목을 비교할 수 없습니다.", "품종 통칭만 있는 글도 뺍니다.", "조건을 채운 글만 남길지 고릅니다."]],
+    ],
+    faqs: [
+      ["직매장 안내와 개인 글을 같이 봐도 되나요?", "매장 운영과 개인 방문 수령은 다른 조건입니다. 지금 살 수 있는 개인 글만 고르세요."],
+      ["지역이 없으면 어떻게 하나요?", "근처 글이 아니므로 후보에서 빼세요."],
+    ],
+    links: [
+      ["산지·수확일로 근처 농산물 글 찾기", "nearby-produce-listing-search"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "nearby-machinery-filter",
+    title: "내 근처 트랙터, 작업기·거리 고르기",
+    description: "중고 트랙터·관리기 근처 글을 찾기 전에 작업기 포함과 인도 거리를 고르는 방법입니다.",
+    lead: "근처 기계는 생활가전 칸의 한 줄 가격이 아닙니다. 농기계 칸에서 명판·시간·작업기와 인도 장소를 맞출지 고르세요.",
+    campaign: "c2c_howto_202609",
+    nextLead: "작업기와 거리를 골랐다면 같은 칸의 근처 기계 글을 찾으세요.",
+    sections: [
+      ["1. 농기계 칸에서 찾을지 고르기", ["부품 칸과 전체 칸은 본기 비교에 쓰지 않습니다.", "트랙터 또는 관리기를 검색어로 고릅니다.", "거래 장소가 내 동선인지 고릅니다."]],
+      ["2. 작업기 포함을 같은 조건으로 둘지 고르기", ["본체만인 글과 로터리 포함 글을 한 가격으로 두지 않습니다.", "필요한 작업기가 포함인지 고릅니다.", "칸이 비면 그 글은 뺍니다."]],
+      ["3. 탁송과 근처 인도를 나눌지 고르기", ["판매자 주소와 인도 장소가 다를 수 있습니다.", "자력 확인이 가능한 장소를 고릅니다.", "탁송이면 상차 장소가 적혀 있는지 고릅니다."]],
+    ],
+    faqs: [
+      ["다른 앱 매물과 바로 가격만 비교해도 되나요?", "명판·시간·작업기·지역이 같아야 합니다. 칸이 없으면 대조하지 마세요."],
+      ["마력대가 같으면 같은 글인가요?", "형식명이 다르면 다른 기계입니다."],
+    ],
+    links: [
+      ["작업기·거리로 근처 트랙터 글 찾기", "nearby-used-tractor-search"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "meetup-or-parcel-choice",
+    title: "만나서 가져가기 vs 택배 고르기",
+    description: "농산물 직거래에서 방문 수령과 산지직송 택배를 표 평균이 아니라 질문으로 고르는 방법입니다.",
+    lead: "만나기와 택배는 한 평균 비용으로 고르지 않습니다. 오늘 가져갈 수 있는지, 계근은 어디서 하는지, 출하일이 칸에 있는지로 한쪽만 고르세요.",
+    campaign: "c2c_howto_202609",
+    nextLead: "한쪽을 골랐다면 그 조건을 판매글 칸에 적으세요.",
+    sections: [
+      ["1. 오늘 가져갈 수 있는지 고르기", ["당일 수확분이고 장소에 갈 수 있으면 만나기를 먼저 봅니다.", "갈 수 없는 날이면 만나기를 고르지 않습니다.", "아직 따기 전이면 방문 날짜를 수확일 칸에 넣지 않습니다."]],
+      ["2. 계근 장소를 고르기", ["밭에서 달 때와 출고 전 상자 무게는 다를 수 있습니다.", "방문이면 현장 계근을 고릅니다.", "택배면 출고 전 기준을 고릅니다."]],
+      ["3. 한 글에 둘 다 적을지 고르기", ["둘 다 가능하다고만 쓰면 날짜 칸이 비게 됩니다.", "이번 물량은 방문인지 택배인지 하나만 고릅니다.", "고르지 않은 방법은 장점으로 적지 않습니다."]],
+    ],
+    comparison: {
+      caption: "수령 방법 고르기",
+      headers: ["질문", "만나기", "택배"],
+      rows: [
+        ["오늘 가져가나", "장소·시간이 있으면", "가져갈 수 없으면"],
+        ["계근", "현장에서", "출고 전에"],
+        ["날짜 칸", "방문 시간", "출하일"],
+      ],
+    },
+    faqs: [
+      ["둘 다 된다고 적어 두면 안 되나요?", "구매자가 어느 날짜를 봐야 하는지 모릅니다. 이번 물량은 하나만 고르세요."],
+      ["택배인데 출하일이 없으면요?", "택배를 고르지 마세요."],
+    ],
+    links: [
+      ["만나기 또는 택배를 고른 뒤 글에 적기", "meetup-vs-direct-shipping-choice"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "farm-vs-appliance-category",
+    title: "트랙터를 생활가전 칸에 둘지 고르기",
+    description: "중고 트랙터를 생활가전·기타중고 칸에 두면 비교가 안 되므로, 명판 칸이 있는 농기계 칸을 고르는 방법입니다.",
+    lead: "트랙터가 생활가전, 기타중고, 취미 칸에 있으면 형식명이 묻힙니다. 비교를 시작하기 전에 농기계 칸을 고르세요.",
+    campaign: "c2c_howto_202609",
+    nextLead: "농기계 칸을 골랐다면 명판·시간·작업기가 있는 목록에서 비교하세요.",
+    sections: [
+      ["1. 지금 글이 어느 칸인지 고르기", ["생활가전·기타중고·디지털기기면 비교 후보에서 뺍니다.", "가격만 메모하지 않습니다.", "칸이 다른 글을 한 표에 넣지 않습니다."]],
+      ["2. 농기계 칸을 고르기", ["명판·시간·작업기 칸이 보이는 목록을 고릅니다.", "형식명이 같은 글만 남깁니다.", "시간계와 작업기가 다르면 줄을 나눕니다."]],
+      ["3. 빠진 칸을 추정으로 채울지 고르기", ["마력대로 형식명을 추측하지 않습니다.", "없는 칸은 공란으로 둡니다.", "공란인 글은 가격 비교에서 뺍니다."]],
+    ],
+    comparison: {
+      caption: "트랙터를 둘 칸 고르기",
+      headers: ["칸", "비교", "고를 것"],
+      rows: [
+        ["생활가전·기타중고", "형식명이 묻힘", "넣지 않음"],
+        ["농기계", "명판·시간·작업기", "이 칸"],
+      ],
+    },
+    faqs: [
+      ["다른 앱에 올라온 트랙터는요?", "그 글에도 명판·시간·작업기가 있어야 대조합니다. 없으면 빼세요."],
+      ["가격이 싸면 칸이 달라도 되나요?", "칸이 다르면 같은 값이 아닙니다."],
+    ],
+    links: [
+      ["농기계 칸에서 명판 맞춰 비교하기", "tractor-wrong-category-compare"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "c2c-vs-mall-choice",
+    title: "입점몰 vs 개인 직거래 글 고르기",
+    description: "농산물·농기계를 입점몰 상세로 올릴지, 개인 직거래 글로 올릴지 고르는 방법입니다.",
+    lead: "입점 심사를 거친 몰 상품과 개인 글은 칸이 다릅니다. 지금 할 일이 개인 직거래면 품종·명판 칸을 채우는 글을 고르고, 몰 상세 문장을 붙여 넣지 마세요.",
+    campaign: "c2c_howto_202609",
+    nextLead: "개인 글을 골랐다면 농산물 칸 또는 농기계 칸으로 올리거나 찾으세요.",
+    sections: [
+      ["1. 지금 올릴 글의 종류를 고르기", ["입점몰은 상세페이지와 재고 칸이 있습니다.", "개인 글은 판매자와 수령 조건이 글에 있어야 합니다.", "두 종류를 한 글에 섞지 않습니다."]],
+      ["2. 농산물과 기계를 한 글에 넣을지 고르기", ["필수 칸이 다릅니다.", "농산물이면 품종·실중량·수확일, 기계면 명판·시간·작업기를 고릅니다.", "카테고리를 하나만 고릅니다."]],
+      ["3. 시세 표를 목적지로 둘지 고르기", ["지금 할 일이 팔기·찾기이면 표를 목적지로 두지 않습니다.", "팔 물건이 있으면 판매글을 고릅니다.", "찾을 물건이 있으면 해당 칸 목록을 고릅니다."]],
+    ],
+    faqs: [
+      ["몰 상품 설명을 개인 글에 복사해도 되나요?", "결제·반품 칸이 다릅니다. 개인 글에는 이번 물량의 칸만 적으세요."],
+      ["한 글에 농산물과 기계를 같이 올려도 되나요?", "칸이 다르므로 글을 나누세요."],
+    ],
+    links: [
+      ["개인 직거래 글로 올리거나 찾기", "produce-and-machinery-one-list"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
+  {
+    slug: "kimjang-listing-dates",
+    title: "김장·햅쌀 글에 적을 날짜 고르기",
+    description: "김장 배추와 햅쌀 판매글에 출하 가능일, 수확일, 도정일 중 어떤 날짜를 칸에 둘지 고르는 방법입니다.",
+    lead: "절임배추 도착일은 몰의 배송 일정이고 수확일이 아닙니다. 출하 가능일, 수확일, 햅쌀의 생산연도와 도정일을 나눠 고르세요.",
+    campaign: "c2c_howto_202609",
+    nextLead: "날짜 칸을 골랐다면 시즌 판매글에 그 날짜를 적으세요.",
+    sections: [
+      ["1. 출하 가능일을 수확일 칸에 둘지 고르기", ["아직 밭에 있는 날과 이미 딴 날은 다릅니다.", "넘길 수 있는 날을 출하 가능일로 고릅니다.", "실제로 딴 날을 수확일로 고릅니다."]],
+      ["2. 절임 도착일을 수확일로 둘지 고르기", ["절임 세트 도착일은 배송 일정입니다.", "생배추면 수확일과 실중량을 고릅니다.", "절임이면 절인 날짜를 수확일과 나눠 고릅니다."]],
+      ["3. 햅쌀 생산연도와 도정일을 한 칸에 둘지 고르기", ["생산연도와 도정연월일은 다른 표시입니다.", "두 날짜를 나눠 고릅니다.", "당일도정 문구로 도정일을 대신하지 않습니다."]],
+    ],
+    comparison: {
+      caption: "시즌 글 날짜 칸 고르기",
+      headers: ["칸", "고를 것", "고르지 말 것"],
+      rows: [
+        ["출하 가능일", "넘길 수 있는 날", "몰 도착 예정일"],
+        ["수확일", "실제로 딴 날", "사진 촬영일만"],
+        ["도정일", "포장 표시 도정연월일", "당일도정 문구만"],
+      ],
+    },
+    faqs: [
+      ["절임배추 도착일을 수확일에 적어도 되나요?", "도착일은 배송 일정입니다. 수확일 칸에 넣지 마세요."],
+      ["도정일만 있으면 생산연도는 생략하나요?", "양곡 표시는 둘을 나눕니다. 둘 다 고르세요."],
+    ],
+    links: [
+      ["출하일·도정일을 칸에 적어 시즌 글 올리기", "kimjang-rice-listing-dates"],
+    ],
+    publishedAt: updateDate,
+    modifiedAt: updateDate,
+  },
 ];
 
 const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
@@ -294,7 +514,8 @@ for (const guide of guides) {
   const publishedAt = guide.publishedAt ?? originalDate;
   const modifiedAt = guide.modifiedAt ?? publishedAt;
   const sectionHtml = guide.sections.map(([heading, items]) => `<section><h2>${esc(heading)}</h2><ul>${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul></section>`).join("");
-  const linksHtml = guide.links.map(([text, slug]) => `<a href="https://boribay.com/guides/${slug}?utm_source=occultworldcup.com&amp;utm_medium=owned_referral&amp;utm_campaign=farm_selection_guides&amp;utm_content=${guide.slug}">${esc(text)} <i data-lucide="arrow-right"></i></a>`).join("");
+  const campaign = guide.campaign ?? "farm_selection_guides";
+  const linksHtml = guide.links.map(([text, slug]) => `<a href="https://boribay.com/guides/${slug}?utm_source=occultworldcup.com&amp;utm_medium=owned_referral&amp;utm_campaign=${esc(campaign)}&amp;utm_content=${guide.slug}">${esc(text)} <i data-lucide="arrow-right"></i></a>`).join("");
   const internalLinksHtml = guide.internalLinks?.length
     ? `<section class="guide-related"><h2>농사월드컵에서 이어서 비교하기</h2>${guide.internalLinks.map(([text, href]) => `<a href="${esc(href)}">${esc(text)} <i data-lucide="arrow-right"></i></a>`).join("")}</section>`
     : "";
@@ -308,7 +529,7 @@ for (const guide of guides) {
     ? `<p>공식 자료: ${guide.sources.map(([text, url]) => `<a href="${esc(url)}" rel="noopener">${esc(text)}</a>`).join(", ")}</p>`
     : "";
   const schema = JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: guide.title, description: guide.description, datePublished: publishedAt, dateModified: modifiedAt, inLanguage: "ko-KR", mainEntityOfPage: canonical, author: { "@type": "Organization", name: "농사월드컵 편집팀" }, publisher: { "@type": "Organization", name: "농사월드컵", url: base } }).replace(/</g, "\\u003c");
-  const html = `${head(guide.title, guide.description, canonical)}<script type="application/ld+json">${schema}</script><main class="guide-main"><nav class="guide-breadcrumb"><a href="/">홈</a><span>›</span><a href="/guides.html">선택 가이드</a></nav><article class="guide-article"><header><p>선택 가이드 · ${modifiedAt}</p><h1>${esc(guide.title)}</h1><span>${esc(guide.description)}</span></header><div class="guide-layout"><div><aside class="guide-lead"><strong>먼저 정할 것</strong><p>${esc(guide.lead)}</p></aside>${sectionHtml}${comparisonHtml}${faqHtml}${internalLinksHtml}<section class="guide-source"><h2>확인 원칙</h2><p>실제 구매·계약 전에는 상품 표시, 실물, 판매자 설명과 최신 공식 기준을 다시 확인하세요.</p>${sourcesHtml}</section></div><aside class="guide-next"><h2>조건을 정했다면</h2><p>같은 조건으로 시세와 거래 기준을 비교하세요.</p>${linksHtml}</aside></div></article></main>${foot}`;
+  const html = `${head(guide.title, guide.description, canonical)}<script type="application/ld+json">${schema}</script><main class="guide-main"><nav class="guide-breadcrumb"><a href="/">홈</a><span>›</span><a href="/guides.html">선택 가이드</a></nav><article class="guide-article"><header><p>선택 가이드 · ${modifiedAt}</p><h1>${esc(guide.title)}</h1><span>${esc(guide.description)}</span></header><div class="guide-layout"><div><aside class="guide-lead"><strong>먼저 정할 것</strong><p>${esc(guide.lead)}</p></aside>${sectionHtml}${comparisonHtml}${faqHtml}${internalLinksHtml}<section class="guide-source"><h2>확인 원칙</h2><p>실제 구매·계약 전에는 상품 표시, 실물, 판매자 설명과 최신 공식 기준을 다시 확인하세요.</p>${sourcesHtml}</section></div><aside class="guide-next"><h2>조건을 정했다면</h2><p>${esc(guide.nextLead ?? "같은 조건으로 시세와 거래 기준을 비교하세요.")}</p>${linksHtml}</aside></div></article></main>${foot}`;
   await fs.writeFile(path.join(root, "guides", `${guide.slug}.html`), html, "utf8");
 }
 
