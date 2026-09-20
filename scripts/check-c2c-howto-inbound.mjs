@@ -31,6 +31,13 @@ const kimjang = await fs.readFile(path.join(root, "guides", "kimjang-pack-unit-k
 if (!kimjang.includes("utm_campaign=farm_selection_guides")) errors.push("kimjang Dataset campaign rewritten");
 if (!kimjang.includes("garak-cabbage-price-lookup")) errors.push("kimjang cabbage dest missing");
 
+const produce = await fs.readFile(path.join(root, "guides", "autumn-produce-box-kg.html"), "utf8");
+if (!produce.includes("utm_campaign=farm_selection_guides")) errors.push("produce Dataset campaign rewritten");
+if (!produce.includes("garak-pumpkin-price-lookup")) errors.push("produce pumpkin dest missing");
+if (!produce.includes("garak-astringent-persimmon-price-lookup")) errors.push("produce astringent dest missing");
+if (!produce.includes("garak-paprika-price-lookup")) errors.push("produce paprika dest missing");
+if (produce.includes("utm_campaign=c2c_howto_202609")) errors.push("produce mixed C2C campaign");
+
 const index = await fs.readFile(path.join(root, "index.html"), "utf8");
 if (!index.includes("/guides/kimjang-pack-unit-kg.html")) errors.push("home 3-card kimjang missing");
 if (!index.includes("/guides/autumn-fruit-box-kg.html")) errors.push("home fruit card missing");
