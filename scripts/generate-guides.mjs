@@ -53,6 +53,7 @@ const guides = [
     ],
     internalLinks: [
       ["같은 조건으로 트랙터 탁송 견적 비교하기", "/guides/tractor-transport-quote-comparison.html"],
+      ["두 중고 트랙터 후보의 미확인 자료 비교하기", "/tools/tractor-candidate-sheet.html"],
     ],
     modifiedAt: updateDate,
   },
@@ -511,7 +512,7 @@ const head = (title, description, canonical, type = "article") => `<!doctype htm
 const foot = `<footer><strong>농사월드컵</strong><p>인기보다 목적과 조건으로 농산물·농기계를 비교합니다.</p><nav><a href="/about.html">소개</a><a href="/privacy.html">개인정보</a><a href="/contact.html">문의</a></nav></footer><script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script><script>if(window.lucide)lucide.createIcons();</script></body></html>`;
 
 await fs.mkdir(path.join(root, "guides"), { recursive: true });
-const cards = guides.map((guide) => `<article><p>선택 기준</p><h2><a href="/guides/${guide.slug}.html">${esc(guide.title)}</a></h2><span>${esc(guide.description)}</span><a href="/guides/${guide.slug}.html">기준 자세히 보기 <i data-lucide="arrow-right"></i></a></article>`).join("");
+const cards = guides.map((guide) => `<article><p>선택 기준</p><h2><a href="/guides/${guide.slug}.html">${esc(guide.title)}</a></h2><span>${esc(guide.description)}</span><a href="/guides/${guide.slug}.html">기준 자세히 보기 <i data-lucide="arrow-right"></i></a></article>`).join("") + `<article><p>직접 비교</p><h2><a href="/tools/tractor-candidate-sheet.html">중고 트랙터 두 후보 확인표</a></h2><span>명판·정비·작업기·작동·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span><a href="/tools/tractor-candidate-sheet.html">비교표 열기 <i data-lucide="arrow-right"></i></a></article>`;
 const hubSchema = JSON.stringify({ "@context": "https://schema.org", "@type": "CollectionPage", name: "농산물·농기계 선택 가이드", url: `${base}/guides.html`, hasPart: guides.map((guide) => ({ "@type": "Article", name: guide.title, url: `${base}/guides/${guide.slug}.html` })) }).replace(/</g, "\\u003c");
 const hub = `${head("농산물·농기계 선택 가이드", "감자·사과·자두·쌀, 중고 트랙터와 탁송 견적, 경락가와 직거래 가격을 목적, 규격, 상태와 거래 조건으로 비교하는 선택 가이드입니다.", `${base}/guides.html`, "website")}<script type="application/ld+json">${hubSchema}</script><main class="guide-main"><nav class="guide-breadcrumb"><a href="/">홈</a><span>›</span><span>선택 가이드</span></nav><section class="guide-hero"><p>조건부터 맞추는 비교 기준</p><h1>농산물·농기계<br><em>선택 가이드</em></h1><span>인기순이나 광고 문구보다 용도·규격·상태·인도 조건으로 비교하세요.</span></section><section class="guide-grid">${cards}</section></main>${foot}`;
 await fs.writeFile(path.join(root, "guides.html"), hub, "utf8");
@@ -560,6 +561,10 @@ const staticPages = [
   ["/terms.html", originalDate, "yearly", "0.3"],
   ["/contact.html", originalDate, "yearly", "0.3"],
   ["/guides.html", updateDate, "monthly", "0.8"],
+  ["/tools/tractor-candidate-sheet.html", "2026-09-24", "monthly", "0.8"],
+  ["/mn/", "2026-09-24", "monthly", "0.8"],
+  ["/mn/tractor-or-motoblock.html", "2026-09-24", "monthly", "0.8"],
+  ["/mn/potato-digger-or-harvester.html", "2026-09-24", "monthly", "0.8"],
 ];
 const sitemapEntries = [
   ...staticPages.map(([pathName, lastmod, changefreq, priority]) => `  <url><loc>${base}${pathName}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`),

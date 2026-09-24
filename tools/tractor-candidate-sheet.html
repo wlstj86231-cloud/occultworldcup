@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>중고 트랙터 두 후보 비교표 | 농사월드컵</title>
+  <meta name="description" content="중고 트랙터 두 후보의 명판, 정비기록, 작업기 호환, 시운전, 운송 조건을 같은 항목으로 확인하는 선택표입니다.">
+  <link rel="canonical" href="https://occultworldcup.com/tools/tractor-candidate-sheet.html">
+  <link rel="stylesheet" href="/style.css?v=3.0.0">
+  <link rel="stylesheet" href="/guide.css?v=1.1.0">
+  <style>
+    .sheet-lead{max-width:750px;color:var(--text)}.sheet-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}.sheet-card{border:1px solid var(--line);border-radius:12px;padding:22px;min-width:0}.sheet-card h2{margin:0 0 10px}.sheet-name{display:grid;gap:5px;font-weight:700}.sheet-name input{width:100%;border:1px solid #aebfb4;border-radius:7px;padding:10px;font:inherit}.sheet-card fieldset{border:0;padding:0;margin:16px 0 0}.sheet-card legend{font-weight:800;margin-bottom:10px}.sheet-check{display:flex;align-items:flex-start;gap:10px;margin:9px 0;color:var(--text)}.sheet-check input{margin-top:6px;width:18px;height:18px;flex:none}.sheet-button{border:0;border-radius:8px;background:var(--green2);color:#fff;font:inherit;font-weight:800;padding:12px 18px;cursor:pointer}.sheet-button:focus-visible,.sheet-name input:focus-visible,.sheet-check input:focus-visible{outline:2px solid var(--green2);outline-offset:2px}.sheet-result{background:var(--pale);padding:20px;border-radius:10px;margin:20px 0}.sheet-result h2{margin-top:0}.sheet-result ul{padding-left:20px}.sheet-result li{margin:5px 0}.sheet-note{font-size:13px;color:var(--text)}.sheet-links{display:flex;flex-wrap:wrap;gap:14px}.sheet-links a{font-weight:800;color:var(--green2)}@media(max-width:760px){.sheet-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header><a class="brand" href="/"><strong>농사월드컵</strong><small>품종·산지·농기계 선택 비교</small></a><nav><a href="/">비교 도구</a><a href="/guides.html">선택 가이드</a></nav></header>
+  <main class="guide-main">
+    <nav class="guide-breadcrumb"><a href="/">홈</a><span>›</span><a href="/guides.html">선택 가이드</a><span>›</span><span>트랙터 후보 비교표</span></nav>
+    <section class="guide-hero"><p>실물과 서류로 확인</p><h1>중고 트랙터 두 후보<br><em>같은 조건으로 비교</em></h1><span class="sheet-lead">가격만 보고 고르기 전에 두 후보에게 같은 자료를 요청하세요. 아래 확인표는 입력한 자료의 빈칸을 보여줍니다. 어떤 장비가 더 안전하거나 좋은지를 자동 판정하지 않습니다.</span></section>
+    <form id="sheet-form">
+      <div class="sheet-grid">
+        <section class="sheet-card"><h2>후보 A</h2><label class="sheet-name">구별할 이름 또는 모델<input name="a-name" type="text" maxlength="60" placeholder="예: A 판매자 장비"></label><fieldset><legend>자료를 실제로 확인한 경우에만 표시</legend><label class="sheet-check"><input name="a-plate" type="checkbox">명판의 제조사·모델·제조번호 사진</label><label class="sheet-check"><input name="a-service" type="checkbox">정비 이력 또는 수리 영수증</label><label class="sheet-check"><input name="a-tool" type="checkbox">사용할 작업기의 연결·규격 대조</label><label class="sheet-check"><input name="a-test" type="checkbox">현장 시동·변속·유압·PTO 작동 확인</label><label class="sheet-check"><input name="a-delivery" type="checkbox">상차·운송·인수 조건과 비용</label></fieldset></section>
+        <section class="sheet-card"><h2>후보 B</h2><label class="sheet-name">구별할 이름 또는 모델<input name="b-name" type="text" maxlength="60" placeholder="예: B 판매자 장비"></label><fieldset><legend>자료를 실제로 확인한 경우에만 표시</legend><label class="sheet-check"><input name="b-plate" type="checkbox">명판의 제조사·모델·제조번호 사진</label><label class="sheet-check"><input name="b-service" type="checkbox">정비 이력 또는 수리 영수증</label><label class="sheet-check"><input name="b-tool" type="checkbox">사용할 작업기의 연결·규격 대조</label><label class="sheet-check"><input name="b-test" type="checkbox">현장 시동·변속·유압·PTO 작동 확인</label><label class="sheet-check"><input name="b-delivery" type="checkbox">상차·운송·인수 조건과 비용</label></fieldset></section>
+      </div>
+      <button class="sheet-button" type="submit">확인하지 못한 항목 보기</button>
+    </form>
+    <section id="sheet-result" class="sheet-result" aria-live="polite"><h2>비교 준비</h2><p>자료를 확인한 항목에 표시하고 버튼을 누르세요. 체크 수는 장비 품질 점수가 아닙니다.</p></section>
+    <section class="guide-source"><h2>결정 전에 자료를 맞추는 순서</h2><ol><li>두 판매자에게 명판과 포함 작업기 목록을 같은 형식으로 요청합니다.</li><li>현장 점검 때 시동·변속·유압·PTO를 실제 장비에서 확인하고, 이동·상하차 책임을 문서에 적습니다.</li><li>자료가 빠진 후보를 '양호'나 '불량'으로 추정하지 않습니다. 수리·운송 비용은 확정 견적을 받은 뒤 총액에 넣습니다.</li></ol><p class="sheet-note">농기계 사용 전 안전 점검 참고 자료: <a href="https://farmer.rda.go.kr/farmAttach/healthSafety/leaflet/243945_MF_ATTACH_01.pdf">농촌진흥청 농작업 안전 자가점검표</a> (2026-09-24 확인). 이 표는 중고 거래의 법적·기계적 검사 증명서가 아닙니다.</p><div class="sheet-links"><a href="/guides/tractor-horsepower-work-tool.html">작업기와 마력 선택 기준</a><a href="https://boribay.com/guides/used-tractor-buying-checklist?utm_source=occultworldcup.com&amp;utm_medium=owned_referral&amp;utm_campaign=tractor_choice&amp;utm_content=candidate_sheet">중고 트랙터 현장 점검표</a><a href="https://boribay.com/guides/used-tractor-price-comparison-guide?utm_source=occultworldcup.com&amp;utm_medium=owned_referral&amp;utm_campaign=tractor_choice&amp;utm_content=candidate_sheet">같은 조건 가격 비교법</a></div></section>
+  </main>
+  <footer><strong>농사월드컵</strong><p>인기보다 목적과 조건으로 농산물·농기계를 비교합니다.</p><nav><a href="/about.html">소개</a><a href="/privacy.html">개인정보</a><a href="/contact.html">문의</a></nav></footer>
+  <script>
+    const items={plate:'명판 사진',service:'정비 이력',tool:'작업기 호환',test:'현장 작동',delivery:'운송·인수 조건'};
+    document.getElementById('sheet-form').addEventListener('submit',event=>{
+      event.preventDefault();
+      const form=event.currentTarget,result=document.getElementById('sheet-result');
+      result.replaceChildren();
+      const title=document.createElement('h2');title.textContent='추가 확인이 필요한 자료';result.append(title);
+      for(const prefix of ['a','b']){
+        const raw=form.elements.namedItem(prefix+'-name').value.trim();
+        const name=raw||'후보 '+prefix.toUpperCase();
+        const missing=Object.entries(items).filter(([key])=>!form.elements.namedItem(prefix+'-'+key).checked).map(([,label])=>label);
+        const heading=document.createElement('h3');heading.textContent=name;result.append(heading);
+        if(!missing.length){const p=document.createElement('p');p.textContent='표시한 자료는 준비됐습니다. 실제 내용과 장비 상태가 맞는지 확인하세요.';result.append(p);continue;}
+        const list=document.createElement('ul');for(const label of missing){const li=document.createElement('li');li.textContent=label;list.append(li);}result.append(list);
+      }
+      const note=document.createElement('p');note.className='sheet-note';note.textContent='표시 여부는 자료 준비 상태입니다. 장비의 성능·안전·가격 우위를 뜻하지 않습니다.';result.append(note);
+    });
+  </script>
+</body>
+</html>
