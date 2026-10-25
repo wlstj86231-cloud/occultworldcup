@@ -556,7 +556,7 @@ await fs.writeFile(path.join(root, "index.html"), index, "utf8");
 
 const staticPages = [
   ["/", originalDate, "weekly", "1.0"],
-  ["/about.html", originalDate, "yearly", "0.3"],
+  ["/about.html", "2026-10-26", "yearly", "0.3"],
   ["/privacy.html", originalDate, "yearly", "0.3"],
   ["/terms.html", originalDate, "yearly", "0.3"],
   ["/contact.html", originalDate, "yearly", "0.3"],
