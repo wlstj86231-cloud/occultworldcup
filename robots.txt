@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://occultworldcup.com/sitemap.xml
+#DaumWebMasterTool:0a5dc39d487d4dd3332edfb015cdfd4cca37ec9e70a71f06e227a83195c5cc0c:dSlZXvWuL7UAVoESNn1QCg==
