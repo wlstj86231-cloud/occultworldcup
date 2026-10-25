@@ -29,13 +29,11 @@ for (const [slug, dest] of newSlugs) {
 
 const kimjang = await fs.readFile(path.join(root, "guides", "kimjang-pack-unit-kg.html"), "utf8");
 if (!kimjang.includes("utm_campaign=farm_selection_guides")) errors.push("kimjang Dataset campaign rewritten");
-if (!kimjang.includes("garak-cabbage-price-lookup")) errors.push("kimjang cabbage dest missing");
+if ((kimjang.match(/boribay\.com\/guides\/agricultural-price-lookup/g) || []).length !== 1 || /garak-[a-z-]+-price-lookup/.test(kimjang)) errors.push("kimjang price lookup dest");
 
 const produce = await fs.readFile(path.join(root, "guides", "autumn-produce-box-kg.html"), "utf8");
 if (!produce.includes("utm_campaign=farm_selection_guides")) errors.push("produce Dataset campaign rewritten");
-if (!produce.includes("garak-pumpkin-price-lookup")) errors.push("produce pumpkin dest missing");
-if (!produce.includes("garak-astringent-persimmon-price-lookup")) errors.push("produce astringent dest missing");
-if (!produce.includes("garak-paprika-price-lookup")) errors.push("produce paprika dest missing");
+if ((produce.match(/boribay\.com\/guides\/agricultural-price-lookup/g) || []).length !== 1 || /garak-[a-z-]+-price-lookup/.test(produce)) errors.push("produce price lookup dest");
 if (produce.includes("utm_campaign=c2c_howto_202609")) errors.push("produce mixed C2C campaign");
 
 const index = await fs.readFile(path.join(root, "index.html"), "utf8");
