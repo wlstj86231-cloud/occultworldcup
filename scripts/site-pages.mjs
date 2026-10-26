@@ -2,14 +2,14 @@
 import { base, SITE_NAME, OPERATOR, esc, mailto, head, HEADER, FOOTER, breadcrumbNav, breadcrumbLd, graph, orgRef, siteRef, metaBlock } from "./site-shell.mjs";
 
 const SISTERS = [
-  ["농산물 거래사전", "https://yomiwiki.com/", "거래 용어와 표시 기준"],
-  ["직거래 사기 점검", "https://scamreader.com/", "거래 전 위험 신호 확인"],
-  ["농가 손익 계산기", "https://www.reportools.com/", "출하·판매 손익 계산"],
-  ["거래 증빙 도우미", "https://goatool.com/", "거래 기록과 증빙 정리"],
-  ["농업 정책자금 백과", "https://policyfundpedia.com/", "정책자금 제도 안내"],
-  ["농기계 자산 수첩", "https://megapureunasset.kr/", "보유 농기계 기록"],
-  ["영농폐기물 집하장 지도", "https://sumimap.com/", "영농폐기물 집하장 찾기"],
-  ["농기계 탁송 견적 비교", "https://tripmarking.com/", "운송 견적을 같은 조건으로 비교"],
+  ["농산물 거래사전", "https://yomiwiki.com/", "농산물·농기계 거래 용어와 현장 확인 기준"],
+  ["직거래 사기 점검", "https://scamreader.com/", "받은 문자·판매글의 직거래 사기 신호 점검"],
+  ["농가 손익 계산기", "https://www.reportools.com/", "직거래·도매시장·온라인 판매 손익 계산"],
+  ["거래 증빙 도우미", "https://goatool.com/", "거래 때 남길 사진과 서류 정리"],
+  ["농업 정책자금 백과", "https://policyfundpedia.com/", "농업 정책자금 종류와 신청 조건"],
+  ["농기계 자산 수첩", "https://megapureunasset.kr/", "농기계 기록부·인수 점검·사고 기록"],
+  ["영농폐기물 집하장 지도", "https://sumimap.com/", "우리 동네 영농폐기물 공동집하장 찾기"],
+  ["농기계 탁송 견적 비교", "https://tripmarking.com/", "탁송 견적 요청서와 견적 비교표"],
 ];
 const BORIBAY_ABOUT = "https://boribay.com/?utm_source=occultworldcup.com&amp;utm_medium=referral&amp;utm_campaign=support&amp;utm_content=about";
 
