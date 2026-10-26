@@ -45,18 +45,37 @@ const guides = [
     description: "홍로 사과와 자두를 살 때 품종명만 보지 않고 출하시기, 숙도, 크기 혼합과 실중량을 비교하는 방법입니다.",
     lead: "과일은 같은 품종이라도 출하시기와 숙도, 크기 구성에 따라 먹는 시점과 배송 안정성이 달라집니다. ‘몇 kg’보다 상자 안 구성을 먼저 확인하세요.",
     sections: [
-      ["1. 먹을 날짜에서 거꾸로 고르기", ["바로 먹을 물량과 며칠 보관할 물량을 나누고, 숙도와 보관 안내를 확인합니다.", "명절·선물용은 외관과 개수, 가정용은 맛과 손상 제외 기준을 우선합니다."]],
-      ["2. 품종과 크기 구성을 기록하기", ["홍로처럼 수확기가 짧은 품종은 생산지와 수확·발송일을 함께 봅니다.", "자두는 품종별 출하시기와 무름 정도가 달라 품종명, 크기, 숙도를 사진으로 확인합니다."]],
-      ["3. 포장 단위 비교하기", ["박스 표시 중량이 내용물 실중량인지 확인합니다.", "혼합 크기라면 대표 과실만 보지 말고 전체 상자 사진과 대략적인 개수를 요청합니다."]],
-      ["4. 품종별 수확기 확인하기", ["농촌진흥청 자료 기준 사과는 썸머킹 7월 중하순, 아리수 9월 상순, 홍로 9월 상·중순, 컬러플 10월 중하순처럼 품종마다 수확기가 다릅니다.", "같은 ‘햇사과’라도 품종명이 다르면 수확기와 맛이 다르니 판매글의 품종명과 수확일을 함께 확인합니다."]],
+      ["1. 먹을 날짜에서 거꾸로 고르기", ["바로 먹을 물량과 며칠 보관할 물량을 나누고, 숙도와 보관 안내를 확인합니다.", "농촌진흥청은 추석 무렵 나오는 과일은 상온에서 오래 보관할 수 없으니 바로 먹을 만큼만 사는 것이 좋다고 안내합니다. 많이 사야 한다면 냉장 보관할 자리부터 확인합니다.", "명절·선물용은 외관과 개수, 가정용은 맛과 손상 제외 기준을 우선합니다."]],
+      ["2. 품종과 크기 구성을 기록하기", ["홍로처럼 추석 무렵에 나오는 품종은 생산지와 수확·발송일을 함께 봅니다.", "자두는 품종마다 수확기와 과실 크기가 크게 달라(아래 표) 품종명, 크기, 숙도를 사진으로 확인합니다."]],
+      ["3. 포장 단위 비교하기", ["박스 표시 중량이 내용물 실중량인지 확인합니다.", "혼합 크기라면 대표 과실만 보지 말고 전체 상자 사진과 대략적인 개수를 요청합니다.", "상자 무게를 품종의 대표 과실 무게로 나누면 몇 개가 드는지 어림할 수 있습니다. 예를 들어 홍로(300g 내외) 10kg은 33개 안팎입니다. 이보다 개수가 훨씬 많으면 작은 과일이 섞였는지 물어봅니다."]],
+      ["4. 사과는 품종별 수확기 확인하기", ["농촌진흥청 자료 기준 사과는 썸머킹 7월 중하순, 아리수 9월 상순, 홍로 9월 상·중순, 컬러플 10월 중하순처럼 품종마다 수확기가 다릅니다.", "같은 ‘햇사과’라도 품종명이 다르면 수확기와 맛이 다르니 판매글의 품종명과 수확일을 함께 확인합니다."]],
+      ["5. 자두는 품종별 수확기와 크기 확인하기", ["농사로 자료(국립원예특작과학원 협조)에 따르면 자두는 대석조생이 6월 하순으로 가장 먼저 나오고, 퍼플퀸·포모사(7월 중순), 솔담(7월 중하순), 젤리하트(8월 상순), 추희(9월 상중순) 순으로 수확합니다.", "과실 무게도 젤리하트 60g에서 추희 150~200g까지 품종마다 달라, 같은 5kg 상자라도 젤리하트는 80개가 넘고 추희는 25~33개 안팎으로 개수가 크게 달라집니다.", "‘자두’만 적힌 판매글은 품종명과 수확일을 먼저 물어봅니다."]],
+    ],
+    comparison: {
+      caption: "자두 품종별 수확기와 과실 무게(농사로 자료)",
+      headers: ["품종", "수확기", "과실 무게", "당도", "5kg 상자 어림 개수(계산값)"],
+      rows: [
+        ["대석조생", "6월 하순", "90g", "12°Bx", "55개 안팎"],
+        ["퍼플퀸", "7월 중순", "100g 정도", "14°Bx", "50개 안팎"],
+        ["포모사", "7월 중순부터", "150g", "10.5°Bx", "33개 안팎"],
+        ["솔담", "7월 중하순부터", "100g", "14°Bx", "50개 안팎"],
+        ["젤리하트", "8월 상순", "60g", "16.5°Bx", "83개 안팎"],
+        ["추희", "9월 상중순", "150~200g", "14°Bx", "25~33개"],
+      ],
+    },
+    faqs: [
+      ["‘햇사과’와 ‘홍로’는 같은 말인가요?", "아닙니다. ‘햇사과’는 그해 수확한 사과를 두루 부르는 말이고, 홍로는 품종 이름입니다. 품종명과 수확일을 따로 확인하세요."],
+      ["자두 5kg은 몇 개쯤인가요?", "품종에 따라 다릅니다. 5kg을 품종의 대표 과실 무게로 나누면 대석조생(90g)은 55개 안팎, 추희(150~200g)는 25~33개 안팎입니다. 실제 개수는 크기 구성에 따라 다르니 판매자에게 확인하세요."],
     ],
     internalLinks: [
       ["사과 품종 12종 비교표(수확기·당도·저장성)", "/compare/apple-varieties.html"],
       ["질문에 답하고 사과 품종 4개를 1:1로 비교하기", "/?c=apple#compare"],
+      ["과일 상자를 kg당·개수로 맞춰 비교하기", "/guides/autumn-fruit-box-kg.html"],
     ],
     sources: [
       ["농사로 「사과 품종별 꽃피는 시기, 특성 알아보기」", "https://www.rda.go.kr/middlePopOpenPopNongsaroDBView.do?no=2038"],
       ["농사로 「추석 선물용 맛있는 과일 고르기」", "https://www.rda.go.kr/middlePopOpenPopNongsaroDBView.do?no=1049"],
+      ["농사로 영상 「새콤 달콤 자두 재배하기」(2020, 국립원예특작과학원 협조)", "https://www.nongsaro.go.kr/portal/ps/psb/psby/vodPlay.ps?mvpNo=1852"],
     ],
     modifiedAt: "2026-10-26",
     links: [
@@ -198,64 +217,97 @@ const guides = [
   },
   {
     slug: "kimjang-pack-unit-kg",
-    title: "김장 출하 포장 단위: 배추 망·무 상자·양파 망을 kg으로 맞추세요",
-    description: "김장 배추 10kg 그물망, 김장무 20kg 상자, 저장양파 15kg 망 가격을 실중량 kg당으로 바꿔 공식 가격정보와 같은 단위로 비교하는 방법입니다.",
-    lead: "김장 출하 글은 망·상자 가격을 시세처럼 적기 쉽습니다. 포장 단위 이름을 그대로 두지 말고 내용 중량으로 나눈 뒤, 배추·무·양파를 서로 다른 품목의 가격과 맞춥니다.",
+    title: "김장 배추 망·무 상자·양파 망: 포장 가격을 kg당으로 바꿔 비교하는 법",
+    description: "김장철 배추 그물망, 무 상자, 양파 망 가격을 실제 내용 중량으로 나눠 kg당 가격을 구하고, 포기 수·손질 상태·배송비까지 같은 조건으로 맞춰 비교하는 순서와 계산 예시입니다.",
+    lead: "김장 채소는 ‘10kg 망’, ‘20kg 상자’처럼 포장 이름으로 팔리지만 실제 무게와 포기 수, 손질 상태는 글마다 다릅니다. 포장 가격을 실제 내용 중량으로 나눈 kg당 가격을 먼저 구하고, 배송비와 손질 상태를 같은 조건으로 맞춘 뒤에 비교하세요.",
     sections: [
-      ["1. 배추 10kg 그물망을 실중량으로 나누기", ["표시 10kg가 배추만의 무게인지 확인합니다.", "망 가격을 내용 kg으로 나눈 값이 비교용 kg당입니다.", "포기 수와 결구 크기가 다르면 같은 망으로 묶지 않습니다."]],
-      ["2. 김장무 20kg 상자와 심는 시기를 나누기", ["20kg 상자는 출하 단위이고 심는 시기 안내는 파종 판단입니다.", "상자 표시가 무 실중량인지 총중량인지 확인합니다.", "열무·알타리와 김장무를 한 시세로 읽지 않습니다."]],
-      ["3. 양파 15kg 망과 대파 단을 각각 맞추기", ["저장양파와 햇양파는 품종·건조 상태가 다르면 같은 행이 아닙니다.", "대파 단 무게를 확인하기 전에 쪽파 시세와 섞지 않습니다.", "세 품목을 한 평균 가격으로 곱하지 않습니다."]],
-      ["4. 직거래 판매가는 선별·포장·배송을 따로 적기", ["가락 kg당은 도매 거래 결과입니다.", "택배 김장 세트 가격에는 묶음·완충·배송이 포함될 수 있습니다.", "같은 단위로 맞춘 뒤에만 어느 쪽이 유리한지 비교합니다."]],
+      ["1. 포장 이름과 실제 무게를 나눠 적기", ["‘10kg 망’, ‘20kg 상자’는 거래할 때 부르는 포장 이름이라 실제 내용 중량과 다를 수 있습니다. 판매자에게 실제 무게나 저울에 올린 사진을 요청합니다.", "포장재까지 잰 무게인지, 내용물만 잰 무게인지 확인합니다.", "배추는 한 망에 몇 포기인지, 무는 한 상자에 몇 개인지도 적어 두면 포기·개당 무게를 계산할 수 있습니다."]],
+      ["2. kg당 가격을 두 가지로 계산하기", ["상품 가격 ÷ 실제 내용 중량(kg) = 상품 kg당 가격입니다.", "(상품 가격 + 택배비·포장비) ÷ 실제 내용 중량 = 집에서 받는 값 기준 kg당 가격입니다. 김장 채소는 무거워서 배송비를 더하면 순서가 바뀌기도 합니다(아래 계산 예시).", "만나서 받는다면 택배비 대신 이동 거리와 시간을 따로 적어 두고 함께 판단합니다."]],
+      ["3. 품목마다 함께 맞출 조건", ["배추: 포기 수와 크기, 겉잎을 다듬었는지를 같게 맞춥니다. 절임배추는 생배추와 다른 상품이라 절임배추끼리 비교합니다.", "무: 흙을 털었는지 씻었는지, 무청이 붙어 있는지 확인합니다. 김장무와 열무·알타리무는 다른 품목입니다.", "양파: 저장용으로 말린 양파인지 막 수확한 양파인지, 크기를 골랐는지 확인합니다.", "대파·쪽파: ‘한 단’ 무게가 판매자마다 달라 단 가격만으로는 비교할 수 없습니다. 단 무게를 물어 kg당으로 바꿉니다."]],
+      ["4. 도매 시세와 견줄 때", ["가락시장 같은 도매시장 시세는 도매 거래 결과이고, 직거래 판매가에는 선별·포장·배송 비용이 들어 있을 수 있어 그대로 맞대지 않습니다.", "도매 시세를 참고할 때도 품목·등급·포장 단위가 같은 값을 골라 kg당으로 바꾼 뒤 봅니다. 자세한 방법은 아래 ‘경락가와 직거래 가격 비교법’에 있습니다."]],
     ],
-    comparison: {
-      caption: "김장 포장 단위를 kg당으로 맞추는 표",
-      headers: ["포장 이름", "먼저 확인할 것", "비교값"],
+    example: {
+      caption: "김장 채소 kg당 계산 예시",
+      intro: "같은 이름의 포장이라도 실제 무게와 받는 방법에 따라 비교값이 달라지는 것을 보여 주는 계산입니다.",
+      headers: ["판매글", "상품 가격", "실제 무게", "상품 kg당", "받는 값 기준 kg당"],
       rows: [
-        ["배추 10kg 그물망", "배추 실중량·포기 구성", "망 가격 ÷ 내용 kg"],
-        ["김장무 20kg 상자", "무 실중량·작형", "상자 가격 ÷ 내용 kg"],
-        ["양파 15kg 망", "저장 여부·품종", "망 가격 ÷ 내용 kg"],
-        ["대파 단·망", "단 무게·쪽파 여부", "단·망 가격 ÷ 내용 kg"],
+        ["배추 10kg 망(3포기), 택배", "15,000원", "9.4kg", "약 1,596원", "약 2,128원(택배비 5,000원 포함)"],
+        ["배추 10kg 망(3포기), 만나서 받기", "17,000원", "10.2kg", "약 1,667원", "약 1,667원(이동 비용 별도)"],
+        ["무 20kg 상자, 택배", "24,000원", "18.5kg", "약 1,297원", "약 1,622원(택배비 6,000원 포함)"],
+        ["양파 15kg 망, 택배", "21,000원", "15.0kg", "1,400원", "약 1,733원(택배비 5,000원 포함)"],
+      ],
+      note: "모든 숫자는 계산 방법을 보여 주려고 만든 가상 값이며 실제 시세가 아닙니다. 첫째 줄은 상품 가격이 더 싸지만 무게가 덜 나가고 택배비가 붙어, 받는 값 기준으로는 둘째 줄보다 비쌉니다.",
+    },
+    comparison: {
+      caption: "김장 포장별로 확인할 것",
+      headers: ["포장 이름", "먼저 확인할 것", "함께 맞출 조건"],
+      rows: [
+        ["배추 10kg 망", "실제 무게·포기 수", "겉잎 손질·생배추와 절임배추 구분"],
+        ["무 20kg 상자", "실제 무게·개수", "세척 여부·무청 유무"],
+        ["양파 15kg 망", "실제 무게", "저장용 건조 여부·크기 선별"],
+        ["대파 한 단", "단 무게", "대파와 쪽파 구분"],
       ],
     },
     faqs: [
-      ["김장배추 망 가격이 가락 시세보다 비싸면 손해인가요?", "포함된 비용이 다릅니다. kg당으로 맞춘 뒤 선별·포장·배송을 반영한 예상 순수령액으로 비교하세요."],
-      ["김장무 심는 시기 페이지의 숫자로 상자 가격을 매겨도 되나요?", "심는 시기는 파종 판단입니다. 오늘 상자 시세는 공식 가격정보의 같은 품목·단위 가격과 실중량으로 확인하세요."],
+      ["김장배추 망 가격이 도매 시세보다 비싸면 손해인가요?", "도매 시세에는 소비자에게 오기까지의 선별·포장·배송 비용이 빠져 있고, 직거래 가격에는 들어 있을 수 있어 바로 비교할 수 없습니다. 같은 품목·포장 단위로 맞춘 kg당 가격과 받는 데 드는 비용을 함께 보세요."],
+      ["‘10kg 망’이라고 적혀 있으면 10kg이 맞나요?", "포장 이름일 수 있어 실제 무게와 다를 수 있습니다. 실제 무게를 물어보고 그 무게로 kg당 가격을 계산하세요."],
+      ["절임배추는 어떻게 비교하나요?", "생배추와 다른 상품입니다. 절임배추끼리, 물기를 뺀 무게인지 확인한 뒤 kg당으로 비교하세요. 절인 날·보내는 날 구분은 김장 판매글 날짜 가이드에 있습니다."],
     ],
     links: [["품목·등급·단위를 맞춰 공식 가격 조회하는 법", "agricultural-price-lookup"]],
     internalLinks: [
       ["가락 경락가와 직거래 가격을 kg당으로 맞추기", "/guides/garak-auction-direct-price-comparison.html"],
+      ["김장 배추·햅쌀 판매글의 날짜 구분하기", "/guides/kimjang-listing-dates.html"],
+      ["만나서 받기와 택배 중 고르기", "/guides/meetup-or-parcel-choice.html"],
     ],
     sources: [
       ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
+      ["한국농수산식품유통공사 농넷(전국 공영 도매시장 거래 정보)", "https://www.nongnet.or.kr/"],
     ],
+    sourcesIntro: "이 글의 계산 예시는 가상 값입니다. 아래는 같은 품목·등급·단위의 실제 도매 가격을 조회할 수 있는 공식 창구입니다.",
     publishedAt: updateDate,
     modifiedAt: "2026-10-26",
   },
   {
     slug: "autumn-fruit-box-kg",
-    title: "제철 과일 상자: 샤인마스캇 4kg·신고 7.5kg·홍로 10kg을 kg으로 맞추세요",
-    description: "샤인마스캇 4kg, 신고배 7.5kg, 홍로 10kg, 복숭아 4kg, 추희자두 5kg 상자 가격을 실중량 kg당으로 바꿔 공식 가격정보와 같은 단위로 비교하는 방법입니다.",
-    lead: "제철 과일 글은 상자 가격을 시세처럼 적기 쉽습니다. 4kg·7.5kg·10kg·5kg 이름을 그대로 두지 말고 내용 중량으로 나눈 뒤, 품종명이 같은 행만 고릅니다.",
+    title: "제철 과일 상자: 홍로 10kg·신고 7.5kg을 kg당 가격과 개수로 맞추는 법",
+    description: "사과·배·자두·포도 상자를 kg당 가격과 한 개 무게로 바꿔 비교하는 방법입니다. 농촌진흥청 자료의 품종별 과실 무게로 상자에 몇 개가 드는지 어림하는 계산표와 예시를 실었습니다.",
+    lead: "과일 상자는 ‘10kg’, ‘7.5kg’ 같은 무게나 ‘몇 과(개)’로 팔립니다. 무게로 파는 상자는 kg당 가격으로, 개수로 파는 상자는 한 개 무게와 개당 가격으로 바꾸면 크기가 다른 상자끼리도 비교할 수 있습니다.",
     sections: [
-      ["1. 샤인마스캇 4kg와 2kg를 나누기", ["표시 4kg가 포도 실중량인지 확인합니다.", "캠벨·마스캇베리에이 행을 샤인마스캇 시세로 쓰지 않습니다.", "알 빠짐 송이를 뺀 뒤에 kg당을 다시 계산합니다."]],
-      ["2. 신고배 7.5kg와 15kg, 선물 개수를 나누기", ["7.5kg 상자와 15kg 상자·파렛트는 같은 행이 아닐 수 있습니다.", "몇 과 세트 가격은 개당이므로 kg당 가격과 바로 비교하지 않습니다.", "화산과 신고를 한 평균으로 묶지 않습니다."]],
-      ["3. 홍로 10kg·복숭아 4kg·추희 5kg를 각각 맞추기", ["햇사과 문구와 품종명 홍로를 나눕니다.", "복숭아 숙도 표현은 경락가 표에 없습니다.", "후무사·김천 산지 안내의 숫자를 추희 5kg 시세로 쓰지 않습니다."]],
-      ["4. 직거래 택배가는 선별·완충·배송을 따로 적기", ["가락 kg당은 도매 거래 결과입니다.", "난좌·아이스팩·택배가 포함되면 같은 숫자가 될 수 없습니다.", "같은 품종·실중량으로 맞춘 뒤에만 비교합니다."]],
+      ["1. 무게로 파는 상자는 kg당 가격 구하기", ["상자 가격 ÷ 실제 내용 중량(kg)이 kg당 가격입니다. 상자 무게를 뺀 내용물 무게인지 확인합니다.", "같은 품종·비슷한 크기 구성끼리만 비교합니다. 큰 과일만 담은 상자와 크기가 섞인 상자는 kg당 가격이 같아도 쓰임이 다릅니다.", "택배비나 완충 포장비가 따로라면 더한 값을 다시 kg으로 나눠 받는 값 기준으로도 봅니다."]],
+      ["2. 개수가 적힌 상자는 한 개 무게 계산하기", ["‘10kg 30과’처럼 무게와 개수가 함께 적혀 있으면 내용 중량 ÷ 개수로 한 개 평균 무게를 구합니다(10kg ÷ 30과 ≈ 333g).", "개수만 적힌 선물 상자는 판매자에게 총 무게를 묻거나, 상자 가격 ÷ 개수로 개당 가격을 구해 같은 개수·같은 품종 상자끼리 비교합니다.", "개당 가격과 kg당 가격은 기준이 달라 한 줄에 놓고 비교하지 않습니다."]],
+      ["3. 품종별 과실 무게로 상자 구성 어림하기", ["농촌진흥청 자료의 대표 과실 무게로 상자 무게를 나누면 대략 몇 개가 드는지 알 수 있습니다(아래 표). 예를 들어 홍로(300g 내외) 10kg은 33개 안팎, 신고(700~800g) 7.5kg은 9~11개입니다.", "같은 무게 상자에 개수가 어림값보다 훨씬 많으면 작은 과일이 섞였을 수 있으니 크기 구성을 물어봅니다. 반대로 개수가 적으면 큰 과일 위주로 담은 상자일 수 있습니다.", "과실 무게는 시험·안내 자료의 대표값이라 산지와 해에 따라 달라집니다. 어림값은 질문할 거리를 찾는 데만 씁니다."]],
+      ["4. 포도는 송이 수와 송이 크기를 함께 보기", ["농촌진흥청은 송이 크기가 400~500g 정도로 알맞은 포도를 고르라고 안내합니다. 송이가 너무 크고 알이 지나치게 많으면 안쪽에 덜 익은 알이 있을 수 있다고 합니다.", "포도 상자는 무게와 함께 송이 수를 물으면 한 송이 크기를 계산할 수 있습니다(예: 4kg 8송이 → 송이당 약 500g)."]],
     ],
-    comparison: {
-      caption: "제철 과일 상자를 kg당으로 맞추는 표",
-      headers: ["포장 이름", "먼저 확인할 것", "비교값"],
+    example: {
+      caption: "과일 상자 비교 계산 예시",
+      intro: "무게·개수 표시가 다른 상자를 같은 기준으로 바꾸는 계산입니다.",
+      headers: ["판매글", "가격", "표시", "kg당 가격", "한 개 무게·개당 가격"],
       rows: [
-        ["샤인마스캇 4kg", "품종명·실중량·송이 상태", "상자 가격 ÷ 내용 kg"],
-        ["신고배 7.5kg", "신고/화산·상자/파렛트", "상자 가격 ÷ 내용 kg"],
-        ["홍로 10kg", "품종명·개수 구성", "상자 가격 ÷ 내용 kg"],
-        ["복숭아 4kg", "품종명·숙도", "상자 가격 ÷ 내용 kg"],
-        ["추희자두 5kg", "추희/후무사·무름", "상자 가격 ÷ 내용 kg"],
+        ["사과 A", "45,000원", "10kg 30과", "4,500원", "약 333g · 1,500원"],
+        ["사과 B", "26,000원", "5kg 14과", "5,200원", "약 357g · 약 1,857원"],
+        ["배 선물 상자", "40,000원", "6과(무게 표시 없음)", "무게를 물어야 계산 가능", "개당 약 6,667원"],
+      ],
+      note: "모든 숫자는 계산 방법을 보여 주려고 만든 가상 값이며 실제 시세가 아닙니다. 사과 B는 kg당 가격이 높지만 한 개가 더 크고 상자가 작습니다. 어느 쪽이 나은지는 먹는 양과 쓰임(가정용·선물용)에 따라 다릅니다.",
+    },
+    comparison: {
+      caption: "품종별 과실 무게와 상자 개수 어림표(어림 개수 = 상자 무게 ÷ 과실 무게)",
+      headers: ["품종", "과실 무게(자료)", "상자 예", "어림 개수"],
+      rows: [
+        ["홍로(사과)", "300g 내외", "10kg", "33개 안팎"],
+        ["아리수(사과)", "285g 정도", "10kg", "35개 안팎"],
+        ["감홍(사과)", "350~400g", "10kg", "25~29개"],
+        ["신고(배)", "700~800g", "7.5kg", "9~11개"],
+        ["원황(배)", "560g 내외", "7.5kg", "13개 안팎"],
+        ["황금배(배)", "450g 내외", "7.5kg", "17개 안팎"],
+        ["대석조생(자두)", "90g", "5kg", "55개 안팎"],
+        ["포모사(자두)", "150g", "5kg", "33개 안팎"],
+        ["추희(자두)", "150~200g", "5kg", "25~33개"],
       ],
     },
     faqs: [
-      ["샤인마스캇 4kg가 가락 시세보다 비싸면 손해인가요?", "포함된 비용이 다릅니다. kg당으로 맞춘 뒤 선별·포장·배송을 반영한 예상 순수령액으로 비교하세요."],
-      ["신고배 선물 세트 개수 가격을 kg당 표와 바로 비교해도 되나요?", "개수를 kg으로 바꾸기 전에 과실 크기 구성이 같은지 확인하세요. 개당과 kg당을 한 숫자로 두지 않습니다."],
+      ["10kg 상자에 몇 개 들어 있는지 알 수 있나요?", "상자 무게를 품종의 대표 과실 무게로 나누면 어림할 수 있습니다. 실제 개수는 크기 구성에 따라 다르니 판매자에게 개수(과수)를 물어보세요."],
+      ["개수로 파는 선물 상자와 kg 상자를 어떻게 비교하나요?", "선물 상자의 총 무게를 알면 kg당으로 바꿀 수 있습니다. 무게를 모르면 같은 개수·같은 품종 상자끼리 개당 가격으로 비교하세요."],
+      ["상자 가격이 도매 시세보다 비싸면 손해인가요?", "도매 시세에는 선별·포장·배송 비용이 빠져 있고 직거래 택배 가격에는 들어 있을 수 있어 바로 비교할 수 없습니다. 같은 품종·단위로 맞춘 뒤 그 비용을 따로 생각하세요."],
     ],
     links: [["품목·등급·단위를 맞춰 공식 가격 조회하는 법", "agricultural-price-lookup"]],
     internalLinks: [
@@ -265,49 +317,64 @@ const guides = [
       ["가락 경락가와 직거래 가격을 kg당으로 맞추기", "/guides/garak-auction-direct-price-comparison.html"],
     ],
     sources: [
+      ["농사로 「추석 선물용 맛있는 과일 고르기」(홍로·아리수·원황·황금배 과실 무게, 포도 송이)", "https://www.rda.go.kr/middlePopOpenPopNongsaroDBView.do?no=1049"],
+      ["농촌진흥청 보도자료(2009-09-25) 감홍 재배법 (정책브리핑)", "https://korea.kr/news/pressReleaseView.do?newsId=155374463"],
+      ["정책브리핑(2015-09-23) 껍질째 먹는 중간 크기 사과·배(신고 과실 무게)", "https://www.korea.kr/news/policyNewsView.do?newsId=156076762"],
+      ["농사로 영상 「새콤 달콤 자두 재배하기」(2020, 국립원예특작과학원 협조)", "https://www.nongsaro.go.kr/portal/ps/psb/psby/vodPlay.ps?mvpNo=1852"],
       ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
     ],
+    sourcesIntro: "과실 무게와 포도 송이 기준은 아래 공식 자료에서 확인했습니다. 계산 예시는 가상 값이며, 마지막 항목은 실제 도매 가격을 조회할 수 있는 공식 창구입니다.",
     publishedAt: updateDate,
     modifiedAt: "2026-10-26",
   },
   {
     slug: "autumn-produce-box-kg",
-    title: "가을 과채 상자: 네트계 8kg·토마토 5kg·하우스감귤 3kg을 kg으로 맞추세요",
-    description: "네트계 멜론 8kg, 토마토 5kg, 하우스감귤 3kg, 수박 통, 대추방울 3kg, 생대추 2kg, 송본 단감 10kg 상자 가격을 실중량 kg당으로 바꿔 공식 가격정보와 같은 단위로 비교하는 방법입니다.",
-    lead: "과채 글은 상자·통 가격을 시세처럼 적기 쉽습니다. 8kg·5kg·3kg·통 이름을 그대로 두지 말고 내용 중량으로 나눈 뒤, 품목명·작형이 같은 행만 고릅니다.",
+    title: "통·개·상자로 파는 과채 가격 비교: 수박·멜론·단호박·토마토를 kg당으로 맞추는 법",
+    description: "수박·멜론처럼 한 통에 얼마, 단호박·파프리카처럼 몇 개에 얼마, 토마토·감귤처럼 한 상자에 얼마로 파는 과채를 무게로 바꿔 kg당 가격을 구하고 같은 기준으로 비교하는 순서와 계산 예시입니다.",
+    lead: "과채는 ‘한 통’, ‘몇 개’, ‘한 상자’처럼 서로 다른 단위로 팔립니다. 통이나 개로 파는 상품은 무게를 알아야 상자 상품이나 도매 시세와 같은 기준으로 비교할 수 있습니다. 무게를 묻고 kg당으로 바꾼 뒤 품목·크기·상태를 맞추세요.",
     sections: [
-      ["1. 네트계 8kg와 수박 통을 나누기", ["표시 8kg가 멜론 실중량인지 확인합니다.", "참외 행과 8kg 파렛트를 네트계 시세로 쓰지 않습니다.", "수박 한 통은 무게를 재기 전에 kg당과 같다고 보지 않고 꼭지절단 행과 나눕니다."]],
-      ["2. 토마토 5kg와 대추방울 3kg를 나누기", ["일반·완숙·찰토마토와 방울토마토는 품목이 다릅니다.", "대추방울 3kg를 완숙 5kg 행과 바로 비교하지 않습니다.", "열과를 뺀 판매 가능 중량으로 다시 나눕니다."]],
-      ["3. 하우스감귤 3kg·생대추 2kg·송본 10kg를 각각 맞추기", ["3kg·5kg·6kg와 몇 개입 선물을 한 단가로 묶지 않습니다.", "생대추와 건대추, 송본과 떫은감·곶감 원료를 나눕니다.", "송본 10kg와 태추 소포장을 한 단가로 묶지 않습니다."]],
-      ["4. 쥬키니 10kg·떫은감 5kg·파프리카 5kg를 각각 맞추기", ["쥬키니 10kg와 애호박 8kg·단호박 3kg는 작형 행이 다릅니다.", "떫은감 5kg는 단감·완성 곶감과 다른 품목입니다.", "빨강 파프리카 5kg와 피망 10kg를 한 시세로 쓰지 않습니다."]],
-      ["5. 직거래 택배가는 선별·완충·배송을 따로 적기", ["가락 kg당은 도매 거래 결과입니다.", "아이스팩·파손 위험이 포함되면 같은 숫자가 될 수 없습니다.", "같은 품목·실중량으로 맞춘 뒤에만 비교합니다."]],
+      ["1. 통·개로 파는 상품은 무게부터 묻기", ["수박·멜론처럼 통으로 파는 과채는 같은 ‘한 통’이라도 무게가 다릅니다. 통 무게(kg)를 물어 통 가격 ÷ 무게로 kg당 가격을 구합니다.", "단호박·파프리카·애호박처럼 몇 개 묶음으로 파는 상품은 묶음 전체 무게를 물어봅니다. 무게를 모르면 같은 개수·비슷한 크기 묶음끼리만 비교합니다.", "무게를 알려 주지 않는 판매글은 다른 글과 견줄 수 없는 글로 따로 둡니다."]],
+      ["2. 상자 상품은 실제 내용 중량으로 나누기", ["‘5kg 상자’, ‘3kg 상자’는 포장 이름일 수 있어 실제 내용 중량을 확인합니다.", "크기가 섞인 상자는 가장 큰 것·작은 것의 크기나 개수를 함께 물어봅니다.", "받은 뒤 물러지거나 갈라져 먹기 어려운 것을 뺀 무게로 다시 계산하면, 실제로 쓸 수 있는 양 기준의 kg당 가격을 알 수 있습니다. 이런 경우를 어떻게 처리할지는 주문 전에 정합니다."]],
+      ["3. 이름이 비슷한 다른 상품 나누기", ["토마토와 방울토마토, 애호박과 쥬키니처럼 이름이 비슷해도 다른 품목은 따로 비교합니다.", "단감과 떫은감(곶감용), 생대추와 건대추처럼 쓰임이나 가공 정도가 다르면 무게당 가격을 바로 비교할 수 없습니다.", "재배 방식(하우스·노지)이 적혀 있으면 같은 방식끼리 비교합니다."]],
+      ["4. 도매 시세와 견줄 때", ["도매시장 가격정보는 품목마다 kg·상자·개처럼 거래 단위가 다릅니다. 시세를 볼 때도 단위를 확인하고 kg당으로 바꿉니다.", "직거래 가격에는 선별·포장·배송 비용이 들어 있을 수 있어, 같은 단위로 맞춘 뒤에도 그 비용을 따로 생각합니다. 자세한 방법은 아래 ‘경락가와 직거래 가격 비교법’에 있습니다."]],
     ],
-    comparison: {
-      caption: "가을 과채 상자를 kg당으로 맞추는 표",
-      headers: ["포장 이름", "먼저 확인할 것", "비교값"],
+    example: {
+      caption: "과채 kg당 계산 예시",
+      intro: "파는 단위가 서로 다른 상품을 kg당으로 바꾸는 계산입니다.",
+      headers: ["판매글", "가격", "무게", "kg당 가격"],
       rows: [
-        ["네트계 멜론 8kg", "품종·상자/파렛트·참외 여부", "상자 가격 ÷ 내용 kg"],
-        ["수박 통·12kg 상자", "통 무게·꼭지절단", "통 또는 상자 가격 ÷ 내용 kg"],
-        ["토마토 5kg", "일반/완숙/찰·방울 구분", "상자 가격 ÷ 내용 kg"],
-        ["하우스감귤 3kg", "작형·개수 구성", "상자 가격 ÷ 내용 kg"],
-        ["송본 단감 10kg", "송본/태추·떫은감", "상자 가격 ÷ 내용 kg"],
-        ["쥬키니 10kg", "쥬키니/애호박/단호박", "상자 가격 ÷ 내용 kg"],
-        ["곶감용 떫은감 5kg", "떫은감/단감/완성 곶감", "상자 가격 ÷ 내용 kg"],
-        ["빨강 파프리카 5kg", "빨강/노랑·피망", "상자 가격 ÷ 내용 kg"],
+        ["수박 A 한 통", "22,000원", "8.0kg", "2,750원"],
+        ["수박 B 한 통", "18,000원", "6.0kg", "3,000원"],
+        ["단호박 3개 묶음", "9,000원", "2.4kg", "3,750원"],
+        ["토마토 5kg 상자", "25,000원", "표시 5.0kg / 먹을 수 있는 양 4.5kg", "5,000원 / 약 5,556원"],
+      ],
+      note: "모든 숫자는 계산 방법을 보여 주려고 만든 가상 값이며 실제 시세가 아닙니다. 통 가격이 더 싼 수박 B가 kg당으로는 더 비싸고, 버리는 양을 빼면 같은 상자의 kg당 가격도 올라갑니다.",
+    },
+    comparison: {
+      caption: "파는 단위별로 물어볼 것",
+      headers: ["파는 단위", "물어볼 것", "비교값"],
+      rows: [
+        ["한 통(수박·멜론)", "통 무게", "통 가격 ÷ 무게(kg)"],
+        ["몇 개 묶음(단호박·파프리카)", "묶음 전체 무게·개수", "묶음 가격 ÷ 무게(kg)"],
+        ["상자(토마토·감귤·단감)", "실제 내용 중량·크기 구성", "상자 가격 ÷ 내용 중량(kg)"],
+        ["팩(방울토마토·대추)", "팩 무게", "팩 가격 ÷ 무게(kg)"],
       ],
     },
     faqs: [
-      ["네트계 8kg가 가락 시세보다 비싸면 손해인가요?", "포함된 비용이 다릅니다. kg당으로 맞춘 뒤 선별·포장·배송을 반영한 예상 순수령액으로 비교하세요."],
-      ["수박 한 통 가격을 kg당 표와 바로 비교해도 되나요?", "통 무게를 잰 뒤에만 비교하세요. 꼭지절단·소형 수박과 일반 통을 한 숫자로 두지 않습니다."],
+      ["수박 한 통 가격만 보고 비교해도 되나요?", "통마다 무게가 달라 통 가격만으로는 비교할 수 없습니다. 무게를 물어 kg당으로 바꾸세요."],
+      ["감귤 3kg 상자와 5kg 상자는 어떻게 비교하나요?", "각각 실제 내용 중량으로 나눠 kg당 가격을 구하고, 크기 구성과 배송비 포함 여부가 같은지 확인하세요."],
     ],
     links: [["품목·등급·단위를 맞춰 공식 가격 조회하는 법", "agricultural-price-lookup"]],
     internalLinks: [
-      ["제철 과일 상자를 kg으로 맞추기", "/guides/autumn-fruit-box-kg.html"],
+      ["과일 상자를 kg당·개수로 맞추기", "/guides/autumn-fruit-box-kg.html"],
       ["가락 경락가와 직거래 가격을 kg당으로 맞추기", "/guides/garak-auction-direct-price-comparison.html"],
+      ["만나서 받기와 택배 중 고르기", "/guides/meetup-or-parcel-choice.html"],
     ],
     sources: [
       ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
+      ["한국농수산식품유통공사 농넷(전국 공영 도매시장 거래 정보)", "https://www.nongnet.or.kr/"],
     ],
+    sourcesIntro: "이 글의 계산 예시는 가상 값입니다. 아래는 같은 품목·등급·단위의 실제 도매 가격을 조회할 수 있는 공식 창구입니다.",
     publishedAt: updateDate,
     modifiedAt: "2026-10-26",
   },
@@ -645,8 +712,8 @@ const GUIDE_NOTES = {
   ] },
   "apple-plum-season-pack-size": { limits: [
     "수확기는 농촌진흥청 자료에 적힌 시기이며 지역과 해마다 달라질 수 있습니다. 실제 수확·발송일은 판매자에게 확인하세요.",
-    "자두는 품종별 수확기를 공식 자료로 정리하지 못해 숫자를 적지 않았습니다.",
-    "가격·시세와 과일 보관 기간은 다루지 않습니다.",
+    "자두 수확기·과실 무게·당도는 2020년 농사로 자료의 대표값이라 산지와 해에 따라 달라질 수 있습니다. 상자 개수는 상자 무게를 과실 무게로 나눈 어림값이며 실제 개수를 보증하지 않습니다.",
+    "가격·시세와 품종별 보관 기간은 다루지 않습니다.",
   ] },
   "tractor-horsepower-work-tool": { limits: [
     "면적별 적정 마력을 정한 공식 기준표는 찾지 못해 제시하지 않습니다. 작업기의 요구 동력은 제조사 자료로 확인하세요.",
@@ -667,8 +734,8 @@ const GUIDE_NOTES = {
     "출하자가 실제로 받는 정산액은 도매시장법인·공판장의 수수료 기준과 비용에 따라 다릅니다. 출하 전에 출하할 도매시장에 확인하세요.",
   ] },
   "kimjang-pack-unit-kg": { limits: PRICE_UNIT_LIMITS },
-  "autumn-fruit-box-kg": { limits: [...PRICE_UNIT_LIMITS, "숙도·당도는 품종과 수확일에 따라 다르며 이 글에서 판단하지 않습니다."] },
-  "autumn-produce-box-kg": { limits: [...PRICE_UNIT_LIMITS, "작형·품종 구분은 거래 표기를 맞추기 위한 것이며 품질 판정 기준이 아닙니다."] },
+  "autumn-fruit-box-kg": { limits: [...PRICE_UNIT_LIMITS, "과실 무게는 농촌진흥청 자료의 대표값이라 산지와 해에 따라 다릅니다. 어림 개수는 상자 무게를 나눈 계산값이며 실제 개수를 보증하지 않습니다.", "숙도·당도는 품종과 수확일에 따라 다르며 이 글에서 판단하지 않습니다."] },
+  "autumn-produce-box-kg": { limits: [...PRICE_UNIT_LIMITS, "품목 구분은 가격을 같은 기준으로 맞추기 위한 것이며 품질 판정 기준이 아닙니다. 상한 상품의 교환·환불은 판매자와 미리 정한 조건을 따릅니다."] },
   "listing-field-selection": { limits: [
     `판매글을 비교하기 쉽게 쓰는 요령이며 농산물 표시 의무 전체를 다루지 않습니다. 쌀 외 품목의 원산지 등 표시 기준은 <a href="https://www.naqs.go.kr/" rel="noopener">국립농산물품질관리원</a> 안내로 확인하세요.`,
     "실중량·수확일을 적는다고 품질이 보증되는 것은 아닙니다. 상처·크기 섞임 같은 상태는 사진과 설명으로 따로 알리세요.",
@@ -785,7 +852,8 @@ ${sourcesSection({ items: order.map((id) => SOURCES[id]), checked: CHECKED, cls:
 }
 const compareHubDesc = "감자·고구마·사과·배 품종과 관리기·경운기·트랙터를 용도, 작형, 수확기, 저장성, 검정·서류 기준으로 비교한 표입니다. 특성마다 농촌진흥청 등 공식 출처를 붙였습니다.";
 const compareHubTrail = [["홈", "/"], ["비교표", "/compare/"]];
-const compareHub = `${head({ title: "품종·장비 비교표", description: compareHubDesc, canonical: `${base}/compare/`, ogType: "website", ads: "deferred" })}${graph({ "@type": "CollectionPage", "@id": `${base}/compare/#webpage`, name: "품종·장비 비교표", url: `${base}/compare/`, inLanguage: "ko-KR", isPartOf: siteRef, publisher: orgRef, author: orgRef, datePublished: COMPARE_PUBLISHED, dateModified: CHECKED, hasPart: CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })) }, breadcrumbLd(compareHubTrail))}${HEADER("/compare/")}<main class="cmp-main" id="main">${breadcrumbNav(compareHubTrail)}<section class="cmp-hero"><p class="eyebrow">자료 확인일 ${CHECKED}</p><h1>품종·장비 비교표</h1><p class="lead">${esc(compareHubDesc)}</p>${metaBlock({ published: COMPARE_PUBLISHED, checked: CHECKED })}<div class="cmp-cta"><a class="btn primary" href="/#compare">질문에 답하고 1:1로 비교하기 ${arrow}</a></div></section><section class="cmp-section"><ul class="card-grid">${CATEGORIES.map((c) => `<li><a href="/compare/${c.page.slug}.html"><strong>${esc(c.page.h1)}</strong><span>${esc(c.intro)} (${c.cands.length}개, 출처 ${sourceOrder(c).length}건)</span></a></li>`).join("")}<li><a href="/tools/tractor-candidate-sheet.html"><strong>중고 트랙터 두 후보 확인표</strong><span>명판·정비·작업기·시운전·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span></a></li></ul></section><section class="cmp-section"><h2>비교표를 읽는 법</h2><ul class="cmp-steps"><li>값 뒤의 [번호]는 각 표 아래 출처 목록의 번호입니다. 원문을 직접 열어 확인할 수 있습니다.</li><li>당도·수확기·수량은 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.</li><li>가격은 넣지 않았습니다. 시세는 같은 품종·등급·포장 단위로 맞춰 공식 가격정보에서 확인하세요.</li><li>만드는 방식과 AI 도구 활용 범위는 <a href="/editorial.html">편집 원칙</a>에 있습니다.</li></ul></section></main>${foot}`;
+// 목록(허브) 페이지는 본문이 짧은 안내용이라 광고 코드를 싣지 않습니다(소유권 확인 meta는 유지).
+const compareHub = `${head({ title: "품종·장비 비교표", description: compareHubDesc, canonical: `${base}/compare/`, ogType: "website", ads: false })}${graph({ "@type": "CollectionPage", "@id": `${base}/compare/#webpage`, name: "품종·장비 비교표", url: `${base}/compare/`, inLanguage: "ko-KR", isPartOf: siteRef, publisher: orgRef, author: orgRef, datePublished: COMPARE_PUBLISHED, dateModified: CHECKED, hasPart: CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })) }, breadcrumbLd(compareHubTrail))}${HEADER("/compare/")}<main class="cmp-main" id="main">${breadcrumbNav(compareHubTrail)}<section class="cmp-hero"><p class="eyebrow">자료 확인일 ${CHECKED}</p><h1>품종·장비 비교표</h1><p class="lead">${esc(compareHubDesc)}</p>${metaBlock({ published: COMPARE_PUBLISHED, checked: CHECKED })}<div class="cmp-cta"><a class="btn primary" href="/#compare">질문에 답하고 1:1로 비교하기 ${arrow}</a></div></section><section class="cmp-section"><ul class="card-grid">${CATEGORIES.map((c) => `<li><a href="/compare/${c.page.slug}.html"><strong>${esc(c.page.h1)}</strong><span>${esc(c.intro)} (${c.cands.length}개, 출처 ${sourceOrder(c).length}건)</span></a></li>`).join("")}<li><a href="/tools/tractor-candidate-sheet.html"><strong>중고 트랙터 두 후보 확인표</strong><span>명판·정비·작업기·시운전·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span></a></li></ul></section><section class="cmp-section"><h2>비교표를 읽는 법</h2><ul class="cmp-steps"><li>값 뒤의 [번호]는 각 표 아래 출처 목록의 번호입니다. 원문을 직접 열어 확인할 수 있습니다.</li><li>당도·수확기·수량은 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.</li><li>가격은 넣지 않았습니다. 시세는 같은 품종·등급·포장 단위로 맞춰 공식 가격정보에서 확인하세요.</li><li>만드는 방식과 AI 도구 활용 범위는 <a href="/editorial.html">편집 원칙</a>에 있습니다.</li></ul></section></main>${foot}`;
 await fs.writeFile(path.join(root, "compare", "index.html"), compareHub, "utf8");
 
 // ---- 선택 가이드 ----
@@ -795,7 +863,7 @@ const compareCards = CATEGORIES.map((c) => `<article><p>품종·장비 비교표
 const cards = guides.map((guide) => `<article><p>선택 기준</p><h2><a href="/guides/${guide.slug}.html">${esc(guide.title)}</a></h2><span>${esc(guide.description)}</span><a href="/guides/${guide.slug}.html">기준 자세히 보기 ${arrow}</a></article>`).join("") + `<article><p>직접 비교</p><h2><a href="/tools/tractor-candidate-sheet.html">중고 트랙터 두 후보 확인표</a></h2><span>명판·정비·작업기·작동·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span><a href="/tools/tractor-candidate-sheet.html">확인표 열기 ${arrow}</a></article>`;
 const hubTrail = [["홈", "/"], ["선택 가이드", "/guides.html"]];
 const hubLd = graph({ "@type": "CollectionPage", "@id": `${base}/guides.html#webpage`, name: "농산물·농기계 선택 가이드", url: `${base}/guides.html`, inLanguage: "ko-KR", isPartOf: siteRef, publisher: orgRef, author: orgRef, datePublished: originalDate, dateModified: buildDate, hasPart: [...CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })), ...guides.map((guide) => ({ "@type": "Article", name: guide.title, url: `${base}/guides/${guide.slug}.html` }))] }, breadcrumbLd(hubTrail));
-const hub = `${head({ title: "농산물·농기계 선택 가이드", description: "감자·고구마·사과·배 품종 비교표와 쌀·과일 포장, 중고 트랙터와 탁송 견적, 경락가와 직거래 가격을 목적, 규격, 상태와 거래 조건으로 비교하는 선택 가이드입니다.", canonical: `${base}/guides.html`, ogType: "website", css: ["/guide.css?v=2.1.0"] })}${hubLd}${HEADER("/guides.html")}<main class="guide-main" id="main">${breadcrumbNav(hubTrail)}<section class="guide-hero"><p>조건부터 맞추는 비교 기준</p><h1>농산물·농기계<br><em>선택 가이드</em></h1><span>인기순이나 광고 문구보다 용도·규격·상태·인도 조건으로 비교하세요. 가이드마다 출처와 확인일, 다루지 않는 범위를 함께 적었습니다.</span>${metaBlock({ published: originalDate, checked: buildDate })}</section><h2 class="guide-sub">품종·장비 비교표</h2><section class="guide-grid">${compareCards}</section><h2 class="guide-sub">선택 기준 가이드</h2><section class="guide-grid">${cards}</section></main>${foot}`;
+const hub = `${head({ title: "농산물·농기계 선택 가이드", description: "감자·고구마·사과·배 품종 비교표와 쌀·과일 포장, 중고 트랙터와 탁송 견적, 경락가와 직거래 가격을 목적, 규격, 상태와 거래 조건으로 비교하는 선택 가이드입니다.", canonical: `${base}/guides.html`, ogType: "website", css: ["/guide.css?v=2.2.0"], ads: false })}${hubLd}${HEADER("/guides.html")}<main class="guide-main" id="main">${breadcrumbNav(hubTrail)}<section class="guide-hero"><p>조건부터 맞추는 비교 기준</p><h1>농산물·농기계<br><em>선택 가이드</em></h1><span>인기순이나 광고 문구보다 용도·규격·상태·인도 조건으로 비교하세요. 가이드마다 출처와 확인일, 다루지 않는 범위를 함께 적었습니다.</span>${metaBlock({ published: originalDate, checked: buildDate })}</section><h2 class="guide-sub">품종·장비 비교표</h2><section class="guide-grid">${compareCards}</section><h2 class="guide-sub">선택 기준 가이드</h2><section class="guide-grid">${cards}</section></main>${foot}`;
 await fs.writeFile(path.join(root, "guides.html"), hub, "utf8");
 
 for (const guide of guides) {
@@ -813,18 +881,22 @@ for (const guide of guides) {
   const comparisonHtml = guide.comparison
     ? `<section class="guide-comparison"><h2>${esc(guide.comparison.caption)}</h2><div class="guide-table-wrap"><table><thead><tr>${guide.comparison.headers.map((header) => `<th scope="col">${esc(header)}</th>`).join("")}</tr></thead><tbody>${guide.comparison.rows.map((row) => `<tr>${row.map((cell, index) => index === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>`
     : "";
+  // 계산 예시: 실제 시세가 아닌 가상 값임을 제목과 설명에 밝힙니다.
+  const exampleHtml = guide.example
+    ? `<section class="guide-comparison guide-example"><h2>${esc(guide.example.caption)} <small>가상 예시</small></h2>${guide.example.intro ? `<p>${esc(guide.example.intro)}</p>` : ""}<div class="guide-table-wrap"><table><thead><tr>${guide.example.headers.map((header) => `<th scope="col">${esc(header)}</th>`).join("")}</tr></thead><tbody>${guide.example.rows.map((row) => `<tr>${row.map((cell, index) => index === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${guide.example.note ? `<p class="guide-note">${esc(guide.example.note)}</p>` : ""}</section>`
+    : "";
   const faqHtml = guide.faqs?.length
     ? `<section class="guide-faq"><h2>자주 묻는 질문</h2>${guide.faqs.map(([question, answer]) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join("")}</section>`
     : "";
   const limitsHtml = limitsSection([...(notes.limits || []), FINAL_CHECK]);
-  const sourcesHtml = sourcesSection({ items: srcs, checked: modifiedAt, intro: (guide.sources || []).length ? `본문의 법령·수치·기준은 아래 자료에서 확인했습니다.${notes.extraSources ? " 마지막 항목은 ‘범위와 한계’에서 안내한 공식 확인처입니다." : ""}` : "이 글은 법령이나 통계 수치를 인용하지 않은 거래 절차 안내입니다. 아래는 ‘범위와 한계’에서 안내한 공식 확인처입니다." });
+  const sourcesHtml = sourcesSection({ items: srcs, checked: modifiedAt, intro: guide.sourcesIntro ? guide.sourcesIntro : (guide.sources || []).length ?`본문의 법령·수치·기준은 아래 자료에서 확인했습니다.${notes.extraSources ? " 마지막 항목은 ‘범위와 한계’에서 안내한 공식 확인처입니다." : ""}` : "이 글은 법령이나 통계 수치를 인용하지 않은 거래 절차 안내입니다. 아래는 ‘범위와 한계’에서 안내한 공식 확인처입니다." });
   const trail = [["홈", "/"], ["선택 가이드", "/guides.html"], [shortTitle(guide.title), `/guides/${guide.slug}.html`]];
   const ld = graph({ "@type": "Article", "@id": `${canonical}#article`, headline: guide.title, description: guide.description, datePublished: publishedAt, dateModified: modifiedAt, inLanguage: "ko-KR", mainEntityOfPage: canonical, isPartOf: siteRef, author: orgRef, publisher: orgRef, ...(srcs.length ? { citation: srcs.map((s) => s.u) } : {}) }, breadcrumbLd(trail));
-  const html = `${head({ title: guide.title, description: guide.description, canonical, css: ["/guide.css?v=2.1.0"] })}${ld}${HEADER()}<main class="guide-main" id="main">${breadcrumbNav(trail)}<article class="guide-article"><header><p>선택 가이드</p><h1>${esc(guide.title)}</h1><span>${esc(guide.description)}</span>${metaBlock({ published: publishedAt, checked: modifiedAt, sources: srcs.length })}</header><div class="guide-layout"><div><aside class="guide-lead"><strong>먼저 정할 것</strong><p>${esc(guide.lead)}</p></aside>${sectionHtml}${comparisonHtml}${faqHtml}${internalLinksHtml}${limitsHtml}${sourcesHtml}</div><aside class="guide-next"><h2>조건을 정했다면</h2><p>${esc(guide.nextLead ?? "같은 조건으로 시세와 거래 기준을 비교하세요.")}</p>${linksHtml}</aside></div></article></main>${foot}`;
+  const html = `${head({ title: guide.title, description: guide.description, canonical, css: ["/guide.css?v=2.2.0"] })}${ld}${HEADER()}<main class="guide-main" id="main">${breadcrumbNav(trail)}<article class="guide-article"><header><p>선택 가이드</p><h1>${esc(guide.title)}</h1><span>${esc(guide.description)}</span>${metaBlock({ published: publishedAt, checked: modifiedAt, sources: srcs.length })}</header><div class="guide-layout"><div><aside class="guide-lead"><strong>먼저 정할 것</strong><p>${esc(guide.lead)}</p></aside>${sectionHtml}${exampleHtml}${comparisonHtml}${faqHtml}${internalLinksHtml}${limitsHtml}${sourcesHtml}</div><aside class="guide-next"><h2>조건을 정했다면</h2><p>${esc(guide.nextLead ?? "같은 조건으로 시세와 거래 기준을 비교하세요.")}</p>${linksHtml}</aside></div></article></main>${foot}`;
   await fs.writeFile(path.join(root, "guides", `${guide.slug}.html`), html, "utf8");
 }
 
-const css = `.guide-main{max-width:1000px}.guide-hero{padding:44px 0 30px}.guide-hero>p,.guide-grid article>p,.guide-article>header>p:first-child{color:var(--green2);font-size:15px;font-weight:800;margin:0}.guide-hero h1{font-size:44px;line-height:1.22;letter-spacing:-1.5px;margin:7px 0}.guide-hero h1 em{font-style:normal;color:var(--green)}.guide-hero>span,.guide-grid article>span,.guide-article>header>span{color:var(--text)}.guide-sub{font-size:23px;margin:12px 0 12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:40px}.guide-grid article{border:1px solid var(--line);border-radius:12px;padding:20px}.guide-grid h2{font-size:20px;line-height:1.45;margin:6px 0}.guide-grid h2 a{color:var(--ink);text-decoration:none}.guide-grid h2 a:hover{color:var(--green2);text-decoration:underline}.guide-grid article>span{display:block;font-size:16px}.guide-grid article>a,.guide-related a{display:flex;align-items:center;gap:7px;min-height:44px;margin-top:8px;color:var(--green2);font-weight:800;font-size:16px}.guide-article>header{display:block;height:auto;padding:32px 0;border-bottom:1px solid var(--line)}.guide-article h1{font-size:38px;line-height:1.3;margin:7px 0}.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:34px;padding:30px 0 60px}.guide-layout>div>section{padding:8px 0 22px;border-bottom:1px solid var(--line)}.guide-layout>div>section.limits{padding:14px 18px;margin:22px 0 4px;border-bottom:0}.guide-layout h2{font-size:22px;line-height:1.4}.guide-layout li{color:var(--text);margin:9px 0}.guide-lead{background:var(--pale);border-left:4px solid var(--yellow);padding:18px;margin-bottom:18px}.guide-lead p{margin-bottom:0;color:var(--text)}.guide-source a,.guide-related a{color:var(--green2);font-weight:800;text-decoration:underline;text-underline-offset:3px}.guide-table-wrap{overflow-x:auto}.guide-comparison table{width:100%;border-collapse:collapse;font-size:16px}.guide-comparison th,.guide-comparison td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top}.guide-comparison thead th,.guide-comparison tbody th{background:var(--pale);font-weight:800}.guide-faq details{border:1px solid var(--line);border-radius:8px;padding:6px 15px;margin:9px 0}.guide-faq summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}.guide-faq details p{margin:6px 0 10px;color:var(--text)}.guide-next{align-self:start;position:sticky;top:20px;background:var(--pale);padding:20px;border-radius:10px}.guide-next h2{margin-top:0}.guide-next p{font-size:16px;color:var(--text)}.guide-next a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--green2);font-size:16px;font-weight:800;text-decoration:none}@media(max-width:760px){.guide-grid,.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-hero h1,.guide-article h1{font-size:30px}.guide-article>header{padding:22px 0}.guide-next{position:static}.guide-comparison table{min-width:600px}}`;
+const css = `.guide-main{max-width:1000px}.guide-hero{padding:44px 0 30px}.guide-hero>p,.guide-grid article>p,.guide-article>header>p:first-child{color:var(--green2);font-size:15px;font-weight:800;margin:0}.guide-hero h1{font-size:44px;line-height:1.22;letter-spacing:-1.5px;margin:7px 0}.guide-hero h1 em{font-style:normal;color:var(--green)}.guide-hero>span,.guide-grid article>span,.guide-article>header>span{color:var(--text)}.guide-sub{font-size:23px;margin:12px 0 12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:40px}.guide-grid article{border:1px solid var(--line);border-radius:12px;padding:20px}.guide-grid h2{font-size:20px;line-height:1.45;margin:6px 0}.guide-grid h2 a{color:var(--ink);text-decoration:none}.guide-grid h2 a:hover{color:var(--green2);text-decoration:underline}.guide-grid article>span{display:block;font-size:16px}.guide-grid article>a,.guide-related a{display:flex;align-items:center;gap:7px;min-height:44px;margin-top:8px;color:var(--green2);font-weight:800;font-size:16px}.guide-article>header{display:block;height:auto;padding:32px 0;border-bottom:1px solid var(--line)}.guide-article h1{font-size:38px;line-height:1.3;margin:7px 0}.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:34px;padding:30px 0 60px}.guide-layout>div>section{padding:8px 0 22px;border-bottom:1px solid var(--line)}.guide-layout>div>section.limits{padding:14px 18px;margin:22px 0 4px;border-bottom:0}.guide-layout h2{font-size:22px;line-height:1.4}.guide-layout li{color:var(--text);margin:9px 0}.guide-lead{background:var(--pale);border-left:4px solid var(--yellow);padding:18px;margin-bottom:18px}.guide-lead p{margin-bottom:0;color:var(--text)}.guide-source a,.guide-related a{color:var(--green2);font-weight:800;text-decoration:underline;text-underline-offset:3px}.guide-table-wrap{overflow-x:auto}.guide-comparison table{width:100%;border-collapse:collapse;font-size:16px}.guide-comparison th,.guide-comparison td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top}.guide-comparison thead th,.guide-comparison tbody th{background:var(--pale);font-weight:800}.guide-faq details{border:1px solid var(--line);border-radius:8px;padding:6px 15px;margin:9px 0}.guide-faq summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}.guide-faq details p{margin:6px 0 10px;color:var(--text)}.guide-next{align-self:start;position:sticky;top:20px;background:var(--pale);padding:20px;border-radius:10px}.guide-next h2{margin-top:0}.guide-next p{font-size:16px;color:var(--text)}.guide-next a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--green2);font-size:16px;font-weight:800;text-decoration:none}.guide-example h2 small{display:inline-block;font-size:15px;font-weight:800;color:var(--green2);border:1px solid var(--line);border-radius:999px;padding:0 10px;margin-left:6px;vertical-align:middle}.guide-comparison>p,.guide-note{font-size:16px;color:var(--text)}.guide-note{margin:10px 0 0}@media(max-width:760px){.guide-grid,.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-hero h1,.guide-article h1{font-size:30px}.guide-article>header{padding:22px 0}.guide-next{position:static}.guide-comparison table{min-width:600px}}`;
 await fs.writeFile(path.join(root, "guide.css"), css, "utf8");
 
 // ---- 사이트 안내 페이지 ----
