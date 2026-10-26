@@ -145,7 +145,7 @@ sup{font-size:12px;color:var(--green2);margin-left:1px;line-height:0}
 .cmp-table tbody th{white-space:nowrap}
 .cmp-table tbody th a{font-weight:800}
 .cmp-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.cmp-card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;scroll-margin-top:10px}
+.cmp-card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;scroll-margin-top:10px;content-visibility:auto;contain-intrinsic-size:auto 460px}
 .cmp-card h3{font-size:21px;margin:0 0 8px;color:var(--green)}
 .cmp-card dl{margin:0}
 .cmp-card dl div{display:grid;grid-template-columns:118px 1fr;gap:8px;padding:7px 0;border-top:1px solid #edf1ee}
