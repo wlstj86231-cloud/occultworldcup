@@ -144,11 +144,11 @@ sup{font-size:12px;color:var(--green2);margin-left:1px;line-height:0}
 .cmp-table thead th{background:var(--pale);font-size:15.5px}
 .cmp-table tbody th{white-space:nowrap}
 .cmp-table tbody th a{font-weight:800}
-.cmp-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.cmp-card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;scroll-margin-top:10px;content-visibility:auto;contain-intrinsic-size:auto 460px}
+.cmp-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cmp-card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;scroll-margin-top:10px;content-visibility:auto;contain-intrinsic-block-size:auto 460px;min-width:0}
 .cmp-card h3{font-size:21px;margin:0 0 8px;color:var(--green)}
 .cmp-card dl{margin:0}
-.cmp-card dl div{display:grid;grid-template-columns:118px 1fr;gap:8px;padding:7px 0;border-top:1px solid #edf1ee}
+.cmp-card dl div{display:grid;grid-template-columns:118px minmax(0,1fr);gap:8px;padding:7px 0;border-top:1px solid #edf1ee}
 .cmp-card dt{font-weight:800;font-size:15.5px;color:var(--muted)}
 .cmp-card dd{margin:0;font-size:16px;line-height:1.55}
 .cmp-card .cmp-warn{margin:10px 0 0;padding-left:20px;font-size:16px;color:var(--text)}
@@ -181,14 +181,15 @@ sup{font-size:12px;color:var(--green2);margin-left:1px;line-height:0}
   .row dd+dd{border-left:1px solid #e8ede9}
   .duel-names strong{font-size:19px}
   .pick{font-size:17px}
-  .facts,.card-grid,.principles,.cmp-quick,.cmp-cards{grid-template-columns:1fr}
+  .facts,.card-grid,.principles,.cmp-quick,.cmp-cards{grid-template-columns:minmax(0,1fr)}
   .block{padding:40px 0 4px}
   .block-head h2{font-size:23px}
   .r-box h3{font-size:29px}
   .cmp-hero h1{font-size:30px}
-  .cmp-card dl div{grid-template-columns:96px 1fr}
+  .cmp-card dl div{grid-template-columns:96px minmax(0,1fr)}
   .site-footer .wrap{padding:18px 16px}
 }
 @media(max-width:380px){.intro-steps ol{grid-template-columns:1fr}.cat-grid{grid-template-columns:1fr}}
 @media print{.site-header nav,.site-footer nav,.picks,.actions,.r-links{display:none}}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.guide-breadcrumb{padding-top:22px;display:flex;flex-wrap:wrap;gap:6px 8px;color:var(--muted);font-size:15px}

@@ -6,6 +6,9 @@ const base = "https://occultworldcup.com";
 const originalDate = "2026-08-10";
 const updateDate = "2026-09-20";
 const buildDate = "2026-10-26";
+const LAW_GRAIN = "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%96%91%EA%B3%A1%EA%B4%80%EB%A6%AC%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99";
+const LAW_MECH = "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%ED%99%94%EC%B4%89%EC%A7%84%EB%B2%95";
+const LAW_MECH_RULE = "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%ED%99%94%EC%B4%89%EC%A7%84%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99";
 // 비교 월드컵 후보 자료(브라우저와 같은 파일)를 읽어 비교표 페이지를 만듭니다.
 const dataSource = await fs.readFile(path.join(root, "worldcup-data.js"), "utf8");
 const { CATEGORIES, SOURCES, CHECKED, nicsSearchUrl } = await import(`data:text/javascript;base64,${Buffer.from(dataSource).toString("base64")}`);
@@ -69,11 +72,12 @@ const guides = [
       ["1. 작업기부터 적기", ["로터리·로더·쟁기 등 실제 사용할 작업기의 규격과 요구 동력을 확인합니다.", "본체 가격에 포함되는 작업기와 별도 구매할 작업기를 구분합니다."]],
       ["2. 사용시간보다 상태 보기", ["냉간 시동, 누유, PTO, 유압, 변속을 직접 확인하고 계기판 교체 여부를 묻습니다.", "정비 영수증과 소모품 교환 기록이 사용시간 설명과 맞는지 비교합니다."]],
       ["3. 인도 비용까지 총액으로 보기", ["상차·결박·운송·하차 비용과 책임자를 계약서에 적습니다.", "진입로 폭과 경사, 전선, 하차 공간을 운송 기사와 미리 확인합니다."]],
-      ["4. 마력 구분과 서류 알아두기", ["농림축산식품부 농업기계 보유현황 조사는 트랙터를 소형(40마력 미만)·중형(40~60마력)·대형(60마력 이상)으로 나눕니다. 2025년 12월 1일 기준 중형이 154,969대로 가장 많습니다.", "면적별 적정 마력을 정한 공식 기준표는 찾지 못했습니다. 실제로 달 작업기의 요구 동력과 명판으로 맞추세요.", "트랙터는 차대에 제조번호를 각인하는 기종이라 중고로 거래하면 농업기계화 촉진법의 중고거래 신고 대상입니다. 명판·차대번호를 사진으로 확인하세요."]],
+      ["4. 마력 구분과 서류 알아두기", ["농림축산식품부 농업기계 보유현황 조사는 트랙터를 소형(40마력 미만)·중형(40~60마력)·대형(60마력 이상)으로 나눕니다. 2025년 12월 1일 기준 중형이 154,969대로 가장 많습니다.", "면적별 적정 마력을 정한 공식 기준표는 찾지 못했습니다. 실제로 달 작업기의 요구 동력과 명판으로 맞추세요.", "2022년 6월 16일 이후 제조·수입된 트랙터는 차대에 제조번호가 새겨져 있고, 이런 트랙터를 중고로 사고팔면 농업기계화 촉진법 제9조의7에 따라 거래 내용이 신고됩니다. 산 농업인이 면세유 때문에 농협에 기계를 신고하면 농협이 신고하고(직접 신고도 가능), 판매·정비업체를 거치면 그 업체가 신고합니다. 명판과 차대 번호를 사진으로 확인하세요."]],
     ],
     sources: [
       ["농림축산식품부 2025년 농업기계 보유현황", "https://www.mafra.go.kr/bbs/home/789/578265/artclView.do"],
-      ["국가법령정보센터 농업기계화 촉진법", "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%ED%99%94%EC%B4%89%EC%A7%84%EB%B2%95"],
+      ["국가법령정보센터 농업기계화 촉진법", LAW_MECH],
+      ["국가법령정보센터 농업기계화 촉진법 시행규칙", LAW_MECH_RULE],
     ],
     links: [
       ["중고 트랙터 가격 비교 원리", "used-tractor-price-comparison-guide"],
@@ -84,6 +88,7 @@ const guides = [
       ["같은 조건으로 트랙터 탁송 견적 비교하기", "/guides/tractor-transport-quote-comparison.html"],
       ["두 중고 트랙터 후보의 미확인 자료 비교하기", "/tools/tractor-candidate-sheet.html"],
       ["관리기·경운기·트랙터 비교(작업·검정·중고 서류·안전)", "/compare/field-machinery.html"],
+      ["중고 농기계 판매글에 적을 3가지(명판·시간·작업기)", "/guides/machinery-listing-fields.html"],
     ],
     modifiedAt: "2026-10-26",
   },
@@ -138,11 +143,19 @@ const guides = [
       ["1. 표시사항을 네 칸으로 보기", ["품종, 생산연도, 도정연월일, 원산지를 각각 확인합니다.", "혼합미인지 단일 품종인지, 생산자와 판매자가 같은지도 함께 봅니다."]],
       ["2. 10kg와 20kg의 실제 비용 비교", ["상품가와 배송비를 더한 뒤 kg당 가격으로 환산합니다.", "소비 기간이 길다면 낮은 kg당 가격보다 개봉 후 보관 부담을 더 중요하게 봅니다."]],
       ["3. 도착 뒤 확인", ["포장 파손, 습기, 벌레 흔적과 표시사항을 개봉 전에 촬영합니다.", "판매자가 안내한 밀폐·저온 보관법과 반품 기준을 주문 전에 확인합니다."]],
+      ["4. 포장 쌀에 표시해야 하는 항목", ["양곡관리법 시행규칙(별표 4)은 포장 쌀에 품목, 생산연도, 실제 중량, 품종, 도정 연월일, 생산자·가공자 또는 판매원의 주소·상호·전화번호를 표시하도록 정합니다.", "품종을 모르면 ‘혼합’으로, 품종을 섞었으면 비율이나 ‘혼합’으로 표시합니다. 도정일이 다른 쌀을 섞었으면 먼저 도정한 날짜를 적습니다.", "멥쌀은 등급(특·상·보통, 해당하지 않으면 ‘등외’)도 표시합니다. 단백질 함량은 적어도 되고 안 적어도 되는 항목입니다.", "직거래로 살 때도 이 항목을 기준으로 판매자에게 물어보면 비교하기 쉽습니다."]],
+    ],
+    internalLinks: [
+      ["김장 배추·햅쌀 판매글의 날짜 구분하기", "/guides/kimjang-listing-dates.html"],
+    ],
+    sources: [
+      ["국가법령정보센터 「양곡관리법 시행규칙」 별표 4(양곡의 표시사항)", LAW_GRAIN],
     ],
     links: [
       ["햅쌀 10kg·20kg 가격 비교", "new-rice-10kg-20kg-price-guide"],
       ["갓도정 쌀 구매 확인법", "fresh-milled-rice-buying-guide"],
     ],
+    modifiedAt: buildDate,
   },
   {
     slug: "garak-auction-direct-price-comparison",
@@ -297,223 +310,316 @@ const guides = [
   },
   {
     slug: "listing-field-selection",
-    title: "판매글에 품종·중량·수확일 칸을 고르기",
-    description: "농산물 직거래 판매글을 올리기 전에 품종명, 실중량 kg, 수확일 칸을 고르는 방법입니다.",
-    lead: "판매글은 긴 소개보다 세 칸이 먼저입니다. 통칭·망 이름·사진 촬영일만 있으면 같은 글을 비교할 수 없으니, 품종·실중량·수확일을 고른 뒤 그 칸을 채우세요.",
+    title: "농산물 판매글에 꼭 적을 3가지: 품종명·실중량·수확일",
+    description: "직거래 판매글을 올리기 전에 품종명, 포장재를 뺀 실중량(kg), 실제 수확일을 적는 방법과 예시입니다.",
+    lead: "사는 사람은 사진보다 숫자로 비교합니다. ‘햇사과 10kg 망’처럼 통칭과 포장 이름만 있으면 다른 글과 견줄 수 없으니, 품종명·실중량·수확일 세 가지를 먼저 적고 나머지 설명을 붙이세요.",
     campaign: "c2c_howto_202609",
-    nextLead: "세 칸을 골랐다면 같은 칸으로 판매글을 올리세요.",
+    nextLead: "세 가지를 적었다면 같은 항목으로 판매글을 올리세요.",
     sections: [
-      ["1. 품종 칸에 통칭만 둘지 고르기", ["배추·사과처럼 품목만 있으면 비교가 안 됩니다.", "실제로 낸 품종명을 칸에 둘지 고릅니다.", "모르면 추측 품종을 넣지 말고 미확인을 고릅니다."]],
-      ["2. 중량 칸에 망 이름을 둘지 고르기", ["10kg 망은 포장 이름입니다.", "비교하려면 포장재를 뺀 실중량 kg를 고릅니다.", "여러 규격이면 글도 나눠 고릅니다."]],
-      ["3. 날짜 칸에 촬영일을 둘지 고르기", ["오늘 찍은 사진이 오늘 수확은 아닙니다.", "수확일과 촬영일을 같은 칸에 넣지 않습니다.", "아직 따기 전이면 출하 가능일을 수확일 칸에 넣지 않습니다."]],
+      ["1. 품종명: 통칭 대신 실제 이름", ["‘사과’, ‘햇감자’, ‘호박고구마’는 품목이나 유형 이름입니다. 홍로·후지, 수미·하령, 호풍미·소담미처럼 실제 품종명을 적습니다.", "같은 품목이라도 품종에 따라 수확기, 저장성, 용도가 다릅니다. 품종별 차이는 아래 비교표에서 출처와 함께 볼 수 있습니다.", "품종을 모르면 추측해서 쓰지 말고 ‘품종 모름’이라고 적습니다. 쌀은 양곡 표시 기준에서 품종명을 모르면 ‘혼합’으로 표시합니다."]],
+      ["2. 실중량: 포장 이름이 아니라 내용물 무게", ["‘10kg 망’, ‘5kg 상자’는 포장 규격 이름일 수 있습니다. 포장재를 뺀 내용물 무게를 저울로 재서 적습니다.", "크기가 섞였다면 대략적인 개수나 가장 큰 것·작은 것의 크기를 함께 적습니다.", "규격이 여러 개면 글을 나누거나 규격별 가격을 따로 적습니다. 그래야 사는 사람이 kg당 가격을 계산할 수 있습니다."]],
+      ["3. 수확일: 사진 찍은 날과 나누기", ["오늘 찍은 사진이 오늘 수확한 물건이라는 뜻은 아닙니다. 실제로 캔 날·딴 날을 적습니다.", "아직 수확 전이면 ‘출하 가능일(예정)’로 따로 적고 수확일에 넣지 않습니다.", "쌀은 생산연도(원료 벼의 수확연도)와 도정 연월일을 따로 표시하는 항목입니다. 둘 다 적습니다."]],
+      ["4. 올리기 전 마지막 확인", ["상자 전체와 내용물, 저울 숫자가 함께 보이게 사진을 찍습니다.", "만나서 받는지 택배인지, 택배비가 가격에 들어 있는지 적습니다.", "상처·크기 섞임 같은 단점도 미리 적어 두면 거래 뒤 다툼이 줄어듭니다."]],
     ],
     comparison: {
-      caption: "판매글 세 칸 고르기",
-      headers: ["칸", "고를 것", "고르지 말 것"],
+      caption: "판매글 세 항목 예시",
+      headers: ["항목", "이렇게 적기", "이것만 적으면 부족"],
       rows: [
-        ["품종", "실제 품종명", "품목 통칭만"],
-        ["중량", "실중량 kg", "망·상자 이름만"],
-        ["날짜", "수확일", "사진 촬영일만"],
+        ["품종명", "홍로 / 수미 / 호풍미", "사과 / 햇감자 / 호박고구마"],
+        ["실중량", "포장재 뺀 9.8kg, 28과 내외", "10kg 망"],
+        ["수확일", "10월 22일 수확(24일 촬영)", "오늘 찍은 사진"],
       ],
     },
     faqs: [
-      ["상자 이름만 적어도 되나요?", "상자 이름은 보조입니다. 비교하려면 실중량 kg를 고르세요."],
-      ["품종을 모르면 어떻게 하나요?", "추측해서 채우지 말고 미확인을 고른 뒤 그 칸을 비운 채 올리지 마세요."],
+      ["상자에 적힌 무게를 그대로 적어도 되나요?", "상자 표시가 포장재를 뺀 무게인지 먼저 확인하세요. 모르겠으면 저울로 재서 실중량을 적는 편이 정확합니다."],
+      ["품종을 모르면 어떻게 하나요?", "추측해서 적지 말고 ‘품종 모름’이라고 쓰세요. 쌀은 양곡 표시 기준에 따라 ‘혼합’으로 표시합니다."],
+    ],
+    internalLinks: [
+      ["감자 품종 15종 비교표(용도·작형)", "/compare/potato-varieties.html"],
+      ["사과 품종 12종 비교표(수확기·저장성)", "/compare/apple-varieties.html"],
+      ["제철 과일 상자를 kg당 가격으로 맞추기", "/guides/autumn-fruit-box-kg.html"],
+    ],
+    sources: [
+      ["국가법령정보센터 「양곡관리법 시행규칙」 별표 4(양곡의 표시사항)", LAW_GRAIN],
     ],
     links: [
-      ["품종·중량·수확일 칸을 채워 판매글 올리기", "produce-listing-three-fields"],
+      ["품종·중량·수확일을 적어 판매글 올리기", "produce-listing-three-fields"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
   {
     slug: "machinery-listing-fields",
-    title: "기계 글에 명판·시간·작업기 칸을 고르기",
-    description: "중고 트랙터 판매글을 올리기 전에 명판 형식명, 시간계 숫자, 포함 작업기 칸을 고르는 방법입니다.",
-    lead: "기계 글은 제조사 통칭보다 명판, 시간계, 같이 넘기는 작업기가 먼저입니다. 세 칸을 고르지 않으면 생활가전 칸의 한 줄 글과 같아집니다.",
+    title: "중고 농기계 판매글에 적을 3가지: 명판 형식명·사용시간·포함 작업기",
+    description: "중고 트랙터·관리기 판매글을 올리기 전에 형식표지판(명판)의 형식명, 시간계 숫자, 함께 넘기는 작업기와 서류를 적는 방법입니다.",
+    lead: "‘50마력, 적게 씀’ 같은 한 줄로는 다른 매물과 비교할 수 없습니다. 명판의 형식명, 시간계(아워미터) 숫자, 본체와 함께 넘기는 작업기 세 가지를 먼저 적으세요.",
     campaign: "c2c_howto_202609",
-    nextLead: "세 칸을 골랐다면 같은 칸으로 기계 글을 올리세요.",
+    nextLead: "세 가지를 적었다면 같은 항목으로 기계 판매글을 올리세요.",
     sections: [
-      ["1. 모델 칸에 통칭을 둘지 고르기", ["대동·LS 한 줄은 형식명이 아닙니다.", "본체 명판 글자를 모델 칸에 둘지 고릅니다.", "공개 사진의 전체 제조번호는 일부를 가릴지 고릅니다."]],
-      ["2. 시간 칸에 추정 문구를 둘지 고르기", ["적게 썼다는 말은 숫자가 아닙니다.", "시동 전 시간계를 칸에 둘지 고릅니다.", "안 보이면 미확인을 고릅니다."]],
-      ["3. 작업기 칸을 본기와 나눌지 고르기", ["로더·로터리 포함 여부를 빼면 가격을 비교할 수 없습니다.", "본체와 작업기를 다른 칸에 둘지 고릅니다.", "포함되지 않는 작업기는 장점으로 고르지 않습니다."]],
+      ["1. 명판(형식표지판)의 형식명 적기", ["검정 대상 농업기계는 제조·수입업체가 본체와 엔진에 형식표지판을 붙이게 돼 있습니다. 제조사 이름만 쓰지 말고 표지판의 형식명을 그대로 적습니다.", "2022년 6월 16일 이후 제조·수입된 트랙터·콤바인·이앙기는 차대에도 제조번호가 새겨져 있습니다(농업용 지게차는 2025년 5월 개정으로 추가). 공개 사진에서는 번호 일부를 가려도 되지만, 사는 사람에게는 실물로 보여 줍니다.", "누구든 제조번호 표시를 일부러 지우거나 알아보기 어렵게 하면 안 됩니다. 번호가 지워진 기계는 사지 않는 편이 안전합니다."]],
+      ["2. 사용시간: 말 대신 시간계 숫자", ["‘적게 썼다’는 숫자가 아닙니다. 시동 전 계기판 시간계 숫자를 사진과 함께 적습니다.", "계기판을 바꾼 적이 있으면 바꾼 시기와 그 전 시간을 적습니다.", "정비 영수증이나 오일 교환 기록이 있으면 시간계 숫자와 함께 보여 줍니다."]],
+      ["3. 작업기: 본체와 나눠 적기", ["로더·로터리·쟁기 등 함께 넘기는 작업기를 하나씩 적고, 본체 가격에 포함인지 따로인지 밝힙니다.", "작업기에도 형식명이 있으면 같이 적습니다. 트랙터·경운기용 트레일러는 안전검정 대상 기계입니다.", "포함되지 않는 작업기는 사진에서 빼거나 ‘미포함’이라고 적습니다."]],
+      ["4. 서류와 넘겨주는 조건 적기", ["매매계약서(양도서)를 써 줄 수 있는지 적습니다. 산 사람이 면세유를 받으려면 조합에 기계를 신고할 때 매매계약서나 양도서가 필요합니다.", "다른 조합에 면세유 기계로 등록돼 있었다면 신고말소확인서가 필요하다는 점을 알려 줍니다.", "자력 주행·상차가 되는지, 운송비는 누가 내는지 적습니다."]],
     ],
     comparison: {
-      caption: "기계 글 세 칸 고르기",
-      headers: ["칸", "고를 것", "고르지 말 것"],
+      caption: "중고 농기계 판매글 예시",
+      headers: ["항목", "이렇게 적기", "이것만 적으면 부족"],
       rows: [
-        ["명판", "형식명 글자", "제조사 통칭만"],
-        ["시간", "시간계 숫자", "적게 썼음 문구"],
-        ["작업기", "포함 품목", "본기 가격에 숨기기"],
+        ["형식명", "명판의 형식명 그대로", "제조사 이름·마력대만"],
+        ["사용시간", "시간계 1,234시간(사진 첨부)", "적게 씀"],
+        ["작업기", "로더 포함, 로터리 별도", "작업기 많음"],
+        ["서류", "매매계약서 작성 가능", "서류는 문의"],
       ],
     },
     faqs: [
-      ["마력만 적어도 되나요?", "마력대만으로는 같은 기계가 아닙니다. 명판 형식명을 고르세요."],
-      ["작업기를 나중에 적어도 되나요?", "포함 여부가 없으면 비교 목록에 넣지 마세요."],
+      ["마력만 적으면 안 되나요?", "같은 마력대라도 형식이 다르면 다른 기계입니다. 명판의 형식명을 적어야 다른 매물과 비교할 수 있습니다."],
+      ["제조번호를 사진에 그대로 올려도 되나요?", "공개 사진에서는 일부를 가려도 됩니다. 실제 거래 전에는 사는 사람이 실물 번호와 서류를 맞춰 볼 수 있게 하세요."],
+      ["중고 트랙터를 팔면 판매자가 신고해야 하나요?", "농업기계화 촉진법 제9조의7은 차대에 제조번호가 새겨진 중고 농업기계 거래를 농협(산 농업인이 면세유 때문에 기계를 신고할 때), 판매·정비업체(사후관리업자), 수출업자가 신고하도록 정하고, 산 농업인이 직접 신고할 수도 있게 했습니다. 개인 판매자의 신고 의무는 조문에 없지만 매매계약서는 꼭 써 두세요."],
+    ],
+    internalLinks: [
+      ["관리기·경운기·트랙터 비교(검정·내용연수·중고 서류)", "/compare/field-machinery.html"],
+      ["중고 트랙터 두 후보 확인표", "/tools/tractor-candidate-sheet.html"],
+      ["중고 트랙터 마력 선택법", "/guides/tractor-horsepower-work-tool.html"],
+    ],
+    sources: [
+      ["국가법령정보센터 「농업기계화 촉진법」", LAW_MECH],
+      ["국가법령정보센터 「농업기계화 촉진법 시행규칙」", LAW_MECH_RULE],
+      ["농촌진흥청 청년농 「면세유」 안내", "https://www.rda.go.kr/young/content/content41.do"],
     ],
     links: [
-      ["명판·시간·작업기 칸을 채워 기계 글 올리기", "used-machinery-listing-nameplate"],
+      ["명판·시간·작업기를 적어 기계 판매글 올리기", "used-machinery-listing-nameplate"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
   {
     slug: "nearby-produce-filter",
-    title: "내 근처 농산물, 산지·수확일 조건 고르기",
-    description: "우리 동네 농산물 글을 찾기 전에 산지·거래 장소와 수확일 조건을 고르는 방법입니다.",
-    lead: "근처 농산물은 직매장 안내가 아니라 지역이 적힌 판매글입니다. 산지와 만나 장소, 수확일 없는 글을 걸러낼지 먼저 고르세요.",
+    title: "근처 농산물 직거래 글 고르는 법: 지역·수확일·실중량부터",
+    description: "우리 동네 농산물 판매글을 찾을 때 거래 장소나 출고지, 수확일, 실중량이 적힌 글만 남겨 비교하는 방법입니다.",
+    lead: "‘근처’라는 말만으로는 부족합니다. 만나서 받을 곳이 내 동선 안인지, 언제 수확한 것인지, 몇 kg인지가 적힌 글만 후보로 남기면 비교가 쉬워집니다.",
     campaign: "c2c_howto_202609",
-    nextLead: "조건을 골랐다면 같은 조건의 근처 농산물 글을 찾으세요.",
+    nextLead: "조건을 정했다면 같은 조건으로 근처 농산물 글을 찾으세요.",
     sections: [
-      ["1. 농산물 칸에서 찾을지 고르기", ["전체 목록은 기계 글과 섞입니다.", "농산물 칸을 먼저 고릅니다.", "시세 표로 나가지 않습니다."]],
-      ["2. 산지와 만나 장소를 나눌지 고르기", ["우리 동네와 택배 출고지는 다른 조건입니다.", "방문이면 거래 장소를, 택배면 출고지를 고릅니다.", "지역이 없는 글은 근처가 아닙니다."]],
-      ["3. 수확일·실중량 없는 글을 뺄지 고르기", ["사진만 있는 글은 같은 품목을 비교할 수 없습니다.", "품종 통칭만 있는 글도 뺍니다.", "조건을 채운 글만 남길지 고릅니다."]],
+      ["1. 농산물 목록에서 품목·품종으로 찾기", ["전체 목록에는 농기계·생활용품 글이 섞입니다. 농산물 목록에서 품목 이름으로 찾습니다.", "검색어에 품목과 품종을 함께 넣습니다(예: ‘감자 수미’, ‘사과 홍로’).", "시세표나 광고 글은 지금 살 수 있는 매물이 아니므로 후보에서 뺍니다."]],
+      ["2. 지역을 두 가지로 나눠 보기", ["만나서 받는다면 ‘거래 장소’가 내 동선 안인지 봅니다.", "택배로 받는다면 ‘출고지’와 출고 요일을 봅니다. 판매자 주소와 출고지가 다를 수 있습니다.", "지역이 아예 없는 글은 근처 매물인지 알 수 없으니 먼저 물어보거나 뺍니다."]],
+      ["3. 수확일·실중량 없는 글 걸러내기", ["수확일이 없으면 신선도를 비교할 수 없습니다. 사진 찍은 날과 수확일을 구분해서 물어봅니다.", "‘한 상자’, ‘한 망’만 있으면 kg당 가격을 계산할 수 없습니다. 실중량을 물어봅니다.", "품종명이 없으면 같은 품목이라도 용도와 맛이 다를 수 있습니다."]],
+      ["4. 만나기 전에 정할 것", ["무게를 현장에서 함께 잴지 미리 정합니다.", "상처·크기 섞임 기준을 사진으로 확인합니다.", "결제 방법과 시간을 정해 두고, 물건을 보기 전에 돈부터 보내 달라는 요구는 조심합니다."]],
     ],
+    comparison: {
+      caption: "근처 농산물 글 거르기",
+      headers: ["확인할 것", "남길 글", "뺄 글"],
+      rows: [
+        ["지역", "거래 장소·출고지가 적힘", "지역 없음"],
+        ["수확일", "실제 수확일이 적힘", "사진만 있음"],
+        ["무게", "실중량 kg", "한 상자·한 망"],
+        ["품종", "품종명이 적힘", "품목 통칭만"],
+      ],
+    },
     faqs: [
-      ["직매장 안내와 개인 글을 같이 봐도 되나요?", "매장 운영과 개인 방문 수령은 다른 조건입니다. 지금 살 수 있는 개인 글만 고르세요."],
-      ["지역이 없으면 어떻게 하나요?", "근처 글이 아니므로 후보에서 빼세요."],
+      ["직매장 안내 글도 같이 봐도 되나요?", "매장 운영 안내와 개인이 지금 파는 매물은 조건이 다릅니다. 지금 살 수 있는 개인 매물끼리 비교하세요."],
+      ["지역이 없으면 어떻게 하나요?", "판매자에게 거래 장소나 출고지를 물어보고, 답이 없으면 후보에서 빼세요."],
+    ],
+    internalLinks: [
+      ["김장 망·상자를 kg당 가격으로 맞추기", "/guides/kimjang-pack-unit-kg.html"],
+      ["만나서 받기와 택배 중 고르기", "/guides/meetup-or-parcel-choice.html"],
+      ["고구마 품종 12종 비교표(밤·호박·자색)", "/compare/sweet-potato-varieties.html"],
     ],
     links: [
-      ["산지·수확일로 근처 농산물 글 찾기", "nearby-produce-listing-search"],
+      ["지역·수확일로 근처 농산물 글 찾기", "nearby-produce-listing-search"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
   {
     slug: "nearby-machinery-filter",
-    title: "내 근처 트랙터, 작업기·거리 고르기",
-    description: "중고 트랙터·관리기 근처 글을 찾기 전에 작업기 포함과 인도 거리를 고르는 방법입니다.",
-    lead: "근처 기계는 생활가전 칸의 한 줄 가격이 아닙니다. 농기계 칸에서 명판·시간·작업기와 인도 장소를 맞출지 고르세요.",
+    title: "근처 중고 트랙터·관리기 찾는 법: 작업기 포함 여부와 인도 장소부터",
+    description: "근처 중고 농기계 글을 찾을 때 같은 기종·형식끼리, 작업기 포함 여부와 넘겨받는 장소·운송 조건을 맞춰 비교하는 방법입니다.",
+    lead: "근처 매물이라도 작업기 포함 여부와 넘겨받는 조건이 다르면 가격을 바로 비교할 수 없습니다. 기종과 형식명, 함께 오는 작업기, 어디서 넘겨받는지를 먼저 맞추세요.",
     campaign: "c2c_howto_202609",
-    nextLead: "작업기와 거리를 골랐다면 같은 칸의 근처 기계 글을 찾으세요.",
+    nextLead: "조건을 맞췄다면 같은 조건으로 근처 기계 글을 찾으세요.",
     sections: [
-      ["1. 농기계 칸에서 찾을지 고르기", ["부품 칸과 전체 칸은 본기 비교에 쓰지 않습니다.", "트랙터 또는 관리기를 검색어로 고릅니다.", "거래 장소가 내 동선인지 고릅니다."]],
-      ["2. 작업기 포함을 같은 조건으로 둘지 고르기", ["본체만인 글과 로터리 포함 글을 한 가격으로 두지 않습니다.", "필요한 작업기가 포함인지 고릅니다.", "칸이 비면 그 글은 뺍니다."]],
-      ["3. 탁송과 근처 인도를 나눌지 고르기", ["판매자 주소와 인도 장소가 다를 수 있습니다.", "자력 확인이 가능한 장소를 고릅니다.", "탁송이면 상차 장소가 적혀 있는지 고릅니다."]],
+      ["1. 기종부터 고르기", ["트랙터, 관리기, 경운기는 하는 일이 다릅니다. 어떤 기종이 맞는지 모르겠다면 기종 비교부터 봅니다.", "부품·작업기만 파는 글은 본체 가격 비교에서 뺍니다.", "같은 기종 안에서도 형식명이 같은 글끼리 비교합니다."]],
+      ["2. 작업기 포함 여부 맞추기", ["본체만 파는 글과 로더·로터리 포함 글은 같은 가격선에 놓지 않습니다.", "내가 쓸 작업기가 포함인지, 따로 사야 하는지 적어 둡니다.", "작업기를 따로 산다면 내 기계에 맞는 연결 방식과 요구 동력인지 판매자에게 확인합니다."]],
+      ["3. 넘겨받는 장소와 운송 나누기", ["판매자 주소와 실제 기계가 있는 곳이 다를 수 있습니다. 시동·주행을 직접 확인할 수 있는 장소를 정합니다.", "탁송이 필요하면 상차 장소, 진입로, 운송비 부담을 미리 정합니다.", "운송 견적은 장비 제원과 현장 사진을 같은 조건으로 보내 받아야 비교할 수 있습니다."]],
+      ["4. 보러 가기 전에 받을 자료", ["명판(형식표지판) 사진과 시간계 숫자 사진을 받습니다.", "검정을 받지 않았거나 검정에서 부적합 판정을 받은 농업기계는 누구도 팔거나 유통할 수 없습니다. 검정필증과 형식표지판이 붙어 있는지 봅니다.", "가능하면 시·군 농업기술센터 임대사업소에서 같은 기종을 빌려 써 보고 고릅니다."]],
     ],
+    comparison: {
+      caption: "근처 중고 농기계 비교 조건",
+      headers: ["맞출 것", "같이 놓을 글", "따로 볼 글"],
+      rows: [
+        ["기종·형식", "형식명이 같은 본체", "부품·작업기만"],
+        ["작업기", "포함 작업기가 같음", "본체만 / 작업기가 다름"],
+        ["넘겨받는 곳", "직접 시운전할 수 있는 장소", "주소만 있고 장소 미정"],
+        ["운송", "운송비 부담이 정해짐", "운송 조건 없음"],
+      ],
+    },
     faqs: [
-      ["다른 앱 매물과 바로 가격만 비교해도 되나요?", "명판·시간·작업기·지역이 같아야 합니다. 칸이 없으면 대조하지 마세요."],
-      ["마력대가 같으면 같은 글인가요?", "형식명이 다르면 다른 기계입니다."],
+      ["마력이 같으면 같은 기계로 봐도 되나요?", "형식명이 다르면 다른 기계입니다. 마력은 참고로만 보세요."],
+      ["다른 앱 매물과 가격만 비교해도 되나요?", "형식명·사용시간·작업기·지역이 같을 때만 비교하세요."],
+    ],
+    internalLinks: [
+      ["관리기·경운기·트랙터 비교", "/compare/field-machinery.html"],
+      ["중고 트랙터 두 후보 확인표", "/tools/tractor-candidate-sheet.html"],
+      ["트랙터 탁송 견적 비교법", "/guides/tractor-transport-quote-comparison.html"],
+    ],
+    sources: [
+      ["국가법령정보센터 「농업기계화 촉진법」", LAW_MECH],
+      ["국가법령정보센터 「농업기계화 촉진법 시행규칙」", LAW_MECH_RULE],
     ],
     links: [
       ["작업기·거리로 근처 트랙터 글 찾기", "nearby-used-tractor-search"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
   {
     slug: "meetup-or-parcel-choice",
-    title: "만나서 가져가기 vs 택배 고르기",
-    description: "농산물 직거래에서 방문 수령과 산지직송 택배를 표 평균이 아니라 질문으로 고르는 방법입니다.",
-    lead: "만나기와 택배는 한 평균 비용으로 고르지 않습니다. 오늘 가져갈 수 있는지, 계근은 어디서 하는지, 출하일이 칸에 있는지로 한쪽만 고르세요.",
+    title: "농산물 직거래, 만나서 받기와 택배 중 고르는 법",
+    description: "농산물 직거래에서 직접 만나서 받을지 산지 택배로 받을지를 받는 날짜, 무게 재는 곳, 포장·택배비로 고르는 방법입니다.",
+    lead: "만나서 받기와 택배는 어느 쪽이 늘 싸거나 좋은 것이 아닙니다. 언제 받을 수 있는지, 무게를 어디서 재는지, 포장·택배비를 누가 내는지로 이번 거래에 맞는 쪽을 고르세요.",
     campaign: "c2c_howto_202609",
-    nextLead: "한쪽을 골랐다면 그 조건을 판매글 칸에 적으세요.",
+    nextLead: "방식을 골랐다면 그 조건을 판매글이나 문의에 적으세요.",
     sections: [
-      ["1. 오늘 가져갈 수 있는지 고르기", ["당일 수확분이고 장소에 갈 수 있으면 만나기를 먼저 봅니다.", "갈 수 없는 날이면 만나기를 고르지 않습니다.", "아직 따기 전이면 방문 날짜를 수확일 칸에 넣지 않습니다."]],
-      ["2. 계근 장소를 고르기", ["밭에서 달 때와 출고 전 상자 무게는 다를 수 있습니다.", "방문이면 현장 계근을 고릅니다.", "택배면 출고 전 기준을 고릅니다."]],
-      ["3. 한 글에 둘 다 적을지 고르기", ["둘 다 가능하다고만 쓰면 날짜 칸이 비게 됩니다.", "이번 물량은 방문인지 택배인지 하나만 고릅니다.", "고르지 않은 방법은 장점으로 적지 않습니다."]],
+      ["1. 만나서 받기가 맞는 경우", ["수확한 날 바로 받을 수 있고 거래 장소가 가까울 때 좋습니다.", "현장에서 무게를 재고 상태를 보고 받을 수 있습니다.", "무겁거나 양이 많은 물건(김장 배추, 쌀 20kg 등)은 직접 가져가면 포장·택배비를 줄일 수 있습니다."]],
+      ["2. 택배가 맞는 경우", ["거리가 멀거나 받을 시간을 맞추기 어려울 때 씁니다.", "출고일과 도착 예정일, 택배비 포함 여부를 판매글에서 확인합니다.", "출고 전 실중량과 포장 사진을 받아 두면 도착 뒤 비교하기 쉽습니다."]],
+      ["3. 어느 쪽이든 미리 정할 것", ["가격이 무게 기준인지 상자 기준인지 정합니다.", "상처·무름이 있을 때 어떻게 할지(사진, 교환, 환불)를 정합니다.", "한 글에 ‘둘 다 가능’만 쓰면 날짜와 비용이 흐려집니다. 방식별로 가격과 날짜를 따로 적습니다."]],
     ],
     comparison: {
-      caption: "수령 방법 고르기",
-      headers: ["질문", "만나기", "택배"],
+      caption: "받는 방법 비교",
+      headers: ["질문", "만나서 받기", "택배"],
       rows: [
-        ["오늘 가져가나", "장소·시간이 있으면", "가져갈 수 없으면"],
-        ["계근", "현장에서", "출고 전에"],
-        ["날짜 칸", "방문 시간", "출하일"],
+        ["언제 받나", "수확 당일·약속 시간", "출고일 + 배송 기간"],
+        ["무게는 어디서", "현장에서 함께", "출고 전 판매자가"],
+        ["추가 비용", "이동 시간·교통비", "포장재·택배비"],
+        ["상태 확인", "받기 전에 직접", "도착 뒤 사진으로"],
       ],
     },
     faqs: [
-      ["둘 다 된다고 적어 두면 안 되나요?", "구매자가 어느 날짜를 봐야 하는지 모릅니다. 이번 물량은 하나만 고르세요."],
-      ["택배인데 출하일이 없으면요?", "택배를 고르지 마세요."],
+      ["둘 다 된다고 적어 두면 안 되나요?", "가능하지만 방식별로 가격과 날짜를 따로 적으세요. 그래야 사는 사람이 비교할 수 있습니다."],
+      ["택배인데 출고일이 없으면요?", "출고일과 택배비 포함 여부를 먼저 물어보고, 답을 받은 뒤 주문하세요."],
+    ],
+    internalLinks: [
+      ["제철 과일 상자를 kg당 가격으로 맞추기", "/guides/autumn-fruit-box-kg.html"],
+      ["농산물 판매글에 적을 3가지(품종명·실중량·수확일)", "/guides/listing-field-selection.html"],
     ],
     links: [
-      ["만나기 또는 택배를 고른 뒤 글에 적기", "meetup-vs-direct-shipping-choice"],
+      ["만나서 받기 또는 택배를 정해 글에 적기", "meetup-vs-direct-shipping-choice"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
   {
     slug: "farm-vs-appliance-category",
-    title: "트랙터를 생활가전 칸에 둘지 고르기",
-    description: "중고 트랙터를 생활가전·기타중고 칸에 두면 비교가 안 되므로, 명판 칸이 있는 농기계 칸을 고르는 방법입니다.",
-    lead: "트랙터가 생활가전, 기타중고, 취미 칸에 있으면 형식명이 묻힙니다. 비교를 시작하기 전에 농기계 칸을 고르세요.",
+    title: "중고 트랙터는 농기계 목록에서 비교하세요: 다른 카테고리 글 거르기",
+    description: "중고 트랙터·관리기 글이 생활가전·기타중고 같은 다른 카테고리에 올라 있을 때 생기는 문제와, 농기계 목록에서 같은 형식끼리 비교하는 방법입니다.",
+    lead: "트랙터가 생활가전이나 기타중고 카테고리에 있으면 형식명·사용시간 같은 정보가 빠지기 쉽고 검색에도 잘 걸리지 않습니다. 사는 사람이든 파는 사람이든 농기계 목록에서 같은 형식끼리 비교하세요.",
     campaign: "c2c_howto_202609",
-    nextLead: "농기계 칸을 골랐다면 명판·시간·작업기가 있는 목록에서 비교하세요.",
+    nextLead: "농기계 목록에서 형식명·사용시간·작업기가 있는 글끼리 비교하세요.",
     sections: [
-      ["1. 지금 글이 어느 칸인지 고르기", ["생활가전·기타중고·디지털기기면 비교 후보에서 뺍니다.", "가격만 메모하지 않습니다.", "칸이 다른 글을 한 표에 넣지 않습니다."]],
-      ["2. 농기계 칸을 고르기", ["명판·시간·작업기 칸이 보이는 목록을 고릅니다.", "형식명이 같은 글만 남깁니다.", "시간계와 작업기가 다르면 줄을 나눕니다."]],
-      ["3. 빠진 칸을 추정으로 채울지 고르기", ["마력대로 형식명을 추측하지 않습니다.", "없는 칸은 공란으로 둡니다.", "공란인 글은 가격 비교에서 뺍니다."]],
+      ["1. 다른 카테고리 글의 문제", ["형식명·사용시간·작업기 같은 정보가 빠진 한 줄 글이 많습니다.", "같은 기계를 찾는 사람이 검색해도 잘 나오지 않습니다.", "가격만 보고 비교하면 조건이 다른 기계끼리 비교하게 됩니다."]],
+      ["2. 사는 사람: 이렇게 거르기", ["농기계 목록에서 기종(트랙터·관리기·경운기)을 고르고 형식명이 같은 글만 남깁니다.", "다른 카테고리에서 찾은 글은 명판 사진과 시간계 숫자를 받은 뒤에만 후보에 넣습니다.", "빠진 정보를 마력대로 짐작해 채우지 않습니다."]],
+      ["3. 파는 사람: 이렇게 올리기", ["농기계 카테고리를 고르고 명판의 형식명, 시간계 숫자, 포함 작업기를 적습니다.", "검정 대상 농업기계에는 다른 용도의 기계와 구분하도록 제조·수입 단계에서 ‘농업용’ 표시를 하게 돼 있습니다. 표시가 보이는 사진을 올리면 사는 사람이 확인하기 쉽습니다.", "다른 카테고리에 올렸던 글은 농기계 목록으로 옮겨 다시 올립니다."]],
     ],
     comparison: {
-      caption: "트랙터를 둘 칸 고르기",
-      headers: ["칸", "비교", "고를 것"],
+      caption: "카테고리에 따라 달라지는 것",
+      headers: ["카테고리", "생기는 일", "할 일"],
       rows: [
-        ["생활가전·기타중고", "형식명이 묻힘", "넣지 않음"],
-        ["농기계", "명판·시간·작업기", "이 칸"],
+        ["생활가전·기타중고", "형식명·시간이 빠지고 검색에 잘 안 나옴", "명판·시간계 사진을 받은 뒤 비교"],
+        ["농기계", "형식명·시간·작업기를 같은 기준으로 비교", "형식명이 같은 글끼리 비교"],
       ],
     },
     faqs: [
-      ["다른 앱에 올라온 트랙터는요?", "그 글에도 명판·시간·작업기가 있어야 대조합니다. 없으면 빼세요."],
-      ["가격이 싸면 칸이 달라도 되나요?", "칸이 다르면 같은 값이 아닙니다."],
+      ["다른 앱에 올라온 트랙터는요?", "그 글에도 명판 형식명·시간계·작업기 정보가 있어야 비교할 수 있습니다. 없으면 먼저 물어보세요."],
+      ["값이 싸면 카테고리가 달라도 괜찮지 않나요?", "싼 이유가 작업기 미포함, 고장, 서류 문제일 수 있습니다. 같은 조건으로 맞춘 뒤 판단하세요."],
+    ],
+    internalLinks: [
+      ["중고 농기계 판매글에 적을 3가지", "/guides/machinery-listing-fields.html"],
+      ["관리기·경운기·트랙터 비교", "/compare/field-machinery.html"],
+    ],
+    sources: [
+      ["국가법령정보센터 「농업기계화 촉진법」 제9조의2(농업기계 표시의무)", LAW_MECH],
     ],
     links: [
-      ["농기계 칸에서 명판 맞춰 비교하기", "tractor-wrong-category-compare"],
+      ["농기계 목록에서 명판 맞춰 비교하기", "tractor-wrong-category-compare"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
   {
     slug: "c2c-vs-mall-choice",
-    title: "입점몰 vs 개인 직거래 글 고르기",
-    description: "농산물·농기계를 입점몰 상세로 올릴지, 개인 직거래 글로 올릴지 고르는 방법입니다.",
-    lead: "입점 심사를 거친 몰 상품과 개인 글은 칸이 다릅니다. 지금 할 일이 개인 직거래면 품종·명판 칸을 채우는 글을 고르고, 몰 상세 문장을 붙여 넣지 마세요.",
+    title: "쇼핑몰 입점과 개인 직거래 글, 어느 쪽으로 팔지 고르는 법",
+    description: "농산물·중고 농기계를 쇼핑몰(입점몰)에 상품으로 올릴지, 지역 직거래 글로 올릴지 물량·받는 방법·결제 절차로 고르는 방법입니다.",
+    lead: "쇼핑몰 상품은 재고·결제·반품 절차가 있는 판매이고, 직거래 글은 이번 물량을 가까운 사람에게 넘기는 거래입니다. 지금 팔 물건의 양과 방식에 맞춰 한쪽을 고르고, 그 방식에 맞는 정보를 적으세요.",
     campaign: "c2c_howto_202609",
-    nextLead: "개인 글을 골랐다면 농산물 칸 또는 농기계 칸으로 올리거나 찾으세요.",
+    nextLead: "개인 직거래로 정했다면 농산물 또는 농기계 목록에 올리거나 찾으세요.",
     sections: [
-      ["1. 지금 올릴 글의 종류를 고르기", ["입점몰은 상세페이지와 재고 칸이 있습니다.", "개인 글은 판매자와 수령 조건이 글에 있어야 합니다.", "두 종류를 한 글에 섞지 않습니다."]],
-      ["2. 농산물과 기계를 한 글에 넣을지 고르기", ["필수 칸이 다릅니다.", "농산물이면 품종·실중량·수확일, 기계면 명판·시간·작업기를 고릅니다.", "카테고리를 하나만 고릅니다."]],
-      ["3. 시세 표를 목적지로 둘지 고르기", ["지금 할 일이 팔기·찾기이면 표를 목적지로 두지 않습니다.", "팔 물건이 있으면 판매글을 고릅니다.", "찾을 물건이 있으면 해당 칸 목록을 고릅니다."]],
+      ["1. 개인 직거래 글이 맞는 경우", ["이번에 수확한 일정량이나 한 번 팔 중고 농기계처럼 물량이 정해져 있을 때.", "만나서 넘기거나 가까운 곳에 직접 보낼 수 있을 때.", "가격과 조건을 사는 사람과 직접 이야기해 정할 때."]],
+      ["2. 쇼핑몰 입점이 맞는 경우", ["같은 규격 상품을 꾸준히 보낼 수 있을 때.", "결제·배송·반품을 몰의 절차에 맡기고 싶을 때.", "상품 표시와 포장 규격을 일정하게 지킬 수 있을 때."]],
+      ["3. 글을 쓸 때 섞지 말 것", ["몰 상세페이지 문장을 직거래 글에 그대로 붙이지 않습니다. 직거래 글에는 이번 물량의 품종·실중량·수확일과 받는 방법을 적습니다.", "농산물과 농기계는 적을 항목이 다르니 글을 나눕니다.", "시세표나 다른 글 링크만 걸지 말고, 지금 팔 물건의 조건을 글에 적습니다."]],
     ],
+    comparison: {
+      caption: "개인 직거래와 쇼핑몰 입점 비교",
+      headers: ["기준", "개인 직거래 글", "쇼핑몰 입점"],
+      rows: [
+        ["물량", "이번 수확분·한 대", "꾸준한 같은 규격"],
+        ["받는 방법", "만나서·직접 배송", "택배"],
+        ["결제·반품", "당사자끼리 정함", "몰 절차"],
+        ["꼭 적을 것", "품종·실중량·수확일 / 형식명·시간·작업기", "상품 표시·규격·배송 기준"],
+      ],
+    },
     faqs: [
-      ["몰 상품 설명을 개인 글에 복사해도 되나요?", "결제·반품 칸이 다릅니다. 개인 글에는 이번 물량의 칸만 적으세요."],
-      ["한 글에 농산물과 기계를 같이 올려도 되나요?", "칸이 다르므로 글을 나누세요."],
+      ["몰 상품 설명을 직거래 글에 복사해도 되나요?", "결제·반품 조건이 달라 오해가 생깁니다. 직거래 글에는 이번 물량의 조건만 적으세요."],
+      ["한 글에 농산물과 농기계를 같이 올려도 되나요?", "적을 항목이 달라 비교가 어렵습니다. 글을 나누세요."],
+    ],
+    internalLinks: [
+      ["농산물 판매글에 적을 3가지", "/guides/listing-field-selection.html"],
+      ["중고 농기계 판매글에 적을 3가지", "/guides/machinery-listing-fields.html"],
     ],
     links: [
       ["개인 직거래 글로 올리거나 찾기", "produce-and-machinery-one-list"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
   {
     slug: "kimjang-listing-dates",
-    title: "김장·햅쌀 글에 적을 날짜 고르기",
-    description: "김장 배추와 햅쌀 판매글에 출하 가능일, 수확일, 도정일 중 어떤 날짜를 칸에 둘지 고르는 방법입니다.",
-    lead: "절임배추 도착일은 몰의 배송 일정이고 수확일이 아닙니다. 출하 가능일, 수확일, 햅쌀의 생산연도와 도정일을 나눠 고르세요.",
+    title: "김장 배추·햅쌀 판매글의 날짜: 수확일·출하일·도정일 구분하기",
+    description: "김장 배추와 햅쌀을 팔 때 수확일, 출하 가능일, 절인 날, 쌀의 생산연도와 도정 연월일을 나눠 적는 방법입니다.",
+    lead: "‘햅쌀’, ‘김장 배추 예약’만으로는 언제 수확했고 언제 받을 수 있는지 알 수 없습니다. 이미 수확한 날, 넘길 수 있는 날, 쌀은 생산연도와 도정 연월일을 각각 적으세요.",
     campaign: "c2c_howto_202609",
-    nextLead: "날짜 칸을 골랐다면 시즌 판매글에 그 날짜를 적으세요.",
+    nextLead: "날짜를 나눠 적었다면 시즌 판매글을 올리세요.",
     sections: [
-      ["1. 출하 가능일을 수확일 칸에 둘지 고르기", ["아직 밭에 있는 날과 이미 딴 날은 다릅니다.", "넘길 수 있는 날을 출하 가능일로 고릅니다.", "실제로 딴 날을 수확일로 고릅니다."]],
-      ["2. 절임 도착일을 수확일로 둘지 고르기", ["절임 세트 도착일은 배송 일정입니다.", "생배추면 수확일과 실중량을 고릅니다.", "절임이면 절인 날짜를 수확일과 나눠 고릅니다."]],
-      ["3. 햅쌀 생산연도와 도정일을 한 칸에 둘지 고르기", ["생산연도와 도정연월일은 다른 표시입니다.", "두 날짜를 나눠 고릅니다.", "당일도정 문구로 도정일을 대신하지 않습니다."]],
+      ["1. 배추: 수확일과 출하 가능일 나누기", ["아직 밭에 있으면 ‘출하 가능일(예정)’, 이미 뽑았으면 ‘수확일’로 적습니다.", "예약 판매라면 날짜가 바뀔 수 있다는 점과 연락 방법을 적습니다.", "포기 수와 실중량(망 무게가 아니라 배추 무게)을 함께 적습니다."]],
+      ["2. 절임배추: 절인 날과 받는 날 나누기", ["절인 날, 보내는 날, 도착 예정일은 서로 다른 날짜입니다.", "생배추의 수확일과 절인 날을 구분해 적습니다.", "절임배추 무게가 물기를 뺀 무게인지 적습니다."]],
+      ["3. 햅쌀: 생산연도와 도정 연월일 둘 다", ["양곡 표시 기준에서 쌀은 생산연도(원료 벼의 수확연도)와 도정 연월일을 따로 표시합니다. ‘햅쌀’, ‘당일도정’ 문구로 대신하지 않습니다.", "품종명을 적고, 모르면 ‘혼합’으로 적습니다.", "포장 쌀은 실제 중량을 적습니다. 10kg·20kg 중 어느 쪽이 나은지는 먹는 속도와 보관 조건으로 고릅니다."]],
     ],
     comparison: {
-      caption: "시즌 글 날짜 칸 고르기",
-      headers: ["칸", "고를 것", "고르지 말 것"],
+      caption: "시즌 판매글 날짜 구분",
+      headers: ["날짜", "뜻", "이것과 섞지 않기"],
       rows: [
-        ["출하 가능일", "넘길 수 있는 날", "몰 도착 예정일"],
-        ["수확일", "실제로 딴 날", "사진 촬영일만"],
-        ["도정일", "포장 표시 도정연월일", "당일도정 문구만"],
+        ["수확일", "실제로 뽑거나 벤 날", "사진 찍은 날"],
+        ["출하 가능일", "넘길 수 있는 날(예정)", "수확일"],
+        ["절인 날", "배추를 절인 날", "도착 예정일"],
+        ["생산연도", "쌀의 원료 벼를 수확한 해", "도정 연월일"],
+        ["도정 연월일", "쌀로 찧은 날", "‘당일도정’ 문구"],
       ],
     },
     faqs: [
-      ["절임배추 도착일을 수확일에 적어도 되나요?", "도착일은 배송 일정입니다. 수확일 칸에 넣지 마세요."],
-      ["도정일만 있으면 생산연도는 생략하나요?", "양곡 표시는 둘을 나눕니다. 둘 다 고르세요."],
+      ["절임배추 도착일을 수확일로 적어도 되나요?", "도착일은 배송 일정입니다. 수확일·절인 날과 따로 적으세요."],
+      ["도정일만 있으면 생산연도는 빼도 되나요?", "양곡 표시 기준에서 둘은 다른 항목입니다. 둘 다 적으세요."],
+    ],
+    internalLinks: [
+      ["쌀 10kg·20kg 선택법(생산연도·도정일)", "/guides/rice-milling-weight-selection.html"],
+      ["김장 망·상자를 kg당 가격으로 맞추기", "/guides/kimjang-pack-unit-kg.html"],
+    ],
+    sources: [
+      ["국가법령정보센터 「양곡관리법 시행규칙」 별표 4(양곡의 표시사항)", LAW_GRAIN],
     ],
     links: [
-      ["출하일·도정일을 칸에 적어 시즌 글 올리기", "kimjang-rice-listing-dates"],
+      ["수확일·도정일을 적어 시즌 글 올리기", "kimjang-rice-listing-dates"],
     ],
     publishedAt: updateDate,
-    modifiedAt: updateDate,
+    modifiedAt: buildDate,
   },
 ];
 
@@ -523,7 +629,7 @@ const arrow = `<span aria-hidden="true">→</span>`;
 const ICONS = `<meta name="theme-color" content="#1d6b42"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">`;
 const HEADER = `<header class="site-header"><div class="wrap"><a class="brand" href="/"><img src="/favicon.svg" width="34" height="34" alt=""><span><strong>농사 비교 월드컵</strong><small>품종·산지·농기계 선택 기준</small></span></a><nav aria-label="주 메뉴"><a href="/#compare">비교 시작</a><a href="/compare/">비교표</a><a href="/guides.html">선택 가이드</a><a href="/tools/tractor-candidate-sheet.html">트랙터 확인표</a></nav></div></header>`;
 const PUBLISHER = { "@type": "Organization", name: "J MEDIA(제이 미디어)", url: "https://jnewmedia.com/" };
-const head = (title, description, canonical, type = "article") => `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} | 농사 비교 월드컵</title><meta name="description" content="${esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${canonical}"><link rel="alternate" type="application/rss+xml" title="농사 비교 월드컵 선택 가이드" href="/rss.xml"><meta property="og:title" content="${esc(title)} | 농사 비교 월드컵"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="${type}"><meta property="og:url" content="${canonical}">${ICONS}<link rel="stylesheet" href="/style.css?v=4.0.1"><link rel="stylesheet" href="/guide.css?v=2.0.0"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5877883031077615" crossorigin="anonymous"></script></head><body><a class="skip" href="#main">본문 바로 가기</a>${HEADER}`;
+const head = (title, description, canonical, type = "article", guideCss = true) => `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} | 농사 비교 월드컵</title><meta name="description" content="${esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${canonical}"><link rel="alternate" type="application/rss+xml" title="농사 비교 월드컵 선택 가이드" href="/rss.xml"><meta property="og:title" content="${esc(title)} | 농사 비교 월드컵"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="${type}"><meta property="og:url" content="${canonical}">${ICONS}<link rel="stylesheet" href="/style.css?v=4.0.3">${guideCss ? `<link rel="stylesheet" href="/guide.css?v=2.0.1">` : ""}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5877883031077615" crossorigin="anonymous"></script></head><body><a class="skip" href="#main">본문 바로 가기</a>${HEADER}`;
 const foot = `<footer class="site-footer"><div class="wrap"><p><strong>농사 비교 월드컵</strong> · 운영: J MEDIA(제이 미디어), 보리장터 운영사</p><nav aria-label="사이트 정보"><a href="/about.html">소개·운영자</a><a href="/contact.html">문의·정정</a><a href="/privacy.html">개인정보</a><a href="/terms.html">이용약관</a></nav></div></footer></body></html>`;
 
 // ---- 품종·장비 비교표 (worldcup-data.js 한 곳에서 생성) ----
@@ -565,7 +671,7 @@ for (const c of CATEGORIES) {
     { "@type": "Article", headline: c.page.title, description: c.page.description, datePublished: CHECKED, dateModified: CHECKED, inLanguage: "ko-KR", mainEntityOfPage: canonical, author: { "@type": "Organization", name: "농사 비교 월드컵" }, publisher: PUBLISHER },
     { "@type": "ItemList", name: c.page.h1, numberOfItems: c.cands.length, itemListElement: c.cands.map((x, i) => ({ "@type": "ListItem", position: i + 1, name: x.name, url: `${canonical}#v-${x.id}` })) },
   ] };
-  const html = `${head(c.page.title, c.page.description, canonical)}${jsonLd(schema)}<main class="cmp-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><a href="/compare/">비교표</a><span>›</span><span>${esc(c.name)}</span></nav>
+  const html = `${head(c.page.title, c.page.description, canonical, "article", false)}${jsonLd(schema)}<main class="cmp-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><a href="/compare/">비교표</a><span>›</span><span>${esc(c.name)}</span></nav>
 <section class="cmp-hero"><p class="eyebrow">품종·장비 비교표 · 자료 확인일 ${CHECKED}</p><h1>${esc(c.page.h1)}</h1><p class="lead">${esc(c.page.description)}</p><p class="cmp-meta">${c.cands.length}개 ${esc(c.unit)} · 특성마다 [번호]로 출처를 붙였고, 공식 자료에서 확인하지 못한 항목은 비워 두었습니다. 자료끼리 값이 다르면 둘 다 적었습니다.</p><div class="cmp-cta"><a class="btn primary" href="/?c=${c.id}#compare">질문에 답하고 후보 4개 1:1 비교하기 ${arrow}</a><a class="btn" href="#cards">${esc(c.unit)}별 자세히 보기</a></div></section>
 <section class="cmp-section"><h2>고르는 순서</h2><ol class="cmp-steps">${c.page.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol></section>
 <section class="cmp-section"><h2>조건별 빠른 찾기</h2><ul class="cmp-quick">${quick}</ul></section>
@@ -578,7 +684,7 @@ for (const c of CATEGORIES) {
   await fs.writeFile(path.join(root, "compare", `${c.page.slug}.html`), html, "utf8");
 }
 const compareHubDesc = "감자·고구마·사과·배 품종과 관리기·경운기·트랙터를 용도, 작형, 수확기, 저장성, 검정·서류 기준으로 비교한 표입니다. 특성마다 농촌진흥청 등 공식 출처를 붙였습니다.";
-const compareHub = `${head("품종·장비 비교표", compareHubDesc, `${base}/compare/`, "website")}${jsonLd({ "@context": "https://schema.org", "@type": "CollectionPage", name: "품종·장비 비교표", url: `${base}/compare/`, hasPart: CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })) })}<main class="cmp-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><span>비교표</span></nav><section class="cmp-hero"><p class="eyebrow">자료 확인일 ${CHECKED}</p><h1>품종·장비 비교표</h1><p class="lead">${esc(compareHubDesc)}</p><div class="cmp-cta"><a class="btn primary" href="/#compare">질문에 답하고 1:1로 비교하기 ${arrow}</a></div></section><section class="cmp-section"><ul class="card-grid">${CATEGORIES.map((c) => `<li><a href="/compare/${c.page.slug}.html"><strong>${esc(c.page.h1)}</strong><span>${esc(c.intro)} (${c.cands.length}개)</span></a></li>`).join("")}<li><a href="/tools/tractor-candidate-sheet.html"><strong>중고 트랙터 두 후보 확인표</strong><span>명판·정비·작업기·시운전·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span></a></li></ul></section><section class="cmp-section"><h2>비교표를 읽는 법</h2><ul class="cmp-steps"><li>값 뒤의 [번호]는 각 표 아래 출처 목록의 번호입니다. 원문을 직접 열어 확인할 수 있습니다.</li><li>당도·수확기·수량은 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.</li><li>가격은 넣지 않았습니다. 시세는 같은 품종·등급·포장 단위로 맞춰 공식 가격정보에서 확인하세요.</li></ul></section></main>${foot}`;
+const compareHub = `${head("품종·장비 비교표", compareHubDesc, `${base}/compare/`, "website", false)}${jsonLd({ "@context": "https://schema.org", "@type": "CollectionPage", name: "품종·장비 비교표", url: `${base}/compare/`, hasPart: CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })) })}<main class="cmp-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><span>비교표</span></nav><section class="cmp-hero"><p class="eyebrow">자료 확인일 ${CHECKED}</p><h1>품종·장비 비교표</h1><p class="lead">${esc(compareHubDesc)}</p><div class="cmp-cta"><a class="btn primary" href="/#compare">질문에 답하고 1:1로 비교하기 ${arrow}</a></div></section><section class="cmp-section"><ul class="card-grid">${CATEGORIES.map((c) => `<li><a href="/compare/${c.page.slug}.html"><strong>${esc(c.page.h1)}</strong><span>${esc(c.intro)} (${c.cands.length}개)</span></a></li>`).join("")}<li><a href="/tools/tractor-candidate-sheet.html"><strong>중고 트랙터 두 후보 확인표</strong><span>명판·정비·작업기·시운전·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span></a></li></ul></section><section class="cmp-section"><h2>비교표를 읽는 법</h2><ul class="cmp-steps"><li>값 뒤의 [번호]는 각 표 아래 출처 목록의 번호입니다. 원문을 직접 열어 확인할 수 있습니다.</li><li>당도·수확기·수량은 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.</li><li>가격은 넣지 않았습니다. 시세는 같은 품종·등급·포장 단위로 맞춰 공식 가격정보에서 확인하세요.</li></ul></section></main>${foot}`;
 await fs.writeFile(path.join(root, "compare", "index.html"), compareHub, "utf8");
 
 // ---- 선택 가이드 ----
@@ -613,7 +719,7 @@ for (const guide of guides) {
   await fs.writeFile(path.join(root, "guides", `${guide.slug}.html`), html, "utf8");
 }
 
-const css = `.guide-main{max-width:1000px}.guide-breadcrumb{padding-top:22px;display:flex;flex-wrap:wrap;gap:6px 8px;color:var(--muted);font-size:15px}.guide-hero{padding:44px 0 30px}.guide-hero>p,.guide-grid article>p,.guide-article>header>p{color:var(--green2);font-size:15px;font-weight:800;margin:0}.guide-hero h1{font-size:44px;line-height:1.22;letter-spacing:-1.5px;margin:7px 0}.guide-hero h1 em{font-style:normal;color:var(--green)}.guide-hero>span,.guide-grid article>span,.guide-article>header>span{color:var(--text)}.guide-sub{font-size:23px;margin:12px 0 12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:40px}.guide-grid article{border:1px solid var(--line);border-radius:12px;padding:20px}.guide-grid h2{font-size:20px;line-height:1.45;margin:6px 0}.guide-grid h2 a{color:var(--ink);text-decoration:none}.guide-grid h2 a:hover{color:var(--green2);text-decoration:underline}.guide-grid article>span{display:block;font-size:16px}.guide-grid article>a,.guide-related a{display:flex;align-items:center;gap:7px;min-height:44px;margin-top:8px;color:var(--green2);font-weight:800;font-size:16px}.guide-article>header{display:block;height:auto;padding:32px 0;border-bottom:1px solid var(--line)}.guide-article h1{font-size:38px;line-height:1.3;margin:7px 0}.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:34px;padding:30px 0 60px}.guide-layout>div>section{padding:8px 0 22px;border-bottom:1px solid var(--line)}.guide-layout h2{font-size:22px;line-height:1.4}.guide-layout li{color:var(--text);margin:9px 0}.guide-lead{background:var(--pale);border-left:4px solid var(--yellow);padding:18px;margin-bottom:18px}.guide-lead p{margin-bottom:0;color:var(--text)}.guide-source a,.guide-related a{color:var(--green2);font-weight:800;text-decoration:underline;text-underline-offset:3px}.guide-table-wrap{overflow-x:auto}.guide-comparison table{width:100%;border-collapse:collapse;font-size:16px}.guide-comparison th,.guide-comparison td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top}.guide-comparison thead th,.guide-comparison tbody th{background:var(--pale);font-weight:800}.guide-faq details{border:1px solid var(--line);border-radius:8px;padding:6px 15px;margin:9px 0}.guide-faq summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}.guide-faq details p{margin:6px 0 10px;color:var(--text)}.guide-next{align-self:start;position:sticky;top:20px;background:var(--pale);padding:20px;border-radius:10px}.guide-next h2{margin-top:0}.guide-next p{font-size:16px;color:var(--text)}.guide-next a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--green2);font-size:16px;font-weight:800;text-decoration:none}@media(max-width:760px){.guide-grid,.guide-layout{grid-template-columns:1fr}.guide-hero h1,.guide-article h1{font-size:30px}.guide-article>header{padding:22px 0}.guide-next{position:static}.guide-comparison table{min-width:600px}}`;
+const css = `.guide-main{max-width:1000px}.guide-breadcrumb{padding-top:22px;display:flex;flex-wrap:wrap;gap:6px 8px;color:var(--muted);font-size:15px}.guide-hero{padding:44px 0 30px}.guide-hero>p,.guide-grid article>p,.guide-article>header>p{color:var(--green2);font-size:15px;font-weight:800;margin:0}.guide-hero h1{font-size:44px;line-height:1.22;letter-spacing:-1.5px;margin:7px 0}.guide-hero h1 em{font-style:normal;color:var(--green)}.guide-hero>span,.guide-grid article>span,.guide-article>header>span{color:var(--text)}.guide-sub{font-size:23px;margin:12px 0 12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:40px}.guide-grid article{border:1px solid var(--line);border-radius:12px;padding:20px}.guide-grid h2{font-size:20px;line-height:1.45;margin:6px 0}.guide-grid h2 a{color:var(--ink);text-decoration:none}.guide-grid h2 a:hover{color:var(--green2);text-decoration:underline}.guide-grid article>span{display:block;font-size:16px}.guide-grid article>a,.guide-related a{display:flex;align-items:center;gap:7px;min-height:44px;margin-top:8px;color:var(--green2);font-weight:800;font-size:16px}.guide-article>header{display:block;height:auto;padding:32px 0;border-bottom:1px solid var(--line)}.guide-article h1{font-size:38px;line-height:1.3;margin:7px 0}.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:34px;padding:30px 0 60px}.guide-layout>div>section{padding:8px 0 22px;border-bottom:1px solid var(--line)}.guide-layout h2{font-size:22px;line-height:1.4}.guide-layout li{color:var(--text);margin:9px 0}.guide-lead{background:var(--pale);border-left:4px solid var(--yellow);padding:18px;margin-bottom:18px}.guide-lead p{margin-bottom:0;color:var(--text)}.guide-source a,.guide-related a{color:var(--green2);font-weight:800;text-decoration:underline;text-underline-offset:3px}.guide-table-wrap{overflow-x:auto}.guide-comparison table{width:100%;border-collapse:collapse;font-size:16px}.guide-comparison th,.guide-comparison td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top}.guide-comparison thead th,.guide-comparison tbody th{background:var(--pale);font-weight:800}.guide-faq details{border:1px solid var(--line);border-radius:8px;padding:6px 15px;margin:9px 0}.guide-faq summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}.guide-faq details p{margin:6px 0 10px;color:var(--text)}.guide-next{align-self:start;position:sticky;top:20px;background:var(--pale);padding:20px;border-radius:10px}.guide-next h2{margin-top:0}.guide-next p{font-size:16px;color:var(--text)}.guide-next a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--green2);font-size:16px;font-weight:800;text-decoration:none}@media(max-width:760px){.guide-grid,.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-hero h1,.guide-article h1{font-size:30px}.guide-article>header{padding:22px 0}.guide-next{position:static}.guide-comparison table{min-width:600px}}`;
 await fs.writeFile(path.join(root, "guide.css"), css, "utf8");
 
 const toRssDate = (date) => new Date(`${date}T00:00:00+09:00`).toUTCString();
