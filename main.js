@@ -1,4 +1,4 @@
-import { CATEGORIES, SOURCES, CHECKED, nicsSearchUrl } from "./worldcup-data.js?v=4.0.0";
+import { CATEGORIES, SOURCES, CHECKED, nicsSearchUrl } from "./worldcup-data.js?v=4.1.0";
 
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -135,6 +135,11 @@ function usedSources(c, xs, withNext) {
   return [...ids];
 }
 
+function fullMatches(c) {
+  const tags = c.questions.map((q, qi) => q.options[st.answers[qi]]).filter((o) => o && o.tag).map((o) => o.tag);
+  return tags.length ? c.cands.filter((x) => tags.every((t) => x.tags.includes(t))) : [];
+}
+
 function answeredKeys(c) {
   const keys = new Set();
   c.questions.forEach((q, qi) => { const o = q.options[st.answers[qi]]; if (o && o.tag) keys.add(o.attr || q.attr); });
@@ -149,10 +154,13 @@ function renderMatch({ c, mi, pair, p }) {
   const full = p.filter((s) => s.asked && s.hit === s.asked).length;
   const anyAsked = p[0].asked > 0;
   const note = !anyAsked ? "조건을 고르지 않아 기본 순서로 후보 4개를 골랐습니다." : full >= 4 ? "모든 조건에 맞는 후보 중 4개로 대결합니다." : `모든 조건에 맞는 후보가 ${full}개라 나머지는 일부만 맞는 후보로 채웠습니다.`;
+  const inPool = new Set(p.map((s) => s.x.id));
+  const left = anyAsked ? fullMatches(c).filter((x) => !inPool.has(x.id)) : [];
+  const leftHtml = left.length ? ` 조건에 모두 맞지만 대결에 넣지 못한 후보: ${left.map((x) => `<a href="/compare/${esc(c.page.slug)}.html#v-${esc(x.id)}">${esc(x.name)}</a>`).join(", ")} (비교표에서 확인)` : "";
   stage.innerHTML = `<div class="m-box">
     <p class="count">${ROUND[mi]} · 대결 ${mi + 1} / 3</p>
     <h3 tabindex="-1">${esc(a.x.name)} vs ${esc(b.x.name)}, 어느 쪽이 더 맞나요?</h3>
-    ${mi === 0 ? `<p class="help">${esc(note)} 후보: ${p.map((s) => `${esc(s.x.name)}(${badge(s)})`).join(" · ")}</p>` : ""}
+    ${mi === 0 ? `<p class="help">${esc(note)} 후보: ${p.map((s) => `${esc(s.x.name)}(${badge(s)})`).join(" · ")}.${leftHtml}</p>` : ""}
     <div class="duel">
       <div class="duel-names"><p><strong>${esc(a.x.name)}</strong><small>${badge(a)}</small></p><span class="vs" aria-hidden="true">VS</span><p><strong>${esc(b.x.name)}</strong><small>${badge(b)}</small></p></div>
       <dl class="rows">${rowsHtml(c, a, b, keys)}</dl>
@@ -172,7 +180,7 @@ function whyLines(c, w) {
     const key = o.attr || q.attr;
     const label = (c.attrs.find((a) => a[0] === key) || [])[1];
     const v = w.x.v[key];
-    if (w.x.tags.includes(o.tag)) lines.push(`<li><span class="ok">맞음</span> ‘${esc(o.short)}’ 조건 — ${esc(label)}: ${v ? esc(v[0]) + sup(c, v) : "자료 참고"}</li>`);
+    if (w.x.tags.includes(o.tag)) lines.push(`<li><span class="ok">맞음</span> ‘${esc(o.short)}’ 조건${v ? ` — ${esc(label)}: ${esc(v[0])}${sup(c, v)}` : ""}</li>`);
     else lines.push(`<li><span class="no">다름</span> ‘${esc(o.short)}’ 조건과는 다르지만 대결에서 직접 골랐습니다.${v ? ` (${esc(label)}: ${esc(v[0])}${sup(c, v)})` : ""}</li>`);
   });
   if (!lines.length) lines.push(`<li>조건을 고르지 않았으므로 대결 표를 직접 비교해 고른 결과입니다.</li>`);

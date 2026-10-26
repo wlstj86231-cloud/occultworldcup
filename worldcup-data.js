@@ -50,15 +50,17 @@ export const SOURCES = {
   n260807: { t: "국립원예특작과학원 보도자료(2026-08-07) 원황 배 수확", u: "https://www.nihhs.go.kr/usr/nihhs/news_Press_view.do?dataNo=100000812396&mc=MN0000000136" },
 
   mafra25: { t: "농림축산식품부 「2025년 농업기계 보유현황」(조사기준일 2025-12-01)", u: "https://www.mafra.go.kr/bbs/home/789/578265/artclView.do" },
-  lawAct: { t: "국가법령정보센터 「농업기계화 촉진법」", u: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%ED%99%94%EC%B4%89%EC%A7%84%EB%B2%95" },
-  lawRule: { t: "국가법령정보센터 「농업기계화 촉진법 시행규칙」(별표 2 내용연수, 별표 4 검정대상)", u: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%ED%99%94%EC%B4%89%EC%A7%84%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99" },
+  lawAct: { t: "국가법령정보센터 「농업기계화 촉진법」(제9조 검정, 제9조의2 제조번호, 제9조의7 중고거래 신고)", u: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%ED%99%94%EC%B4%89%EC%A7%84%EB%B2%95" },
+  lawRule: { t: "국가법령정보센터 「농업기계화 촉진법 시행규칙」(제2조의5·별표 2 내용연수, 별표 4 검정대상, 제14조의2 제조번호, 제14조의9 중고거래 신고)", u: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%ED%99%94%EC%B4%89%EC%A7%84%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99" },
   nsMgmt: { t: "농사로 「관리기 부착 작업기」", u: "https://www.nongsaro.go.kr/cms_contents/730/CMS_730_37462_CN.html" },
   nsTiller: { t: "농사로 「경운기 작업기부」", u: "https://www.nongsaro.go.kr/cms_contents/729/CMS_729_37458_CN.html" },
-  nsSafety: { t: "농사로 「기종별 안전수칙」(트랙터, 경운기·관리기)", u: "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentMain.ps?menuId=PS00248" },
+  nsSafety: { t: "농사로 「농업기계 안전 - 기종별 안전수칙」(트랙터, 경운기·관리기 등 첨부 문서)", u: "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentMain.ps?menuId=PS00248" },
   nsMgmtRev: { t: "농사로 사고사례 「관리기 후진」", u: "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentSub.ps?menuId=PS00253&tabAt=ANI&cntntsNo=34601&totalSearchYn=Y" },
   wz2103: { t: "농촌진흥청 웹진(2021년 3월) 경운기 안전", u: "https://www.rda.go.kr/webzine/2021/03/sub2-3.html" },
   wz2102: { t: "농촌진흥청 웹진(2021년 2월) 트랙터 안전", u: "https://www.rda.go.kr/webzine/2021/02/sub2-3.html" },
-  taxRule: { t: "국가법령정보센터 「조세특례제한법상 부가가치세 면제 등에 관한 규정 시행규칙」 별표 2(면세유 대상 농업기계)", u: "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284991" },
+  taxRule: { t: "국가법령정보센터 「농ㆍ축산ㆍ임ㆍ어업용 기자재 및 석유류에 대한 부가가치세 영세율 및 면세 적용 등에 관한 특례규정 시행규칙」 별표 2(면세유류 구입카드 등 교부대상 농업기계)", u: "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284991" },
+  taxLaw: { t: "국가법령정보센터 「조세특례제한법」 제106조의2(농업용 석유류 감면, 2026-12-31 공급분까지)", u: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A1%B0%EC%84%B8%ED%8A%B9%EB%A1%80%EC%A0%9C%ED%95%9C%EB%B2%95/%EC%A0%9C106%EC%A1%B0%EC%9D%982" },
+  mafra260809: { t: "농림축산식품부 보도자료(2026-08-09) 농업법인 과세특례 상시화·면세유 일몰 연장(세제개편안)", u: "https://www.mafra.go.kr/bbs/home/792/578679/artclView.do" },
   fuelRule: { t: "농림축산식품부 「농업용 면세유 공급 및 관리규정」(고시 제2026-95호)", u: "https://www.mafra.go.kr/bbs/home/791/599965/download.do" },
   rdaYoung: { t: "농촌진흥청 청년농 「면세유」 안내", u: "https://www.rda.go.kr/young/content/content41.do" },
   mafraPlan26: { t: "농림축산식품부 「2026년 농업기계화 시행계획」", u: "https://www.mafra.go.kr/bbs/home/791/593751/download.do" },
@@ -78,7 +80,7 @@ export const CATEGORIES = [
     intro: "용도(식용·칩 가공·유색), 심는 시기(작형), 휴면기간, 병 저항성을 비교합니다.",
     attrs: [["use", "주 용도"], ["season", "맞는 작형"], ["maturity", "숙기"], ["dormancy", "휴면기간"], ["texture", "육질·식감"], ["disease", "병 저항성"], ["look", "모양·색"], ["origin", "육성·도입"]],
     questions: [
-      { id: "use", q: "감자를 어디에 쓰나요?", help: "판매·구매 목적에 가장 가까운 쪽을 고르세요.", w: 2, attr: "use", options: [
+      { id: "use", q: "감자를 어디에 쓰나요?", help: "판매·구매 목적에 가장 가까운 쪽을 고르세요.", w: 4, attr: "use", options: [
         { label: "찌기·볶음·조림 등 일반 식용", tag: "use:food", short: "일반 식용" },
         { label: "감자칩·튀김 가공", tag: "use:chip", short: "칩 가공용" },
         { label: "붉은·보라 감자(기능성)", tag: "use:color", short: "유색 기능성" },
@@ -142,7 +144,7 @@ export const CATEGORIES = [
         maturity: ["조생(극조생)", "nics", "jeju"],
         dormancy: ["50~60일로 짧음. 휴면타파 없이 재배 가능한 품종으로 소개", "jeju", "r260807"],
         disease: ["더뎅이병 강, 역병·바이러스 중간", "jeju"],
-        look: ["편원형, 담황색 껍질, 흰 속", "nics"],
+        look: ["둥근 모양, 담황색 껍질, 흰 속", "nics"],
         origin: ["1999년 고령지농업연구소 육성 (수미 후대)", "nics", "jeju"],
       }, warn: [["서리에 매우 약해 제주 월동재배에는 맞지 않습니다.", "jeju"], ["수량은 높지만 식미가 낮다는 평가가 있습니다.", "nics2016"]] },
       { id: "daeji", name: "대지", tags: ["use:food", "season:fall"], v: {
@@ -185,7 +187,7 @@ export const CATEGORIES = [
         use: ["칩 가공 및 식용", "nics"],
         season: ["봄은 전국, 가을은 남부 해안·제주", "nics"],
         maturity: ["조중생", "nics"],
-        dormancy: ["60~70일 (추백보다 약 10일 김)", "nics"],
+        dormancy: ["대지와 비슷하나 다소 길고, 추백보다 약 10일 김", "nics"],
         texture: ["포슬포슬한 밤맛으로 소비자 선호(2026 평가)", "r260801"],
         disease: ["역병·더뎅이병·바이러스 중강", "nics"],
         look: ["편원형, 담황색 껍질, 흰 속", "nics"],
@@ -205,10 +207,10 @@ export const CATEGORIES = [
         season: ["가을재배", "r190726", "m2011"],
         maturity: ["생육 80~90일, 조기재배에 적합", "vod1288"],
         dormancy: ["50~60일 (대지와 비슷)", "nics"],
-        disease: ["바이러스 강, 역병 중간, 더뎅이병 약", "nics"],
+        disease: ["바이러스 발생이 적음, 역병·더뎅이병 약", "nics"],
         look: ["둥근 모양, 담황색 껍질, 흰 속", "nics"],
         origin: ["2010년 고령지농업연구센터 육성", "nics"],
-      }, warn: [["서리·냉해에 약합니다.", "nics"], ["수확이 늦으면 기형 감자가 생길 수 있습니다.", "vod1288"]] },
+      }, warn: [["역병과 더뎅이병에 약합니다.", "nics"], ["서리·냉해에 약합니다.", "nics"], ["수확이 늦으면 기형 감자가 생길 수 있습니다.", "vod1288"]] },
       { id: "jinseon", name: "진선", tags: ["use:chip", "season:fall"], v: {
         use: ["감자칩 가공", "nics"],
         season: ["2기작", "nics"],
@@ -223,7 +225,7 @@ export const CATEGORIES = [
         season: ["고랭지 여름재배. 색을 진하게 하려면 봄 조기·가을·겨울 시설", "vod1288"],
         maturity: ["중생 (95~110일)", "nics"],
         dormancy: ["80~90일", "vod1288"],
-        disease: ["더뎅이병 강, 역병·PVY 약", "nics"],
+        disease: ["더뎅이병 강, 역병·PVY 약 (2011 매뉴얼 표기는 역병·더뎅이병 중도)", "nics", "m2011"],
         look: ["껍질과 속 모두 붉은색", "nics"],
         origin: ["2007년 국립식량과학원 육성", "nics"],
       }, good: [["품종 해설상 항산화 활성이 수미의 약 2.4배입니다.", "nics"]], warn: [["작은 감자 비율이 높고 역병에 약합니다.", "nics"]] },
@@ -232,7 +234,7 @@ export const CATEGORIES = [
         season: ["고랭지 재배. 봄 조기·가을·겨울 시설재배 권장(색 발현)", "nics", "vod1288"],
         maturity: ["만생 (110일 이상)", "nics", "vod1288"],
         dormancy: ["80~90일", "vod1288"],
-        disease: ["더뎅이병·잎말림바이러스 강, PVY 약", "nics"],
+        disease: ["더뎅이병·잎말림바이러스 강, 역병 약, PVY 약~중 (2011 매뉴얼 표기는 역병·더뎅이병 중도)", "nics", "m2011"],
         look: ["껍질과 속 모두 진한 자주색", "nics"],
         origin: ["2007년 국립식량과학원 육성", "nics"],
       }, good: [["품종 해설상 항산화 활성이 수미의 약 2.6배입니다.", "nics"]] },
@@ -270,7 +272,7 @@ export const CATEGORIES = [
     intro: "식감 유형(밤·호박·자색), 용도, 재배 기간, 저장성을 비교합니다.",
     attrs: [["type", "유형·육질"], ["use", "용도"], ["look", "껍질·속 색"], ["sweet", "찐고구마 당도"], ["grow", "재배·수량"], ["store", "저장성"], ["disease", "병해충 저항성"], ["origin", "육성"]],
     questions: [
-      { id: "type", q: "어떤 식감을 원하나요?", help: "‘호박고구마’ ‘밤고구마’는 유형 이름이고 품종명은 따로 있습니다.", w: 2, attr: "type", options: [
+      { id: "type", q: "어떤 식감을 원하나요?", help: "‘호박고구마’ ‘밤고구마’는 유형 이름이고 품종명은 따로 있습니다.", w: 4, attr: "type", options: [
         { label: "포슬포슬한 밤고구마", tag: "type:bam", short: "밤고구마형" },
         { label: "촉촉하고 단 호박·꿀고구마", tag: "type:moist", short: "호박·꿀고구마형" },
         { label: "보라색 자색고구마", tag: "type:purple", short: "자색고구마" },
@@ -312,7 +314,7 @@ export const CATEGORIES = [
         look: ["붉은 껍질, 담주황색 속, 긴 방추형", "nics"],
         sweet: ["32.2°Brix", "nics"],
         grow: ["조기재배 시 수량이 떨어져 보통기(130일 이상) 재배 권장", "nics"],
-        disease: ["덩굴쪼김병 중강, 더뎅이병 강", "nics"],
+        disease: ["덩굴쪼김병 중강, 뿌리혹선충 중", "nics"],
         origin: ["2015년 국립식량과학원 육성", "nics"],
       } },
       { id: "pungwonmi", name: "풍원미", tags: ["type:moist", "use:steam", "use:proc", "grow:early"], v: {
@@ -321,7 +323,7 @@ export const CATEGORIES = [
         look: ["붉은 껍질, 담주황 속 (베타카로틴 풍부)", "nics", "r160425"],
         sweet: ["25.5°Brix", "nics"],
         grow: ["심은 지 100~110일에도 수확 가능", "r160425"],
-        disease: ["덩굴쪼김병 중간, 선충 강, 더뎅이병 약", "nics"],
+        disease: ["덩굴쪼김병 중간, 뿌리혹선충 강", "nics"],
         origin: ["2014년 국립식량과학원 육성", "nics"],
       } },
       { id: "jinyulmi", name: "진율미", tags: ["type:bam", "use:steam", "use:proc"], v: {
@@ -412,7 +414,7 @@ export const CATEGORIES = [
     intro: "수확 시기, 크기, 당도, 저장성, 색을 비교합니다.",
     attrs: [["harvest", "수확기"], ["weight", "평균 과중"], ["brix", "당도"], ["acid", "산도"], ["skin", "껍질 색"], ["store", "저장성"], ["point", "특징"], ["origin", "육성·도입"]],
     questions: [
-      { id: "harvest", q: "언제 먹거나 출하하나요?", help: "수확기는 지역과 해마다 달라질 수 있습니다.", w: 2, attr: "harvest", options: [
+      { id: "harvest", q: "언제 먹거나 출하하나요?", help: "수확기는 지역과 해마다 달라질 수 있습니다.", w: 4, attr: "harvest", options: [
         { label: "여름(7~8월)", tag: "harvest:summer", short: "여름 수확" },
         { label: "9월(추석 무렵)", tag: "harvest:sep", short: "9월 수확" },
         { label: "10월 이후·저장해 두고", tag: "harvest:late", short: "10월 이후 수확" },
@@ -458,6 +460,7 @@ export const CATEGORIES = [
         weight: ["350~400g", "k090925"],
         brix: ["15~16°Bx", "k090925", "brixQA"],
         acid: ["0.40%", "k090925"],
+        skin: ["봉지를 씌우면 선홍색 줄무늬, 봉지 없이 키우면 농홍색", "sangju"],
         store: ["저장력 강", "k090925"],
         point: ["고당도, 추석이 늦은 해 고급 선물용", "k090925"],
         origin: ["1992년 농촌진흥청 사과시험장 육성", "k090925"],
@@ -508,7 +511,8 @@ export const CATEGORIES = [
         weight: ["338g", "a2038"],
         brix: ["16.7°Bx", "a2038"],
         acid: ["0.41%", "a2038"],
-        point: ["착색 양호, 해거리가 거의 없고 열매솎기 노력이 적음", "a2020"],
+        skin: ["껍질 착색이 잘 됨 (감홍 과피를 닮음)", "a2020"],
+        point: ["해거리가 거의 없고 열매솎기 노력이 적음", "a2020"],
         origin: ["2019년 최종선발", "a2020"],
       } },
       { id: "hwangok", name: "황옥", tags: ["harvest:sep", "size:small", "color:yg"], v: {
@@ -571,7 +575,7 @@ export const CATEGORIES = [
     intro: "수확 시기, 크기, 당도, 저장력, 껍질째 먹기 여부를 비교합니다.",
     attrs: [["harvest", "수확기"], ["weight", "평균 과중"], ["brix", "당도"], ["skin", "껍질 색"], ["store", "저장력"], ["point", "특징"], ["origin", "육성·도입"]],
     questions: [
-      { id: "harvest", q: "언제 먹거나 출하하나요?", help: "수확기는 나주 기준이 많고, 지역과 해마다 달라질 수 있습니다.", w: 2, attr: "harvest", options: [
+      { id: "harvest", q: "언제 먹거나 출하하나요?", help: "수확기는 나주 기준이 많고, 지역과 해마다 달라질 수 있습니다.", w: 4, attr: "harvest", options: [
         { label: "8월 여름 햇배", tag: "harvest:aug", short: "8월 수확" },
         { label: "9월(추석 무렵)", tag: "harvest:sep", short: "9월 수확" },
         { label: "10월 이후·저장해 두고", tag: "harvest:oct", short: "10월 이후 수확" },
@@ -716,9 +720,9 @@ export const CATEGORIES = [
     hint: "관리기·경운기·트랙터",
     unit: "장비",
     intro: "보행형·승용 관리기, 동력경운기, 트랙터의 작업 범위, 검정, 중고 거래 서류, 안전 주의점을 비교합니다.",
-    attrs: [["drive", "형태·운전"], ["work", "주 작업"], ["attach", "대표 작업기"], ["count", "국내 보유 대수"], ["check", "검정 구분"], ["life", "법정 내용연수"], ["resale", "중고 거래 서류"], ["safety", "안전 주의"], ["fuel", "면세유"]],
+    attrs: [["drive", "형태·운전"], ["work", "주 작업"], ["attach", "대표 작업기"], ["count", "국내 보유 대수"], ["check", "검정 구분"], ["life", "내용연수(시행규칙 별표 2)"], ["resale", "중고 거래 서류"], ["safety", "안전 주의"], ["fuel", "면세유"]],
     questions: [
-      { id: "work", q: "주로 할 작업은 무엇인가요?", help: "가장 자주 할 작업 하나를 고르세요.", w: 2, attr: "work", options: [
+      { id: "work", q: "주로 할 작업은 무엇인가요?", help: "가장 자주 할 작업 하나를 고르세요.", w: 4, attr: "work", options: [
         { label: "두둑 만들기·비닐 피복·김매기 같은 밭 관리", tag: "work:manage", short: "밭 관리 작업" },
         { label: "로터리 경운과 트레일러 운반", tag: "work:till", short: "경운·운반" },
         { label: "로더·방제기 붐 같은 큰 작업기", tag: "work:big", short: "큰 작업기", attr: "attach" },
@@ -737,8 +741,8 @@ export const CATEGORIES = [
         attach: ["쟁기, 로터리, 구굴, 두둑, 피복, 두둑 휴립피복 작업기", "nsMgmt"],
         count: ["431,119대 (관리기 전체 466,895대 중, 2025-12-01)", "mafra25"],
         check: ["안전검정 대상", "lawRule"],
-        life: ["5년 (관리기 및 부속작업기)", "lawRule"],
-        resale: ["차대 제조번호 각인 대상(트랙터·콤바인·이앙기·농업용 지게차)이 아님", "lawRule"],
+        life: ["5년 (관리기 및 부속작업기). 국가·지자체가 중고 농업기계를 사거나 임대할 때 출고일부터 이 연수를 넘지 않아야 함. 개인 간 거래를 막는 기준은 아님", "lawRule"],
+        resale: ["차대 제조번호 각인·중고거래 신고 대상(트랙터·콤바인·이앙기·농업용 지게차)이 아님", "lawRule"],
         safety: ["후진할 때 핸들이 튀어 오르기 쉬움: 엔진 회전을 낮추고 핸들을 누른 채 클러치를 천천히", "nsMgmtRev", "nsSafety"],
         fuel: ["면세유 공급 대상 기종(관리기)", "taxRule"],
       } },
@@ -747,8 +751,8 @@ export const CATEGORIES = [
         work: ["보행형과 같은 관리 작업(중경·제초, 파종, 복토, 비닐피복, 시비)", "mafra25"],
         count: ["35,776대 (2025-12-01)", "mafra25"],
         check: ["종합검정 대상", "lawRule"],
-        life: ["5년 (관리기 및 부속작업기)", "lawRule"],
-        resale: ["차대 제조번호 각인 대상이 아님", "lawRule"],
+        life: ["5년 (관리기 및 부속작업기). 국가·지자체가 중고 농업기계를 사거나 임대할 때 출고일부터 이 연수를 넘지 않아야 함. 개인 간 거래를 막는 기준은 아님", "lawRule"],
+        resale: ["차대 제조번호 각인·중고거래 신고 대상이 아님", "lawRule"],
         safety: ["주·정차할 때는 시동을 끄고 주차 브레이크를 채움 (농기계 공통 수칙)", "card22"],
         fuel: ["면세유 공급 대상 기종(관리기)", "taxRule"],
       } },
@@ -758,9 +762,9 @@ export const CATEGORIES = [
         attach: ["쟁기, 로터리, 트레일러", "nsTiller"],
         count: ["507,904대 (2025-12-01)", "mafra25"],
         check: ["종합검정 대상 (트레일러는 안전검정)", "lawRule"],
-        life: ["6년", "lawRule"],
-        resale: ["차대 제조번호 각인 대상이 아님", "lawRule"],
-        safety: ["농기계 사고의 50%가 경운기, 그중 74%가 전도·추락(2019년 조사). 경사지에서는 조향클러치 대신 핸들로 방향을 바꾸고, 도로에서 트레일러를 끌 때 등화장치를 답니다", "wz2103", "nsSafety"],
+        life: ["6년. 국가·지자체가 중고 농업기계를 사거나 임대할 때 출고일부터 이 연수를 넘지 않아야 함. 개인 간 거래를 막는 기준은 아님", "lawRule"],
+        resale: ["차대 제조번호 각인·중고거래 신고 대상이 아님", "lawRule"],
+        safety: ["농기계 사고의 50%가 경운기, 그중 74%가 전도·추락(2019년 조사). 경사지에서는 조향클러치가 평지와 반대로 작동하므로 핸들로 방향을 바꾸고, 트레일러를 끌고 도로를 달릴 때는 등화장치를 답니다", "wz2103", "nsSafety"],
         fuel: ["면세유 공급 대상 기종", "taxRule"],
       } },
       { id: "tractor", name: "트랙터", tags: ["work:till", "work:big", "drive:ride"], v: {
@@ -769,9 +773,9 @@ export const CATEGORIES = [
         attach: ["프론트 로더, 트레일러, 방제기 붐, 광폭써레, 논두렁조성기, 심토파쇄기 등", "nsSafety"],
         count: ["319,938대: 소형(40마력 미만) 75,311 · 중형(40~60마력) 154,969 · 대형(60마력 이상) 89,658 (2025-12-01)", "mafra25"],
         check: ["종합검정 대상 (전도 보호구조물 ROPS 포함)", "lawRule"],
-        life: ["8년", "lawRule"],
-        resale: ["차대에 제조번호를 각인하는 기종. 중고로 거래하면 농업기계화 촉진법 제9조의7의 중고거래 신고 대상", "lawAct", "lawRule"],
-        safety: ["경사 15도 이상에서는 전도 위험이 매우 높음. 도로 주행 때 좌우 브레이크 페달을 연결하고 안전프레임·안전벨트를 씀", "wz2102", "nsSafety"],
+        life: ["8년. 국가·지자체가 중고 농업기계를 사거나 임대할 때 출고일부터 이 연수를 넘지 않아야 함. 개인 간 거래를 막는 기준은 아님", "lawRule"],
+        resale: ["2022년 6월 16일 이후 제조·수입분은 차대에 제조번호가 각인됨. 이런 트랙터를 중고로 사고팔면 거래 내용이 신고됨: 산 농업인이 면세유 때문에 농협에 기계를 신고하면 농협이 15일 안에 신고(산 사람이 농업기계신고관리시스템에 직접 신고해도 됨), 판매·정비업체(사후관리업자)를 거치면 그 업체가 신고", "lawAct", "lawRule"],
+        safety: ["경사 15도 이상에서는 전도 위험이 매우 높음. 도로 주행 때 좌우 브레이크 페달을 연결하고, 안전프레임이나 안전캡을 가급적 장착하고 안전벨트를 맴", "wz2102", "nsSafety"],
         fuel: ["면세유 공급 대상 기종", "taxRule"],
       }, warn: [["농사로 트랙터 안전수칙은 중고 트랙터를 살 때 안전장치 상태와 취급설명서 유무를 확인하라고 안내합니다.", "nsSafety"], ["면적별 적정 마력을 정한 공식 기준표는 찾지 못했습니다. 마력은 실제로 달 작업기의 요구 동력과 명판으로 맞추세요."]] },
     ],
@@ -779,6 +783,7 @@ export const CATEGORIES = [
       ["명판의 형식명·제조번호가 판매글과 같은지 사진으로 확인하세요."],
       ["검정을 받지 않았거나 부적합한 농업기계는 판매·유통이 금지돼 있습니다. 검정 표시를 확인하세요.", "lawAct"],
       ["면세유를 쓰려면 매매계약서나 양도서를 받아 두세요. 다른 조합에 등록된 기계라면 신고말소확인서도 필요합니다.", "fuelRule", "rdaYoung"],
+      ["농업용 면세유 감면은 조세특례제한법상 2026년 12월 31일 공급분까지입니다. 정부가 2029년 12월 31일까지 3년 연장하는 세제개편안을 냈고 12월 국회 의결로 확정될 예정이니, 면세유를 계산에 넣는다면 연말 결과를 확인하세요.", "taxLaw", "mafra260809"],
       ["살 장비를 먼저 시·군 농업기술센터 임대사업소에서 빌려 써보세요. 2024년 기준 148개 시·군에 475개소가 있습니다.", "mafraPlan26"],
       ["운송이 필요하면 상차·하차 방법과 비용이 포함된 견적을 같은 조건으로 받으세요."],
     ],
@@ -792,7 +797,7 @@ export const CATEGORIES = [
       slug: "field-machinery",
       title: "관리기·경운기·트랙터 비교: 작업·검정·중고 거래 서류·안전",
       h1: "관리기·경운기·트랙터 비교",
-      description: "보행형·승용 관리기, 동력경운기, 트랙터의 주 작업, 대표 작업기, 검정 구분, 법정 내용연수, 중고 거래 신고, 안전 주의점을 농림축산식품부·농촌진흥청·법령 자료로 비교합니다.",
+      description: "보행형·승용 관리기, 동력경운기, 트랙터의 주 작업, 대표 작업기, 검정 구분, 내용연수, 중고 거래 신고, 면세유, 안전 주의점을 농림축산식품부·농촌진흥청·법령 자료로 비교합니다.",
       steps: [
         "가장 자주 할 작업을 정합니다. 두둑·비닐 피복 같은 관리 작업이면 관리기, 경운과 운반이면 경운기·트랙터가 후보입니다.",
         "걸으면서 다룰지, 타고 다룰지 정합니다.",
