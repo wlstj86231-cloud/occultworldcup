@@ -1,8 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { base, SITE_NAME, STYLE_V, esc, arrow, head, HEADER, FOOTER, ADSENSE_META, graph, orgRef, siteRef, breadcrumbLd, breadcrumbNav, metaBlock, sourcesSection, sourceItems, limitsSection } from "./site-shell.mjs";
+import { buildSitePages } from "./site-pages.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const base = "https://occultworldcup.com";
 const originalDate = "2026-08-10";
 const updateDate = "2026-09-20";
 const buildDate = "2026-10-26";
@@ -128,11 +129,12 @@ const guides = [
       ["마력·작업기·운송 조건으로 트랙터 고르기", "/guides/tractor-horsepower-work-tool.html"],
     ],
     sources: [
-      ["농촌진흥청 농업기계 안전수칙 5계명", "https://www.rda.go.kr/board/board.do?boardId=movie&dataNo=100000794225&mode=updateCnt&prgId=con_movie&site_preference=normal"],
+      ["농사로 「농업기계 안전 - 기종별 안전수칙」", "https://www.nongsaro.go.kr/portal/ps/psz/psza/contentMain.ps?menuId=PS00248"],
       ["농촌진흥청 농업인안전365", "https://farmer.rda.go.kr/portal/menu3/contentMainPlay.do?m_id=9002_55&menuId=PS03436"],
     ],
-    publishedAt: updateDate,
-    modifiedAt: updateDate,
+    // 저장소 첫 기록(e94d48a)이 2026-09-16입니다.
+    publishedAt: "2026-09-16",
+    modifiedAt: buildDate,
   },
   {
     slug: "rice-milling-weight-selection",
@@ -190,6 +192,7 @@ const guides = [
     ],
     sources: [
       ["서울시농수산식품공사 가락시장 공식 가격정보", "https://einvoice.garak.co.kr/"],
+      ["한국농수산식품유통공사 농넷(전국 공영 도매시장 거래 정보)", "https://www.nongnet.or.kr/"],
     ],
     modifiedAt: "2026-10-26",
   },
@@ -623,14 +626,107 @@ const guides = [
   },
 ];
 
-const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
-const jsonLd = (data) => `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
-const arrow = `<span aria-hidden="true">→</span>`;
-const ICONS = `<meta name="theme-color" content="#1d6b42"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">`;
-const HEADER = `<header class="site-header"><div class="wrap"><a class="brand" href="/"><img src="/favicon.svg" width="34" height="34" alt=""><span><strong>농사 비교 월드컵</strong><small>품종·산지·농기계 선택 기준</small></span></a><nav aria-label="주 메뉴"><a href="/#compare">비교 시작</a><a href="/compare/">비교표</a><a href="/guides.html">선택 가이드</a><a href="/tools/tractor-candidate-sheet.html">트랙터 확인표</a></nav></div></header>`;
-const PUBLISHER = { "@type": "Organization", name: "J MEDIA(제이 미디어)", url: "https://jnewmedia.com/" };
-const head = (title, description, canonical, type = "article", guideCss = true) => `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} | 농사 비교 월드컵</title><meta name="description" content="${esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${canonical}"><link rel="alternate" type="application/rss+xml" title="농사 비교 월드컵 선택 가이드" href="/rss.xml"><meta property="og:title" content="${esc(title)} | 농사 비교 월드컵"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="${type}"><meta property="og:url" content="${canonical}">${ICONS}<link rel="stylesheet" href="/style.css?v=4.0.3">${guideCss ? `<link rel="stylesheet" href="/guide.css?v=2.0.1">` : ""}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5877883031077615" crossorigin="anonymous"></script></head><body><a class="skip" href="#main">본문 바로 가기</a>${HEADER}`;
-const foot = `<footer class="site-footer"><div class="wrap"><p><strong>농사 비교 월드컵</strong> · 운영: J MEDIA(제이 미디어), 보리장터 운영사</p><nav aria-label="사이트 정보"><a href="/about.html">소개·운영자</a><a href="/contact.html">문의·정정</a><a href="/privacy.html">개인정보</a><a href="/terms.html">이용약관</a></nav></div></footer></body></html>`;
+// ---- 공통 틀(머리·바닥글·작성 정보·출처·범위와 한계)은 site-shell.mjs ----
+const foot = `${FOOTER}</body></html>`;
+const ECRM = ["경찰청 사이버범죄 신고시스템(ECRM)", "https://ecrm.police.go.kr/minwon/main"];
+const ECRM_LINK = `<a href="${ECRM[1]}" rel="noopener">경찰청 사이버범죄 신고시스템(ECRM)</a>`;
+const SCAM_LIMIT = `물건을 보기 전에 돈부터 보내 달라는 등 사기가 의심되면 거래를 멈추고 112나 ${ECRM_LINK}에 신고·상담하세요.`;
+const FINAL_CHECK = "실제 구매·계약 전에는 상품 표시, 실물, 판매자 설명과 최신 공식 기준을 다시 확인하세요.";
+const PRICE_UNIT_LIMITS = [
+  "포장 단위를 kg으로 맞추는 방법을 다루며, 특정 날짜의 시세는 싣지 않습니다. 오늘 가격은 출처의 공식 가격정보에서 같은 품목·등급·단위로 조회하세요.",
+  "‘10kg 망’, ‘5kg 상자’ 같은 포장 이름은 거래 관행이라 실제 내용 중량과 다를 수 있습니다. 내용 중량은 판매자에게 확인하세요.",
+];
+// 가이드마다 다루지 않는 것과 확인처. extraSources는 본문이나 이 항목에서 실제로 가리키는 공식 창구입니다.
+const GUIDE_NOTES = {
+  "potato-purpose-size-selection": { limits: [
+    "먹거나 살 감자를 고르는 기준입니다. 씨감자 생산·소독, 병해충 방제, 비료 처방은 다루지 않습니다.",
+    "품종 분류는 농촌진흥청 2011년 매뉴얼과 2026년 보도자료를 따른 것이라 이후 나온 품종은 빠져 있을 수 있습니다. 심을 품종과 시기는 시·군 농업기술센터에 확인하세요.",
+    "가격·시세는 싣지 않습니다.",
+  ] },
+  "apple-plum-season-pack-size": { limits: [
+    "수확기는 농촌진흥청 자료에 적힌 시기이며 지역과 해마다 달라질 수 있습니다. 실제 수확·발송일은 판매자에게 확인하세요.",
+    "자두는 품종별 수확기를 공식 자료로 정리하지 못해 숫자를 적지 않았습니다.",
+    "가격·시세와 과일 보관 기간은 다루지 않습니다.",
+  ] },
+  "tractor-horsepower-work-tool": { limits: [
+    "면적별 적정 마력을 정한 공식 기준표는 찾지 못해 제시하지 않습니다. 작업기의 요구 동력은 제조사 자료로 확인하세요.",
+    "기계 상태를 진단하지 않습니다. 사기 전에 실물 시운전과 정비업체·제조사 대리점 점검을 받으세요.",
+    "중고거래 신고와 면세유 적용은 법령 요약입니다. 실제 절차는 지역 농협과 국가법령정보센터 원문으로 확인하세요.",
+  ] },
+  "tractor-transport-quote-comparison": { limits: [
+    "운임 시세, 특정 운송업체 추천, 사고 때 법적 책임 판단은 다루지 않습니다.",
+    "적재·보상 조건은 운송업체의 약관과 계약서가 기준입니다. 계약 전에 문서로 받아 두세요.",
+    "출처는 농기계 안전수칙 자료이며, 탁송 비용이나 운송 계약에 관한 공식 기준은 아닙니다.",
+  ] },
+  "rice-milling-weight-selection": { limits: [
+    "포장 쌀 표시 항목은 「양곡관리법 시행규칙」 별표 4를 요약한 것입니다. 쌀을 포장해 팔 계획이라면 개정 여부를 원문으로 확인하세요.",
+    "쌀 품질 등급 판정 기준, 보관 기간, 가격은 다루지 않습니다.",
+  ] },
+  "garak-auction-direct-price-comparison": { limits: [
+    "조회 방법과 비교 원리를 다루며 특정 날짜의 경락가를 싣지 않습니다.",
+    "출하자가 실제로 받는 정산액은 도매시장법인·공판장의 수수료 기준과 비용에 따라 다릅니다. 출하 전에 출하할 도매시장에 확인하세요.",
+  ] },
+  "kimjang-pack-unit-kg": { limits: PRICE_UNIT_LIMITS },
+  "autumn-fruit-box-kg": { limits: [...PRICE_UNIT_LIMITS, "숙도·당도는 품종과 수확일에 따라 다르며 이 글에서 판단하지 않습니다."] },
+  "autumn-produce-box-kg": { limits: [...PRICE_UNIT_LIMITS, "작형·품종 구분은 거래 표기를 맞추기 위한 것이며 품질 판정 기준이 아닙니다."] },
+  "listing-field-selection": { limits: [
+    `판매글을 비교하기 쉽게 쓰는 요령이며 농산물 표시 의무 전체를 다루지 않습니다. 쌀 외 품목의 원산지 등 표시 기준은 <a href="https://www.naqs.go.kr/" rel="noopener">국립농산물품질관리원</a> 안내로 확인하세요.`,
+    "실중량·수확일을 적는다고 품질이 보증되는 것은 아닙니다. 상처·크기 섞임 같은 상태는 사진과 설명으로 따로 알리세요.",
+  ] },
+  "machinery-listing-fields": { limits: [
+    "검정·제조번호·중고거래 신고·면세유 서류는 법령과 농촌진흥청 안내의 요약입니다. 실제 신고와 면세유 처리는 지역 농협에 확인하세요.",
+    "기계 성능이나 적정 판매가는 다루지 않습니다.",
+  ] },
+  "nearby-produce-filter": { extraSources: [ECRM], limits: [
+    "판매글을 거르는 기준이며 판매자 신원이나 상품 품질을 보증하지 않습니다.",
+    SCAM_LIMIT,
+  ] },
+  "nearby-machinery-filter": { limits: [
+    "기계 상태 진단과 적정 가격 판단은 다루지 않습니다. 실물 시운전과 정비업체 점검을 받으세요.",
+    "검정·판매 금지 내용은 「농업기계화 촉진법」 요약입니다. 임대사업소의 기종과 예약은 시·군 농업기술센터에 확인하세요.",
+  ] },
+  "meetup-or-parcel-choice": { extraSources: [ECRM], limits: [
+    "택배 파손·분실 보상과 분쟁 해결 절차는 다루지 않습니다. 택배사 약관과 고객센터에서 확인하세요.",
+    SCAM_LIMIT,
+  ] },
+  "farm-vs-appliance-category": { limits: [
+    "카테고리 이름은 일반적인 중고 거래 앱의 예시이며 특정 플랫폼의 운영 정책을 설명하지 않습니다.",
+    "‘농업용’ 표시 의무는 「농업기계화 촉진법」 제9조의2 요약입니다. 표시가 보이지 않으면 판매자에게 형식표지판과 검정 여부를 먼저 확인하세요.",
+  ] },
+  "c2c-vs-mall-choice": { extraSources: [ECRM], limits: [
+    "쇼핑몰 입점 조건·수수료, 사업자 등록과 세금, 온라인 판매 신고 의무는 다루지 않습니다. 꾸준히 팔 계획이라면 관할 시·군·구청과 세무서에 필요한 신고를 확인하세요.",
+    SCAM_LIMIT,
+  ] },
+  "kimjang-listing-dates": { limits: [
+    "날짜를 나눠 적는 요령이며 절임배추의 위생·보관 기준은 다루지 않습니다.",
+    "쌀 표시 항목은 「양곡관리법 시행규칙」 별표 4 요약이니 포장해 팔 때는 원문을 확인하세요.",
+  ] },
+};
+// 비교표마다 다루지 않는 것과 확인처
+const COMPARE_LIMITS = {
+  potato: [
+    "품종 특성은 시험 성적과 해설 자료의 요약입니다. 우리 밭에서의 수량·품질, 병해충 방제, 씨감자 구입처는 다루지 않습니다.",
+    "심을 품종과 시기는 시·군 농업기술센터에 확인하세요. 표에 없는 품종은 국립식량과학원 품종정보에서 찾아볼 수 있습니다.",
+  ],
+  sweetpotato: [
+    "식감·당도는 시험 지역과 해, 저장 기간에 따라 달라집니다. 우리 밭에서의 수량과 품질은 다루지 않습니다.",
+    "심을 품종과 시기는 시·군 농업기술센터에 확인하세요. 표에 없는 품종은 국립식량과학원 품종정보에서 찾아볼 수 있습니다.",
+  ],
+  apple: [
+    "수확기·과중·당도는 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.",
+    "묘목 구입, 재배 적지, 병해충 방제는 다루지 않습니다. 심을 품종은 시·군 농업기술센터에 확인하세요.",
+  ],
+  pear: [
+    "수확기·과중·저장력은 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.",
+    "묘목 구입, 재배 적지, 병해충 방제는 다루지 않습니다. 심을 품종은 시·군 농업기술센터에 확인하세요.",
+  ],
+  machine: [
+    "기종 사이의 일반 비교이며 특정 모델의 성능·상태·가격은 다루지 않습니다.",
+    "검정·내용연수·중고거래 신고·면세유는 법령 요약이라 바뀔 수 있습니다. 국가법령정보센터 원문과 지역 농협(면세유), 시·군 농업기술센터(임대사업소)에서 확인하세요.",
+    "안전수칙은 농사로 자료의 일부만 옮겼습니다. 실제 작업은 기계의 취급설명서를 따르세요.",
+  ],
+};
+const COMPARE_PUBLISHED = "2026-10-26"; // 비교표 첫 게시(d3927a6)
 
 // ---- 품종·장비 비교표 (worldcup-data.js 한 곳에서 생성) ----
 const sourceOrder = (c) => {
@@ -659,7 +755,6 @@ for (const c of CATEGORIES) {
     return `<article class="cmp-card" id="v-${x.id}"><h3>${esc(x.name)}</h3><dl>${rows}</dl>${notes ? `<ul class="cmp-warn">${notes}</ul>` : ""}${db}</article>`;
   }).join("");
   const next = c.next.map((n) => `<li>${esc(n[0])}${sup(n)}</li>`).join("");
-  const sources = order.map((id) => `<li><a href="${esc(SOURCES[id].u)}" rel="noopener">${esc(SOURCES[id].t)}</a></li>`).join("");
   const L = c.links;
   const linkBtns = [
     `<a class="btn primary" href="${esc(L.boribay.url)}" rel="noopener">${esc(L.boribay.label)} ${arrow}</a>`,
@@ -667,38 +762,48 @@ for (const c of CATEGORIES) {
     ...(L.guides || []).map(([t, h]) => `<a class="btn" href="${esc(h)}">${esc(t)}</a>`),
     L.sister ? `<a class="btn" href="${esc(L.sister.url)}" rel="noopener">${esc(L.sister.label)} (${esc(L.sister.site)})</a>` : "",
   ].join("");
-  const schema = { "@context": "https://schema.org", "@graph": [
-    { "@type": "Article", headline: c.page.title, description: c.page.description, datePublished: CHECKED, dateModified: CHECKED, inLanguage: "ko-KR", mainEntityOfPage: canonical, author: { "@type": "Organization", name: "농사 비교 월드컵" }, publisher: PUBLISHER },
+  const trail = [["홈", "/"], ["비교표", "/compare/"], [c.name, `/compare/${c.page.slug}.html`]];
+  const ld = graph(
+    { "@type": "Article", "@id": `${canonical}#article`, headline: c.page.title, description: c.page.description, datePublished: COMPARE_PUBLISHED, dateModified: CHECKED, inLanguage: "ko-KR", mainEntityOfPage: canonical, isPartOf: siteRef, author: orgRef, publisher: orgRef, citation: order.map((id) => SOURCES[id].u) },
     { "@type": "ItemList", name: c.page.h1, numberOfItems: c.cands.length, itemListElement: c.cands.map((x, i) => ({ "@type": "ListItem", position: i + 1, name: x.name, url: `${canonical}#v-${x.id}` })) },
-  ] };
-  const html = `${head(c.page.title, c.page.description, canonical, "article", false)}${jsonLd(schema)}<main class="cmp-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><a href="/compare/">비교표</a><span>›</span><span>${esc(c.name)}</span></nav>
-<section class="cmp-hero"><p class="eyebrow">품종·장비 비교표 · 자료 확인일 ${CHECKED}</p><h1>${esc(c.page.h1)}</h1><p class="lead">${esc(c.page.description)}</p><p class="cmp-meta">${c.cands.length}개 ${esc(c.unit)} · 특성마다 [번호]로 출처를 붙였고, 공식 자료에서 확인하지 못한 항목은 비워 두었습니다. 자료끼리 값이 다르면 둘 다 적었습니다.</p><div class="cmp-cta"><a class="btn primary" href="/?c=${c.id}#compare">질문에 답하고 후보 4개 1:1 비교하기 ${arrow}</a><a class="btn" href="#cards">${esc(c.unit)}별 자세히 보기</a></div></section>
+    breadcrumbLd(trail),
+  );
+  const method = `<section class="cmp-section"><h2>이 비교표를 만든 방법</h2><ul class="cmp-steps"><li>공식 자료에서 특성을 확인할 수 있는 ${esc(c.unit)} ${c.cands.length}개를 실었습니다. 국내의 모든 ${esc(c.unit)}을 망라하지는 않습니다.</li><li>값마다 [번호]로 출처를 붙였습니다. 자료끼리 값이 다르면 둘 다 적고, 확인하지 못한 항목은 ‘—’로 비워 두었습니다.</li><li>같은 자료로 <a href="/?c=${c.id}#compare">비교 월드컵</a>이 작동하므로 표와 대결 화면의 값은 같습니다.</li><li>초안 작성과 원문 대조에 AI 도구를 활용했습니다. 자세한 기준은 <a href="/editorial.html">편집 원칙</a>에 있습니다.</li></ul></section>`;
+  const html = `${head({ title: c.page.title, description: c.page.description, canonical, ads: "deferred" })}${ld}${HEADER("/compare/")}<main class="cmp-main" id="main">${breadcrumbNav(trail)}
+<section class="cmp-hero"><p class="eyebrow">품종·장비 비교표 · 자료 확인일 ${CHECKED}</p><h1>${esc(c.page.h1)}</h1><p class="lead">${esc(c.page.description)}</p>${metaBlock({ published: COMPARE_PUBLISHED, checked: CHECKED, sources: order.length })}<p class="cmp-meta">${c.cands.length}개 ${esc(c.unit)} · 특성마다 [번호]로 출처를 붙였고, 공식 자료에서 확인하지 못한 항목은 비워 두었습니다. 자료끼리 값이 다르면 둘 다 적었습니다.</p><div class="cmp-cta"><a class="btn primary" href="/?c=${c.id}#compare">질문에 답하고 후보 4개 1:1 비교하기 ${arrow}</a><a class="btn" href="#cards">${esc(c.unit)}별 자세히 보기</a></div></section>
 <section class="cmp-section"><h2>고르는 순서</h2><ol class="cmp-steps">${c.page.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol></section>
 <section class="cmp-section"><h2>조건별 빠른 찾기</h2><ul class="cmp-quick">${quick}</ul></section>
 <section class="cmp-section"><h2>한눈에 보는 요약표</h2>${table}</section>
 <section class="cmp-section" id="cards"><h2>${esc(c.unit)}별 특성과 출처</h2><div class="cmp-cards">${cards}</div></section>
 <section class="cmp-section"><h2>사기 전에 확인할 것</h2><ol class="cmp-steps">${next}</ol></section>
+${limitsSection(COMPARE_LIMITS[c.id] || [], "cmp-limits")}
 <section class="cmp-next"><h2>이어서 하기</h2><div class="btns">${linkBtns}</div></section>
-<section class="cmp-section"><h2>출처 (확인일 ${CHECKED})</h2><ol class="cmp-sources">${sources}</ol><p class="fine">품종·장비 특성은 지역, 해마다의 날씨, 관리 방법에 따라 달라질 수 있습니다. 구매·재배·계약 전에는 원문과 판매자 자료를 다시 확인하세요. 틀린 내용은 <a href="/contact.html">문의·정정</a>으로 알려주세요.</p></section>
+${method}
+${sourcesSection({ items: order.map((id) => SOURCES[id]), checked: CHECKED, cls: "cmp-section", heading: `출처 (${order.length}건)`, intro: `값 뒤의 [번호]가 아래 목록의 번호입니다. 모든 원문을 ${CHECKED}에 확인했습니다.` })}
 </main>${foot}`;
   await fs.writeFile(path.join(root, "compare", `${c.page.slug}.html`), html, "utf8");
 }
 const compareHubDesc = "감자·고구마·사과·배 품종과 관리기·경운기·트랙터를 용도, 작형, 수확기, 저장성, 검정·서류 기준으로 비교한 표입니다. 특성마다 농촌진흥청 등 공식 출처를 붙였습니다.";
-const compareHub = `${head("품종·장비 비교표", compareHubDesc, `${base}/compare/`, "website", false)}${jsonLd({ "@context": "https://schema.org", "@type": "CollectionPage", name: "품종·장비 비교표", url: `${base}/compare/`, hasPart: CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })) })}<main class="cmp-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><span>비교표</span></nav><section class="cmp-hero"><p class="eyebrow">자료 확인일 ${CHECKED}</p><h1>품종·장비 비교표</h1><p class="lead">${esc(compareHubDesc)}</p><div class="cmp-cta"><a class="btn primary" href="/#compare">질문에 답하고 1:1로 비교하기 ${arrow}</a></div></section><section class="cmp-section"><ul class="card-grid">${CATEGORIES.map((c) => `<li><a href="/compare/${c.page.slug}.html"><strong>${esc(c.page.h1)}</strong><span>${esc(c.intro)} (${c.cands.length}개)</span></a></li>`).join("")}<li><a href="/tools/tractor-candidate-sheet.html"><strong>중고 트랙터 두 후보 확인표</strong><span>명판·정비·작업기·시운전·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span></a></li></ul></section><section class="cmp-section"><h2>비교표를 읽는 법</h2><ul class="cmp-steps"><li>값 뒤의 [번호]는 각 표 아래 출처 목록의 번호입니다. 원문을 직접 열어 확인할 수 있습니다.</li><li>당도·수확기·수량은 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.</li><li>가격은 넣지 않았습니다. 시세는 같은 품종·등급·포장 단위로 맞춰 공식 가격정보에서 확인하세요.</li></ul></section></main>${foot}`;
+const compareHubTrail = [["홈", "/"], ["비교표", "/compare/"]];
+const compareHub = `${head({ title: "품종·장비 비교표", description: compareHubDesc, canonical: `${base}/compare/`, ogType: "website", ads: "deferred" })}${graph({ "@type": "CollectionPage", "@id": `${base}/compare/#webpage`, name: "품종·장비 비교표", url: `${base}/compare/`, inLanguage: "ko-KR", isPartOf: siteRef, publisher: orgRef, author: orgRef, datePublished: COMPARE_PUBLISHED, dateModified: CHECKED, hasPart: CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })) }, breadcrumbLd(compareHubTrail))}${HEADER("/compare/")}<main class="cmp-main" id="main">${breadcrumbNav(compareHubTrail)}<section class="cmp-hero"><p class="eyebrow">자료 확인일 ${CHECKED}</p><h1>품종·장비 비교표</h1><p class="lead">${esc(compareHubDesc)}</p>${metaBlock({ published: COMPARE_PUBLISHED, checked: CHECKED })}<div class="cmp-cta"><a class="btn primary" href="/#compare">질문에 답하고 1:1로 비교하기 ${arrow}</a></div></section><section class="cmp-section"><ul class="card-grid">${CATEGORIES.map((c) => `<li><a href="/compare/${c.page.slug}.html"><strong>${esc(c.page.h1)}</strong><span>${esc(c.intro)} (${c.cands.length}개, 출처 ${sourceOrder(c).length}건)</span></a></li>`).join("")}<li><a href="/tools/tractor-candidate-sheet.html"><strong>중고 트랙터 두 후보 확인표</strong><span>명판·정비·작업기·시운전·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span></a></li></ul></section><section class="cmp-section"><h2>비교표를 읽는 법</h2><ul class="cmp-steps"><li>값 뒤의 [번호]는 각 표 아래 출처 목록의 번호입니다. 원문을 직접 열어 확인할 수 있습니다.</li><li>당도·수확기·수량은 시험 지역과 해에 따라 다릅니다. 자료끼리 다르면 둘 다 적었습니다.</li><li>가격은 넣지 않았습니다. 시세는 같은 품종·등급·포장 단위로 맞춰 공식 가격정보에서 확인하세요.</li><li>만드는 방식과 AI 도구 활용 범위는 <a href="/editorial.html">편집 원칙</a>에 있습니다.</li></ul></section></main>${foot}`;
 await fs.writeFile(path.join(root, "compare", "index.html"), compareHub, "utf8");
 
 // ---- 선택 가이드 ----
 await fs.mkdir(path.join(root, "guides"), { recursive: true });
+const shortTitle = (t) => t.split(":")[0].trim();
 const compareCards = CATEGORIES.map((c) => `<article><p>품종·장비 비교표</p><h2><a href="/compare/${c.page.slug}.html">${esc(c.page.title)}</a></h2><span>${esc(c.page.description)}</span><a href="/compare/${c.page.slug}.html">비교표 열기 ${arrow}</a></article>`).join("");
 const cards = guides.map((guide) => `<article><p>선택 기준</p><h2><a href="/guides/${guide.slug}.html">${esc(guide.title)}</a></h2><span>${esc(guide.description)}</span><a href="/guides/${guide.slug}.html">기준 자세히 보기 ${arrow}</a></article>`).join("") + `<article><p>직접 비교</p><h2><a href="/tools/tractor-candidate-sheet.html">중고 트랙터 두 후보 확인표</a></h2><span>명판·정비·작업기·작동·운송 자료를 두 후보에게 같은 방식으로 요청합니다.</span><a href="/tools/tractor-candidate-sheet.html">확인표 열기 ${arrow}</a></article>`;
-const hubSchema = { "@context": "https://schema.org", "@type": "CollectionPage", name: "농산물·농기계 선택 가이드", url: `${base}/guides.html`, hasPart: [...CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })), ...guides.map((guide) => ({ "@type": "Article", name: guide.title, url: `${base}/guides/${guide.slug}.html` }))] };
-const hub = `${head("농산물·농기계 선택 가이드", "감자·고구마·사과·배 품종 비교표와 쌀·과일 포장, 중고 트랙터와 탁송 견적, 경락가와 직거래 가격을 목적, 규격, 상태와 거래 조건으로 비교하는 선택 가이드입니다.", `${base}/guides.html`, "website")}${jsonLd(hubSchema)}<main class="guide-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><span>선택 가이드</span></nav><section class="guide-hero"><p>조건부터 맞추는 비교 기준</p><h1>농산물·농기계<br><em>선택 가이드</em></h1><span>인기순이나 광고 문구보다 용도·규격·상태·인도 조건으로 비교하세요.</span></section><h2 class="guide-sub">품종·장비 비교표</h2><section class="guide-grid">${compareCards}</section><h2 class="guide-sub">선택 기준 가이드</h2><section class="guide-grid">${cards}</section></main>${foot}`;
+const hubTrail = [["홈", "/"], ["선택 가이드", "/guides.html"]];
+const hubLd = graph({ "@type": "CollectionPage", "@id": `${base}/guides.html#webpage`, name: "농산물·농기계 선택 가이드", url: `${base}/guides.html`, inLanguage: "ko-KR", isPartOf: siteRef, publisher: orgRef, author: orgRef, datePublished: originalDate, dateModified: buildDate, hasPart: [...CATEGORIES.map((c) => ({ "@type": "Article", name: c.page.title, url: compareUrl(c) })), ...guides.map((guide) => ({ "@type": "Article", name: guide.title, url: `${base}/guides/${guide.slug}.html` }))] }, breadcrumbLd(hubTrail));
+const hub = `${head({ title: "농산물·농기계 선택 가이드", description: "감자·고구마·사과·배 품종 비교표와 쌀·과일 포장, 중고 트랙터와 탁송 견적, 경락가와 직거래 가격을 목적, 규격, 상태와 거래 조건으로 비교하는 선택 가이드입니다.", canonical: `${base}/guides.html`, ogType: "website", css: ["/guide.css?v=2.1.0"] })}${hubLd}${HEADER("/guides.html")}<main class="guide-main" id="main">${breadcrumbNav(hubTrail)}<section class="guide-hero"><p>조건부터 맞추는 비교 기준</p><h1>농산물·농기계<br><em>선택 가이드</em></h1><span>인기순이나 광고 문구보다 용도·규격·상태·인도 조건으로 비교하세요. 가이드마다 출처와 확인일, 다루지 않는 범위를 함께 적었습니다.</span>${metaBlock({ published: originalDate, checked: buildDate })}</section><h2 class="guide-sub">품종·장비 비교표</h2><section class="guide-grid">${compareCards}</section><h2 class="guide-sub">선택 기준 가이드</h2><section class="guide-grid">${cards}</section></main>${foot}`;
 await fs.writeFile(path.join(root, "guides.html"), hub, "utf8");
 
 for (const guide of guides) {
   const canonical = `${base}/guides/${guide.slug}.html`;
   const publishedAt = guide.publishedAt ?? originalDate;
   const modifiedAt = guide.modifiedAt ?? publishedAt;
+  const notes = GUIDE_NOTES[guide.slug] || {};
+  const srcs = [...(guide.sources || []), ...(notes.extraSources || [])].map(([t, u]) => ({ t, u }));
   const sectionHtml = guide.sections.map(([heading, items]) => `<section><h2>${esc(heading)}</h2><ul>${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul></section>`).join("");
   const campaign = guide.campaign ?? "farm_selection_guides";
   const linksHtml = guide.links.map(([text, slug]) => `<a href="https://boribay.com/guides/${slug}?utm_source=occultworldcup.com&amp;utm_medium=owned_referral&amp;utm_campaign=${esc(campaign)}&amp;utm_content=${guide.slug}">${esc(text)} ${arrow}</a>`).join("");
@@ -711,43 +816,69 @@ for (const guide of guides) {
   const faqHtml = guide.faqs?.length
     ? `<section class="guide-faq"><h2>자주 묻는 질문</h2>${guide.faqs.map(([question, answer]) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join("")}</section>`
     : "";
-  const sourcesHtml = guide.sources?.length
-    ? `<p>공식 자료${guide.modifiedAt === CHECKED ? `(확인일 ${CHECKED})` : ""}: ${guide.sources.map(([text, url]) => `<a href="${esc(url)}" rel="noopener">${esc(text)}</a>`).join(", ")}</p>`
-    : "";
-  const schema = { "@context": "https://schema.org", "@type": "Article", headline: guide.title, description: guide.description, datePublished: publishedAt, dateModified: modifiedAt, inLanguage: "ko-KR", mainEntityOfPage: canonical, author: { "@type": "Organization", name: "농사 비교 월드컵 편집팀" }, publisher: PUBLISHER };
-  const html = `${head(guide.title, guide.description, canonical)}${jsonLd(schema)}<main class="guide-main" id="main"><nav class="guide-breadcrumb" aria-label="위치"><a href="/">홈</a><span>›</span><a href="/guides.html">선택 가이드</a></nav><article class="guide-article"><header><p>선택 가이드 · ${modifiedAt}</p><h1>${esc(guide.title)}</h1><span>${esc(guide.description)}</span></header><div class="guide-layout"><div><aside class="guide-lead"><strong>먼저 정할 것</strong><p>${esc(guide.lead)}</p></aside>${sectionHtml}${comparisonHtml}${faqHtml}${internalLinksHtml}<section class="guide-source"><h2>확인 원칙</h2><p>실제 구매·계약 전에는 상품 표시, 실물, 판매자 설명과 최신 공식 기준을 다시 확인하세요.</p>${sourcesHtml}</section></div><aside class="guide-next"><h2>조건을 정했다면</h2><p>${esc(guide.nextLead ?? "같은 조건으로 시세와 거래 기준을 비교하세요.")}</p>${linksHtml}</aside></div></article></main>${foot}`;
+  const limitsHtml = limitsSection([...(notes.limits || []), FINAL_CHECK]);
+  const sourcesHtml = sourcesSection({ items: srcs, checked: modifiedAt, intro: (guide.sources || []).length ? `본문의 법령·수치·기준은 아래 자료에서 확인했습니다.${notes.extraSources ? " 마지막 항목은 ‘범위와 한계’에서 안내한 공식 확인처입니다." : ""}` : "이 글은 법령이나 통계 수치를 인용하지 않은 거래 절차 안내입니다. 아래는 ‘범위와 한계’에서 안내한 공식 확인처입니다." });
+  const trail = [["홈", "/"], ["선택 가이드", "/guides.html"], [shortTitle(guide.title), `/guides/${guide.slug}.html`]];
+  const ld = graph({ "@type": "Article", "@id": `${canonical}#article`, headline: guide.title, description: guide.description, datePublished: publishedAt, dateModified: modifiedAt, inLanguage: "ko-KR", mainEntityOfPage: canonical, isPartOf: siteRef, author: orgRef, publisher: orgRef, ...(srcs.length ? { citation: srcs.map((s) => s.u) } : {}) }, breadcrumbLd(trail));
+  const html = `${head({ title: guide.title, description: guide.description, canonical, css: ["/guide.css?v=2.1.0"] })}${ld}${HEADER()}<main class="guide-main" id="main">${breadcrumbNav(trail)}<article class="guide-article"><header><p>선택 가이드</p><h1>${esc(guide.title)}</h1><span>${esc(guide.description)}</span>${metaBlock({ published: publishedAt, checked: modifiedAt, sources: srcs.length })}</header><div class="guide-layout"><div><aside class="guide-lead"><strong>먼저 정할 것</strong><p>${esc(guide.lead)}</p></aside>${sectionHtml}${comparisonHtml}${faqHtml}${internalLinksHtml}${limitsHtml}${sourcesHtml}</div><aside class="guide-next"><h2>조건을 정했다면</h2><p>${esc(guide.nextLead ?? "같은 조건으로 시세와 거래 기준을 비교하세요.")}</p>${linksHtml}</aside></div></article></main>${foot}`;
   await fs.writeFile(path.join(root, "guides", `${guide.slug}.html`), html, "utf8");
 }
 
-const css = `.guide-main{max-width:1000px}.guide-breadcrumb{padding-top:22px;display:flex;flex-wrap:wrap;gap:6px 8px;color:var(--muted);font-size:15px}.guide-hero{padding:44px 0 30px}.guide-hero>p,.guide-grid article>p,.guide-article>header>p{color:var(--green2);font-size:15px;font-weight:800;margin:0}.guide-hero h1{font-size:44px;line-height:1.22;letter-spacing:-1.5px;margin:7px 0}.guide-hero h1 em{font-style:normal;color:var(--green)}.guide-hero>span,.guide-grid article>span,.guide-article>header>span{color:var(--text)}.guide-sub{font-size:23px;margin:12px 0 12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:40px}.guide-grid article{border:1px solid var(--line);border-radius:12px;padding:20px}.guide-grid h2{font-size:20px;line-height:1.45;margin:6px 0}.guide-grid h2 a{color:var(--ink);text-decoration:none}.guide-grid h2 a:hover{color:var(--green2);text-decoration:underline}.guide-grid article>span{display:block;font-size:16px}.guide-grid article>a,.guide-related a{display:flex;align-items:center;gap:7px;min-height:44px;margin-top:8px;color:var(--green2);font-weight:800;font-size:16px}.guide-article>header{display:block;height:auto;padding:32px 0;border-bottom:1px solid var(--line)}.guide-article h1{font-size:38px;line-height:1.3;margin:7px 0}.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:34px;padding:30px 0 60px}.guide-layout>div>section{padding:8px 0 22px;border-bottom:1px solid var(--line)}.guide-layout h2{font-size:22px;line-height:1.4}.guide-layout li{color:var(--text);margin:9px 0}.guide-lead{background:var(--pale);border-left:4px solid var(--yellow);padding:18px;margin-bottom:18px}.guide-lead p{margin-bottom:0;color:var(--text)}.guide-source a,.guide-related a{color:var(--green2);font-weight:800;text-decoration:underline;text-underline-offset:3px}.guide-table-wrap{overflow-x:auto}.guide-comparison table{width:100%;border-collapse:collapse;font-size:16px}.guide-comparison th,.guide-comparison td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top}.guide-comparison thead th,.guide-comparison tbody th{background:var(--pale);font-weight:800}.guide-faq details{border:1px solid var(--line);border-radius:8px;padding:6px 15px;margin:9px 0}.guide-faq summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}.guide-faq details p{margin:6px 0 10px;color:var(--text)}.guide-next{align-self:start;position:sticky;top:20px;background:var(--pale);padding:20px;border-radius:10px}.guide-next h2{margin-top:0}.guide-next p{font-size:16px;color:var(--text)}.guide-next a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--green2);font-size:16px;font-weight:800;text-decoration:none}@media(max-width:760px){.guide-grid,.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-hero h1,.guide-article h1{font-size:30px}.guide-article>header{padding:22px 0}.guide-next{position:static}.guide-comparison table{min-width:600px}}`;
+const css = `.guide-main{max-width:1000px}.guide-hero{padding:44px 0 30px}.guide-hero>p,.guide-grid article>p,.guide-article>header>p:first-child{color:var(--green2);font-size:15px;font-weight:800;margin:0}.guide-hero h1{font-size:44px;line-height:1.22;letter-spacing:-1.5px;margin:7px 0}.guide-hero h1 em{font-style:normal;color:var(--green)}.guide-hero>span,.guide-grid article>span,.guide-article>header>span{color:var(--text)}.guide-sub{font-size:23px;margin:12px 0 12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:40px}.guide-grid article{border:1px solid var(--line);border-radius:12px;padding:20px}.guide-grid h2{font-size:20px;line-height:1.45;margin:6px 0}.guide-grid h2 a{color:var(--ink);text-decoration:none}.guide-grid h2 a:hover{color:var(--green2);text-decoration:underline}.guide-grid article>span{display:block;font-size:16px}.guide-grid article>a,.guide-related a{display:flex;align-items:center;gap:7px;min-height:44px;margin-top:8px;color:var(--green2);font-weight:800;font-size:16px}.guide-article>header{display:block;height:auto;padding:32px 0;border-bottom:1px solid var(--line)}.guide-article h1{font-size:38px;line-height:1.3;margin:7px 0}.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:34px;padding:30px 0 60px}.guide-layout>div>section{padding:8px 0 22px;border-bottom:1px solid var(--line)}.guide-layout>div>section.limits{padding:14px 18px;margin:22px 0 4px;border-bottom:0}.guide-layout h2{font-size:22px;line-height:1.4}.guide-layout li{color:var(--text);margin:9px 0}.guide-lead{background:var(--pale);border-left:4px solid var(--yellow);padding:18px;margin-bottom:18px}.guide-lead p{margin-bottom:0;color:var(--text)}.guide-source a,.guide-related a{color:var(--green2);font-weight:800;text-decoration:underline;text-underline-offset:3px}.guide-table-wrap{overflow-x:auto}.guide-comparison table{width:100%;border-collapse:collapse;font-size:16px}.guide-comparison th,.guide-comparison td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top}.guide-comparison thead th,.guide-comparison tbody th{background:var(--pale);font-weight:800}.guide-faq details{border:1px solid var(--line);border-radius:8px;padding:6px 15px;margin:9px 0}.guide-faq summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}.guide-faq details p{margin:6px 0 10px;color:var(--text)}.guide-next{align-self:start;position:sticky;top:20px;background:var(--pale);padding:20px;border-radius:10px}.guide-next h2{margin-top:0}.guide-next p{font-size:16px;color:var(--text)}.guide-next a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--green2);font-size:16px;font-weight:800;text-decoration:none}@media(max-width:760px){.guide-grid,.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-hero h1,.guide-article h1{font-size:30px}.guide-article>header{padding:22px 0}.guide-next{position:static}.guide-comparison table{min-width:600px}}`;
 await fs.writeFile(path.join(root, "guide.css"), css, "utf8");
+
+// ---- 사이트 안내 페이지 ----
+const allSourceUrls = new Set(CATEGORIES.flatMap((c) => sourceOrder(c).map((id) => SOURCES[id].u)));
+const counts = { categories: CATEGORIES.length, candidates: CATEGORIES.reduce((n, c) => n + c.cands.length, 0), guides: guides.length };
+const sitePages = buildSitePages({ CHECKED, counts });
+for (const p of sitePages) await fs.writeFile(path.join(root, p.path.slice(1)), p.html, "utf8");
+
+// ---- 정적 페이지(홈·트랙터 확인표)의 공통 부분 맞추기 ----
+const syncShell = (html) => html
+  .replace(/<footer class="site-footer">[\s\S]*?<\/footer>/, FOOTER)
+  .replace(/\/style\.css\?v=[0-9.]+/g, `/style.css?v=${STYLE_V}`)
+  .replace(/<meta name="google-adsense-account"[^>]*>/g, "")
+  .replace(/<link rel="manifest" href="\/manifest\.webmanifest">/, `<link rel="manifest" href="/manifest.webmanifest">${ADSENSE_META}`)
+  .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, "<!--ld-->");
+const putLd = (html, ld) => {
+  if (!html.includes("<!--ld-->")) throw new Error("missing JSON-LD slot");
+  return html.replace("<!--ld-->", ld);
+};
+const replaceBlock = (html, name, content) => {
+  const re = new RegExp(`<!--gen:${name}-->[\\s\\S]*?<!--/gen:${name}-->`);
+  if (!re.test(html)) throw new Error(`missing gen:${name} block`);
+  return html.replace(re, `<!--gen:${name}-->${content}<!--/gen:${name}-->`);
+};
+// 홈(비교 월드컵)
+const HOME_PUBLISHED = originalDate; // 농사월드컵 비교 도구 첫 기록
+const HOME_REVISED = "2026-10-26"; // 5개 주제·출처 붙은 후보 55개로 다시 만든 날(a56ceba)
+let index = syncShell(await fs.readFile(path.join(root, "index.html"), "utf8"));
+index = putLd(index, graph({ "@type": "WebApplication", "@id": `${base}/#app`, name: SITE_NAME, url: `${base}/`, applicationCategory: "UtilitiesApplication", operatingSystem: "Web browser", inLanguage: "ko-KR", isPartOf: siteRef, author: orgRef, publisher: orgRef, datePublished: HOME_PUBLISHED, dateModified: CHECKED, description: "감자·고구마·사과·배 품종과 관리기·경운기·트랙터를 조건 질문과 1:1 대결로 비교하고, 공식 자료 출처와 다음 확인 사항을 보여주는 무료 도구", offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" } }));
+index = replaceBlock(index, "meta", metaBlock({ published: HOME_PUBLISHED, revised: HOME_REVISED, checked: CHECKED, sources: allSourceUrls.size }));
+index = replaceBlock(index, "sources", `<section id="sources" class="block src-home"><div class="block-head"><p class="eyebrow">출처</p><h2>후보 특성의 출처 ${allSourceUrls.size}건</h2><p>후보 ${counts.candidates}개의 특성은 아래 공식 자료에서 가져왔고 ${CHECKED}에 원문을 확인했습니다. 대결·결과 화면에서도 값마다 [번호]로 출처를 보여 줍니다. 주제를 눌러 목록을 펼치세요.</p></div>${CATEGORIES.map((c) => { const o = sourceOrder(c); return `<details class="src-group"><summary>${esc(c.name)} · 출처 ${o.length}건</summary><ol class="src-list">${sourceItems(o.map((id) => SOURCES[id]), CHECKED)}</ol><p class="fine"><a href="/compare/${c.page.slug}.html">${esc(c.page.h1)}</a>에서 같은 번호로 값과 출처를 함께 볼 수 있습니다.</p></details>`; }).join("")}</section>`);
+await fs.writeFile(path.join(root, "index.html"), index, "utf8");
+// 중고 트랙터 두 후보 확인표
+const TOOL_PATH = "/tools/tractor-candidate-sheet.html";
+let tool = syncShell(await fs.readFile(path.join(root, TOOL_PATH.slice(1)), "utf8"));
+tool = putLd(tool, graph({ "@type": "WebPage", "@id": `${base}${TOOL_PATH}#webpage`, name: "중고 트랙터 두 후보 비교표", url: `${base}${TOOL_PATH}`, inLanguage: "ko-KR", isPartOf: siteRef, author: orgRef, publisher: orgRef, datePublished: "2026-09-24", dateModified: CHECKED }, breadcrumbLd([["홈", "/"], ["선택 가이드", "/guides.html"], ["중고 트랙터 두 후보 확인표", TOOL_PATH]])));
+await fs.writeFile(path.join(root, TOOL_PATH.slice(1)), tool, "utf8");
 
 const toRssDate = (date) => new Date(`${date}T00:00:00+09:00`).toUTCString();
 const rssItems = [
-  ...CATEGORIES.map((c) => `<item><title>${esc(c.page.title)}</title><link>${compareUrl(c)}</link><guid isPermaLink="true">${compareUrl(c)}</guid><description>${esc(c.page.description)}</description><pubDate>${toRssDate(CHECKED)}</pubDate></item>`),
+  ...CATEGORIES.map((c) => `<item><title>${esc(c.page.title)}</title><link>${compareUrl(c)}</link><guid isPermaLink="true">${compareUrl(c)}</guid><description>${esc(c.page.description)}</description><pubDate>${toRssDate(COMPARE_PUBLISHED)}</pubDate></item>`),
   ...guides.map((guide) => `<item><title>${esc(guide.title)}</title><link>${base}/guides/${guide.slug}.html</link><guid isPermaLink="true">${base}/guides/${guide.slug}.html</guid><description>${esc(guide.description)}</description><pubDate>${toRssDate(guide.publishedAt ?? originalDate)}</pubDate></item>`),
 ].join("");
-const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>농사 비교 월드컵 선택 가이드</title><link>${base}/guides.html</link><description>품종·산지·농기계를 목적과 조건으로 비교하는 선택 가이드와 비교표</description><language>ko-KR</language><lastBuildDate>${toRssDate(buildDate)}</lastBuildDate>${rssItems}</channel></rss>`;
+const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${SITE_NAME} 선택 가이드</title><link>${base}/guides.html</link><description>품종·산지·농기계를 목적과 조건으로 비교하는 선택 가이드와 비교표</description><language>ko-KR</language><lastBuildDate>${toRssDate(buildDate)}</lastBuildDate>${rssItems}</channel></rss>`;
 await fs.writeFile(path.join(root, "rss.xml"), rss, "utf8");
 
-let index = await fs.readFile(path.join(root, "index.html"), "utf8");
-if (!index.includes('href="/guides.html"')) index = index.replace('<a href="/compare/">비교표</a>', '<a href="/compare/">비교표</a><a href="/guides.html">선택 가이드</a>');
-if (!index.includes('type="application/rss+xml"')) index = index.replace('</head>', '<link rel="alternate" type="application/rss+xml" title="농사 비교 월드컵 선택 가이드" href="/rss.xml"></head>');
-await fs.writeFile(path.join(root, "index.html"), index, "utf8");
-
+// 사이트맵: 색인할 페이지만 넣습니다. 몽골어 페이지(/mn/)는 AdSense 지원 언어가 아니어서 noindex로 두고 뺍니다.
 const staticPages = [
   ["/", buildDate, "weekly", "1.0"],
   ["/compare/", buildDate, "monthly", "0.9"],
   ...CATEGORIES.map((c) => [`/compare/${c.page.slug}.html`, CHECKED, "monthly", "0.9"]),
-  ["/about.html", buildDate, "yearly", "0.3"],
-  ["/privacy.html", buildDate, "yearly", "0.3"],
-  ["/terms.html", buildDate, "yearly", "0.3"],
-  ["/contact.html", buildDate, "yearly", "0.3"],
   ["/guides.html", buildDate, "monthly", "0.8"],
-  ["/tools/tractor-candidate-sheet.html", buildDate, "monthly", "0.8"],
-  ["/mn/", "2026-09-24", "monthly", "0.8"],
-  ["/mn/tractor-or-motoblock.html", "2026-09-25", "monthly", "0.8"],
-  ["/mn/potato-digger-or-harvester.html", "2026-09-24", "monthly", "0.8"],
+  [TOOL_PATH, buildDate, "monthly", "0.8"],
+  ...sitePages.filter((p) => !p.nosite).map((p) => [p.path, p.lastmod, p.changefreq, p.priority]),
 ];
 const sitemapEntries = [
   ...staticPages.map(([pathName, lastmod, changefreq, priority]) => `  <url><loc>${base}${pathName}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`),
@@ -755,4 +886,4 @@ const sitemapEntries = [
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.join("\n")}\n</urlset>\n`;
 await fs.writeFile(path.join(root, "sitemap.xml"), sitemap, "utf8");
-console.log(`generated ${guides.length} selection guides and ${CATEGORIES.length} comparison pages`);
+console.log(`generated ${guides.length} selection guides, ${CATEGORIES.length} comparison pages and ${sitePages.length} site pages`);
